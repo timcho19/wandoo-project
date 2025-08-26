@@ -7,7 +7,7 @@ body {
       max-width: 720px;
       margin: 0 auto;
       background: #f4f4f4;
-      /* box-shadow: 0 4px 24px rgba(0,0,0,0.08); */
+
       padding: 0 16px 60px 16px;
       position: relative;
       width: 100%;
@@ -28,15 +28,20 @@ body {
       font-weight: 700;
       font-family: 'Pretendard', sans-serif;
       letter-spacing: 2px;
+      width:200px;
+      height: 48px;;
+      display: inline-flex;
+      align-items: center;
     }
+
     .main-header .alarm {
       width: 24px;
       height: 24px;
     }
     .main-header .noti-badge {
       position: absolute;
-      right:0;
-      top: 33px;
+      right:-3px;
+      top: 28px;
       background: #ff0000;
       color: #fff;
       font-size: 12px;
@@ -74,6 +79,19 @@ body {
       font-size: 16px;
       color: #777;
       margin-bottom: 24px;
+    }
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 16px;
+      color: #1B1B1B; /* 입력된 텍스트 색 */
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    .search-input::placeholder {
+      color: #777; /* 기존 .main-search-bar color 유지 */
     }
     .main-category {
       padding: 0;
@@ -115,11 +133,14 @@ body {
       background-color: #b2e0ae;
       transition: width 0.2s, min-width 0.2s;
     }
-    .category-card.sports { background: url('../image/soccer.jpg') center/cover, #b2e0ae; }
-    .category-card.outdoor { background: url('../image/travel-1.jpg') center/cover, #5bc35b; }
-    .category-card.culture { background: url('../image/movie.jpg') center/cover, #d9d9d9; }
-    .category-card.social { background: url('../image/coffee.jpg') center/cover, #d9d9d9; }
-    .category-card.other { background: url('../image/others.jpg') center/cover, #d9d9d9; }
+    .category-card{
+      background:linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1))
+    }
+    .category-card.sports { background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('../image/soccer.jpg') center/cover, #b2e0ae; }
+    .category-card.outdoor { background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('../image/travel-1.jpg') center/cover, #5bc35b; }
+    .category-card.culture { background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('../image/movie.jpg') center/cover, #d9d9d9; }
+    .category-card.social { background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('../image/coffee.jpg') center/cover, #d9d9d9; }
+    .category-card.other { background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('../image/others.jpg') center/cover, #d9d9d9; }
     .category-card .label {
       position: absolute;
       bottom: 24px;
@@ -187,7 +208,7 @@ body {
       min-width: 160px;
       max-width: 336px;
       border-radius: 20px;
-      background: #fff;
+      background: #fff;      
       /* box-shadow: 0 2px 8px rgba(0,0,0,0.04); */
       margin-bottom: 8px;
       overflow: hidden;
@@ -195,6 +216,9 @@ body {
       display: flex;
       flex-direction: column;
       transition: width 0.2s, min-width 0.2s;
+    }
+    .group-card:hover{
+      box-shadow: 0 16px 40px rgba(122,144,176,0.02); 
     }
     .group-card .thumb {
       width: 100%;
@@ -205,12 +229,17 @@ body {
       position: relative;
       display: flex;
       align-items: flex-end;
-      justify-content: flex-end;
+      justify-content: flex-start;
       color: #fff;
       font-size: 18px;
       font-weight: 700;
-      padding: 0 24px 16px 0;
+
       min-height: 100px;
+    }
+    .group-card .thumb span {
+      position: absolute;
+      bottom: 24px;  /* 아래 여백 */
+      right: 24px;   /* 오른쪽 여백 */
     }
     .group-card .desc {
       padding: 12px 16px 16px 16px;
@@ -243,11 +272,16 @@ body {
       color: #40B440;
       font-size: 32px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 24px;
     }
+    .main-footer div{
+      margin-bottom:24px;
+    }
+
     .main-footer .footer-links {
       display: flex;
-      gap: 32px;
+      align-items: center;
+      justify-content: space-between;
       font-size: 18px;
       color: #000;
       margin-top: 16px;
@@ -305,22 +339,31 @@ body {
       cursor: pointer;
       pointer-events: auto;
     }
+    .nav-item img,.nav-item .nav-label-inactive{
+      transition:0.6s
+    }
+    .nav-item:active img,.nav-item:active span{
+      transform:scale(0.8);
+    }
+    .nav-item {
+      transition:0.6s;
+    }
+    .nav-item:active .nav-label-inactive{
+      color:#333;
+    }
     .nav-item img {
       width: 30px;
       height: 30px;
       margin-bottom: 2px;
     }
+    .nav-item img:active {
+      filter: brightness(20%) contrast(100%);
+    }
     .nav-item:first-child span {
-      color: #1b1b1b;
+      color: #c9c9c9;
       font-size: 16px;
     }
-    .nav-chat-icon {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+
     .nav-chat-label {
       position: absolute;
       left: 50%;

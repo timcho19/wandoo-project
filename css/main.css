@@ -35,7 +35,7 @@ body {
     }
     .main-header .noti-badge {
       position: absolute;
-      right:16px;
+      right:0;
       top: 33px;
       background: #ff0000;
       color: #fff;

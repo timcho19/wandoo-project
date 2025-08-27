@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>완두 - 모임글 보기</title>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background-color: #F4F4F4;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        /* 헤더 */
+        .header {
+            background-color: white;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 48px;
+            color: #1B1B1B;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 400;
+            color: #000;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* 메인 이미지 */
+        .main-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 태그 섹션 */
+        .tags-section {
+            padding: 24px 16px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #E3E3E3;
+            border-radius: 50px;
+            padding: 5px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #1B1B1B;
+        }
+
+        .tag img {
+            width: 23px;
+            height: 23px;
+        }
+
+        /* 모임 소개 섹션 */
+        .info-section {
+            background: white;
+            padding: 24px 16px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 44px;
+            color: #000;
+        }
+
+        .info-content {
+            font-size: 16px;
+            line-height: 24px;
+            color: #000;
+            white-space: pre-line;
+        }
+
+        /* 참여 인원 섹션 */
+        .members-section {
+            padding: 24px 16px;
+        }
+
+        .member-list {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .member-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .member-avatar {
+            position: relative;
+            width: 48px;
+            height: 48px;
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .host-badge {
+            position: absolute;
+            bottom: -6px;
+            right: -6px;
+            width: 26px;
+            height: 23px;
+        }
+
+        .member-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1B1B1B;
+        }
+
+        .chat-btn {
+            background-color: #379B37;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+            margin-left: auto;
+        }
+
+        /* 참여하기 버튼 */
+        .join-section {
+            padding: 0 16px;
+            margin-bottom: 24px;
+        }
+
+        .join-btn {
+            background-color: #40B440;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 16px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .join-btn:hover {
+            background-color: #379B37;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="#" class="back-btn">←</a>
+            <h1 class="title">[정기모임] 테니스 멤버 모집</h1>
+            <div class="header-actions">
+            <button class="action-btn">
+                <img src="http://localhost:3845/assets/0bdcc17d74368bc78a1f30ebb57e660f561bf752.svg" alt="좋아요">
+            </button>
+            <button class="action-btn">
+                <img src="http://localhost:3845/assets/a6bf478829756fdd86a35d72f4252f74bc7c7d0a.svg" alt="공유하기">
+            </button>
+            <button class="action-btn">
+                <img src="http://localhost:3845/assets/60c0eb2b830e125a893c203bf9d8d7508caf1172.svg" alt="더보기">
+            </button>
+        </div>
+    </header>
+</div>
+
+<div class="container">
+        <main>
+            <img src="http://localhost:3845/assets/cd5a0e31e05051c63d9904f6a2387a822fb60a25.png" alt="테니스 모임 이미지" class="main-image">
+
+            <section class="tags-section">
+            <div class="tag">
+                <img src="http://localhost:3845/assets/ca339d2fefd5330d47f96fc05a5e60ddd75111c0.svg" alt="위치">
+                부산 수영구
+            </div>
+            <div class="tag">
+                <img src="http://localhost:3845/assets/02f539a76825043242cff5de1c9bd2a4d49eeaf3.svg" alt="인원">
+                3/10
+            </div>
+            <div class="tag">
+                <img src="http://localhost:3845/assets/87d5bb07240bd63a4993923f3ac42741e9ba96b9.svg" alt="카테고리">
+                테니스
+            </div>
+            <div class="tag">
+                <img src="http://localhost:3845/assets/d697cc439813428dadfb68954b222ae7eed2516d.svg" alt="날짜">
+                매월 첫째주 일요일
+            </div>
+            <div class="tag">
+                <img src="http://localhost:3845/assets/265a8fe1a694f6d372a241f709013bc7bb8616b1.svg" alt="시간">
+                19:00
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2 class="section-title">모임 소개</h2>
+            <div class="info-content">🏊🏻‍♀️입수큐즈미🏊🏻‍♂️
+
+운동/스포츠
+
+모임 소개
+⭐️부산 테니스 모임⭐️🏊‍♂️🏊‍♀️  
+🕛Since 20240101  ⭐
+ 같이 재밌게 테니스 다니면서 건강도 챙기고 실력 향상도 해요~
+ 초보도 환영이구 고수도 환영입니다.
+
+⭐️연령제한 : 80년생~00년생 (빠른 없음)  ⭐
+
+⭐️정기모임 *매월 첫째주 일요일 (해당달 1일 공지) 
+*장소/시간 : 
+공지사항 참고 수영 정기모임 있습니다 (모임 후 뒤풀이 참석 유/무 자유) 
+정기모임 외 평일/주말, 오전/오후, 장소 가리지 않고 수시로 벙 있습니다  ⭐
+️
+이런 사람❌ 
+
+-최초 모임 가입 후 한 시간 이내 가입 인사 미 작성 회원 
+-최초 모임 가입 후 한 달 이내 테니스 벙 미 참석 회원 
+-두 달 이상 장기간 미 참석 회원 
+-수영 목적이 아닌 이성 목적 회원 
+-모임의 분위기를 흐리는 회원 
+-타모임 운영진 (확인 후 강퇴 조치 하겠습니다) 
+
+☺️오프라인 모임 1회 참석 후 오픈 톡방으로 초대됩니다☺️</div>
+        </section>
+
+        <section class="members-section">
+            <h2 class="section-title">현재 참여 인원</h2>
+            <div class="member-list">
+                <div class="member-item">
+                    <div class="member-avatar">
+                        <img src="http://localhost:3845/assets/c41ec9933190b4790fd8179d445b04b972c50790.png" alt="프로필 이미지">
+                        <img src="http://localhost:3845/assets/04e119eaa3cf45927af6f6fe03c281205aad2d75.svg" alt="방장" class="host-badge">
+                    </div>
+                    <span class="member-name">홍길동</span>
+                    <button class="chat-btn">1:1 문의</button>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">
+                        <img src="http://localhost:3845/assets/c41ec9933190b4790fd8179d445b04b972c50790.png" alt="프로필 이미지">
+                    </div>
+                    <span class="member-name">길짱구</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">
+                        <img src="http://localhost:3845/assets/c41ec9933190b4790fd8179d445b04b972c50790.png" alt="프로필 이미지">
+                    </div>
+                    <span class="member-name">박철수</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="join-section">
+            <button class="join-btn">참여하기</button>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

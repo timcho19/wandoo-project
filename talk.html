@@ -1,294 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WANDOO TALK</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #F4F4F4;
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 24px 16px 60px;
-            background: #F4F4F4;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* 헤더 */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .logo {
-            color: #40B440;
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 48px;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bell-icon {
-            width: 21px;
-            height: 24px;
-        }
-        
-        .action-btn {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #777777;
-            font-size: 16px;
-        }
-
-        /* 필터 영역 */
-        .filters {
-            display: flex;
-            gap: 27px;
-            margin-bottom: 60px;
-        }
-
-        .filter {
-            position: relative;
-        }
-
-        .filter select {
-            appearance: none;
-            -webkit-appearance: none;
-            font-size: 24px;
-            font-weight: 700;
-            color: #1B1B1B;
-            line-height: 34px;
-            border: none;
-            background: none;
-            padding-right: 35px;
-            cursor: pointer;
-        }
-
-        .filter select:focus {
-            outline: none;
-        }
-
-        .filter::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 31px;
-            height: 31px;
-            background-image: url('http://localhost:3845/assets/7345b17eedb2f51eb314554a4d47d2c5f9cc1042.svg');
-            background-size: contain;
-            pointer-events: none;
-        }
-
-        /* 게시글 */
-        .post {
-            background: #fff;
-            border-radius: 20px;
-            margin-bottom: 60px;
-            width: 688px;
-        }
-
-        .post-header {
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .post-user {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .profile-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-        }
-
-        .username {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1B1B1B;
-            line-height: 25.2px;
-        }
-
-        .post-meta {
-            font-size: 12px;
-            color: #000;
-            line-height: 16.8px;
-        }
-
-        .post-image {
-            width: 100%;
-            height: 338px;
-            object-fit: cover;
-        }
-
-        .post-content {
-            padding: 16px;
-            border-bottom: 0.5px solid #D9D9D9;
-        }
-
-        .post-text {
-            font-size: 16px;
-            line-height: 24px;
-            color: #1B1B1B;
-            margin-bottom: 8px;
-            width: 657px;
-        }
-
-        .more-btn {
-            color: #4B4B4B;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .post-actions {
-            padding: 16px;
-            display: flex;
-            gap: 12px;
-        }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #777777;
-            font-size: 16px;
-        }
-
-        .action-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* 플로팅 버튼 */
-        .floating-btn {
-            position: fixed;
-            bottom: 159px;
-            right: calc((100% - 720px)/2 + 16px);
-            width: 50px;
-            height: 50px;
-            background-image: url('http://localhost:3845/assets/e5bad0d47b40f53630dd59b55a21b8ba1d00c285.png');
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            cursor: pointer;
-        }
-
-        /* 하단 네비게이션 */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 720px;
-            height: 93px;
-            background: #fff;
-            border-radius: 10px 10px 0 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-            padding: 0 43px 12px;
-            gap: 140px;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .nav-icon {
-            width: 43px;
-            height: 43px;
-        }
-
-        .nav-label {
-            font-family: 'Jua', sans-serif;
-            font-size: 14px;
-            color: #C9C9C9;
-            text-align: center;
-        }
-
-        .nav-item.active .nav-label {
-            color: #1B1B1B;
-        }
-
-        /* 푸터 */
-        .footer {
-            padding: 24px 0 60px;
-        }
-
-        .footer-logo {
-            color: #5BC35B;
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 48px;
-            margin-bottom: 24px;
-        }
-
-        .footer-info {
-            color: #777777;
-            font-size: 16px;
-            line-height: 24px;
-            margin-bottom: 24px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: space-between;
-            width: 645px;
-            font-size: 18px;
-        }
-
-        .footer-link {
-            color: #000;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/talk.css">
 </head>
+
 <body>
     <div class="container">
-            <header class="header">
+        <header class="header">
             <div class="logo">WANDOO TALK</div>
             <button type="button" class="icon-btn">
-                <img src="http://localhost:3845/assets/1a6a21aef073534333b9aadced0280c5d923904b.svg" alt="알림" class="bell-icon">
+                <img src="/image/icon/bell.svg" alt="알림"
+                    class="bell-icon">
             </button>
-        </header>        <div class="filters">
+        </header>
+        <div class="filters">
             <div class="filter">
                 <select name="location">
                     <option value="종로구">종로구</option>
@@ -314,24 +45,28 @@
                 <div class="post-header">
                     <div class="post-user">
                         <button type="button" style="padding: 0; border: none; background: none; cursor: pointer;">
-                            <img src="http://localhost:3845/assets/d8b68bc8b9e8d2f92eb83ff209a44f71032612ce.png" alt="프로필" class="profile-img">
+                            <img src="/image/profile/person-10.jpg"
+                                alt="프로필" class="profile-img">
                         </button>
                         <span class="username">홍길동</span>
                         <span class="post-meta">인사동 · 1시간전</span>
                     </div>
                 </div>
-                <img src="http://localhost:3845/assets/1e0cee22f3f099311b3c124703253bf93e7f4c48.png" alt="게시글 이미지" class="post-image">
+                <img src="image/others.jpg" alt="게시글 이미지"
+                    class="post-image">
                 <div class="post-content">
                     <p class="post-text">퇴근 하는길에 하늘을 봤더니, 별이 엄청 많아서 한장 찍어봤습니다<br>엄청 이쁘네요. 같이 가실분....</p>
                     <div class="more-btn">더보기</div>
                 </div>
                 <div class="post-actions">
                     <button type="button" class="action-btn">
-                        <img src="http://localhost:3845/assets/d769833bfec20ba0e58a469513b11215b40578df.svg" alt="댓글" class="action-icon">
+                        <img src="/image/icon/comment.svg" alt="댓글"
+                            class="action-icon">
                         <span>1</span>
                     </button>
                     <button type="button" class="action-btn">
-                        <img src="http://localhost:3845/assets/3034f0c8129fc29a6a3688a6914795516bd857b6.svg" alt="좋아요" class="action-icon">
+                        <img src="/image/icon/heart-1.svg" alt="좋아요"
+                            class="action-icon">
                         <span>2</span>
                     </button>
                 </div>
@@ -342,41 +77,45 @@
 
         <div class="floating-btn"></div>
 
-        <nav class="bottom-nav">
-            <a href="#" class="nav-item">
-                <img src="http://localhost:3845/assets/f79409816cf559e613a73db3df26d86e1099b68a.svg" alt="홈" class="nav-icon">
-                <span class="nav-label">홈</span>
-            </a>
-            <a href="#" class="nav-item active">
-                <img src="http://localhost:3845/assets/89e5d397d21574b2356541614f9617469af45795.svg" alt="완두톡" class="nav-icon">
-                <span class="nav-label">완두톡</span>
-            </a>
-            <a href="#" class="nav-item">
-                <img src="http://localhost:3845/assets/ddfaa9c87b9c190ece46dcb5d210e007e12b8962.svg" alt="모임찾기" class="nav-icon">
-                <span class="nav-label">모임찾기</span>
-            </a>
-            <a href="#" class="nav-item">
-                <img src="http://localhost:3845/assets/0bfdccec98496617b3b9cad9b46ce4e74c71d886.svg" alt="마이페이지" class="nav-icon">
-                <span class="nav-label">마이페이지</span>
-            </a>
-        </nav>
 
-        <footer class="footer">
+        <div class="main-footer">
             <div class="footer-logo">WANDOO</div>
-            <div class="footer-info">
-                (주)완두 사업자정보<br>
-                상호 : 완두(WANDOO)<br>
+            <div>(주)완두 사업자정보</div>
+            <div style="font-size:16px;line-height:24px;">
                 대표 : 미니콩즈<br>
                 사업자등록번호 : 111-11-11111<br>
-                제휴문의 : abc1234@gmail.com
+                제휴문의 : abc1234@gmail.com<br>
+                고객센터 : 1544-0000
             </div>
             <div class="footer-links">
-                <a href="#" class="footer-link">이용약관</a>
-                <a href="#" class="footer-link">개인정보처리방침</a>
-                <a href="#" class="footer-link">위치기반서비스</a>
-                <a href="#" class="footer-link">이용약관 법적고지</a>
+                <a href="">이용약관</a>
+                <a href="">개인정보처리방침</a>
+                <a href="">위치기반서비스</a>
+                <a href="">이용약관 법적고지</a>
             </div>
-        </footer>
+        </div>
     </div>
 </body>
+<!-- 하단 고정 네비게이션 -->
+<nav class="bottom-nav">
+    <div class="bottom-nav-bg"></div>
+    <div class="bottom-nav-items">
+        <div class="nav-item">
+            <img src="/image/icon/home.svg" alt="홈">
+            <span class="nav-label-inactive">홈</span>
+        </div>
+        <div class="nav-item">
+            <img src="/image/icon/wandoo.svg" alt="완두톡">
+            <span class="nav-label-inactive">완두톡</span>
+        </div>
+        <div class="nav-item">
+            <img src="/image/icon/category.svg" alt="모임찾기">
+            <span class="nav-label-inactive">모임찾기</span>
+        </div>
+        <div class="nav-item">
+            <img src="/image/icon/mypage.svg" alt="마이페이지">
+            <span class="nav-label-inactive">마이페이지</span>
+        </div>
+    </div>
+
 </html>

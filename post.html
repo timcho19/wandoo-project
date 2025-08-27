@@ -4,278 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WANDOO TALK - 글보기</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #F4F4F4;
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-bottom: 60px;
-        }
-
-        /* 헤더 */
-        .header {
-            background: #fff;
-            height: 48px;
-            padding: 0 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .back-button {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1B1B1B;
-            text-decoration: none;
-            line-height: 48px;
-        }
-
-        .page-title {
-            font-size: 18px;
-            color: #000;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .header-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* 게시글 */
-        .post {
-            background: #fff;
-            border-radius: 20px;
-            width: 688px;
-            margin: 0 auto;
-        }
-
-        .post-header {
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .post-user {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .profile-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .username {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1B1B1B;
-        }
-
-        .post-meta {
-            font-size: 12px;
-            color: #777;
-            padding: 5px 12px;
-            background: #E3E3E3;
-            border-radius: 50px;
-        }
-
-        .more-options {
-            width: 24px;
-            height: 24px;
-        }
-
-        .post-image {
-            width: 100%;
-            height: 338px;
-            object-fit: cover;
-        }
-
-        .post-content {
-            padding: 16px;
-            border-bottom: 0.5px solid #D9D9D9;
-            font-size: 16px;
-            line-height: 24px;
-            color: #1B1B1B;
-        }
-
-        .post-actions {
-            padding: 16px;
-            display: flex;
-            gap: 12px;
-        }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #777777;
-        }
-
-        .action-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* 댓글 섹션 */
-        .comments-section {
-            padding: 12px 16px 30px;
-        }
-
-        .comments-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 12px;
-        }
-
-        .comment {
-            background: #fff;
-            border-radius: 20px;
-            padding: 12px;
-            margin-bottom: 12px;
-        }
-
-        .comment-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .comment-user {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .comment-content {
-            font-size: 16px;
-            color: #4B4B4B;
-            line-height: 24px;
-            margin-left: 60px;
-        }
-
-        /* 댓글 입력 */
-        .comment-input-container {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 720px;
-            height: 93px;
-            background: #fff;
-            border-radius: 10px 10px 0 0;
-            box-shadow: 0 -2px 3px rgba(0,0,0,0.1);
-            padding: 22px 16px;
-        }
-
-        .comment-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .comment-profile {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-        }
-
-        .comment-input-box {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #EBEBEB;
-            border-radius: 4px;
-            padding: 10px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .comment-input {
-            flex: 1;
-            border: none;
-            background: none;
-            color: #1B1B1B;
-            font-size: 16px;
-            outline: none;
-            margin-right: 16px;
-        }
-
-        .comment-input::placeholder {
-            color: #777;
-        }
-
-        .comment-actions {
-            display: flex;
-            gap: 16px;
-        }
-
-        .comment-action-btn {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .comment-action-btn img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .profile-btn {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .profile-btn img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/post.css">
 </head>
 <body>
     <div class="container">
@@ -284,9 +14,9 @@
             <a href="#" class="back-button">←</a>
             <h1 class="page-title">오늘의 하늘</h1>
             <div class="header-actions">
-                <img src="http://localhost:3845/assets/0bdcc17d74368bc78a1f30ebb57e660f561bf752.svg" alt="공유" class="header-icon">
-                <img src="http://localhost:3845/assets/a6bf478829756fdd86a35d72f4252f74bc7c7d0a.svg" alt="저장" class="header-icon">
-                <img src="http://localhost:3845/assets/60c0eb2b830e125a893c203bf9d8d7508caf1172.svg" alt="더보기" class="header-icon">
+                <button type="button" class="icon-btn"><img src="/image/icon/sharing.svg" alt="공유" class="header-icon"></button>
+                <button type="button" class="icon-btn"><img src="/image/icon/heart.svg" alt="저장" class="header-icon"></button>
+                <button type="button" class="icon-btn"><img src="/image/icon/report.svg" alt="신고" class="header-icon"></button>
             </div>
         </header>
 
@@ -295,26 +25,26 @@
             <div class="post-header">
                 <div class="post-user">
                     <button type="button" class="profile-btn">
-                        <img src="http://localhost:3845/assets/861771261585c60c48ab3fdfcb3299f380a9ef0a.png" alt="프로필">
+                        <img src="/image/profile/person-8.jpg" alt="프로필">
                     </button>
                     <div class="user-info">
                         <span class="username">감성좌</span>
                         <span class="post-meta">영화 · 인사동 · 1시간전</span>
                     </div>
                 </div>
-                <img src="http://localhost:3845/assets/52b06ce6015aa0eb6502cd2ac2d96db14be0c146.svg" alt="더보기" class="more-options">
+                <button type="button" class="icon-btn"><img src="/image/icon/more-vert.svg" alt="더보기" class="more-options"></button>
             </div>
-            <img src="http://localhost:3845/assets/1e0cee22f3f099311b3c124703253bf93e7f4c48.png" alt="게시글 이미지" class="post-image">
+            <img src="/image/start.jpg" alt="게시글 이미지" class="post-image">
             <div class="post-content">
                 <p>퇴근 하는길에 하늘을 봤더니, 별이 엄청 많아서 한장 찍어봤습니다<br>엄청 이쁘네요. 같이 가실분 댓글 주세요 ~</p>
             </div>
             <div class="post-actions">
                 <div class="action-btn">
-                    <img src="http://localhost:3845/assets/d769833bfec20ba0e58a469513b11215b40578df.svg" alt="댓글" class="action-icon">
+                    <button type="button" class="icon-btn"><img src="/image/icon/comment.svg" alt="댓글" class="action-icon"></button>
                     <span>5</span>
                 </div>
                 <div class="action-btn">
-                    <img src="http://localhost:3845/assets/3034f0c8129fc29a6a3688a6914795516bd857b6.svg" alt="좋아요" class="action-icon">
+                    <button type="button" class="icon-btn"><img src="/image/icon/heart-1.svg" alt="좋아요" class="action-icon"></button>
                     <span>9</span>
                 </div>
             </div>
@@ -330,12 +60,12 @@
                     <div class="comment-header">
                         <div class="comment-user">
                             <button type="button" class="profile-btn">
-                                <img src="http://localhost:3845/assets/4936d67fcd227eaeaeb0e7a1b148e23cab941f71.png" alt="프로필">
+                                <img src="/image/profile/person-10.jpg" alt="프로필">
                             </button>
                             <span class="username">홍길동</span>
                             <span style="color: #777; font-size: 12px;">· 30분전</span>
                         </div>
-                        <img src="http://localhost:3845/assets/52b06ce6015aa0eb6502cd2ac2d96db14be0c146.svg" alt="더보기" class="more-options">
+                        <button type="button" class="icon-btn"><img src="/image/icon/more-vert.svg" alt="더보기" class="more-options"></button>
                     </div>
                     <p class="comment-content">오늘 하늘 진짜 예술이었어요… 저도 잠깐 멍 때리고 봤네요.</p>
                 </div>
@@ -343,12 +73,12 @@
                     <div class="comment-header">
                         <div class="comment-user">
                             <button type="button" class="profile-btn">
-                                <img src="http://localhost:3845/assets/4936d67fcd227eaeaeb0e7a1b148e23cab941f71.png" alt="프로필">
+                                <img src="/image/profile/person-9.jpg" alt="프로필">
                             </button>
                             <span class="username">홍길동</span>
                             <span style="color: #777; font-size: 12px;">· 30분전</span>
                         </div>
-                        <img src="http://localhost:3845/assets/52b06ce6015aa0eb6502cd2ac2d96db14be0c146.svg" alt="더보기" class="more-options">
+                        <img src="/image/icon/more-vert.svg" alt="더보기" class="more-options">
                     </div>
                     <p class="comment-content">오늘 하늘 진짜 예술이었어요… 저도 잠깐 멍 때리고 봤네요.</p>
                 </div>
@@ -361,16 +91,16 @@
         <div class="comment-input-container">
             <div class="comment-input-wrapper">
                 <button type="button" class="profile-btn">
-                    <img src="http://localhost:3845/assets/e8eecc8c2bebbda9ebacddcd5f49ad57a962c59a.png" alt="프로필">
+                    <img src="/image/profile/person-11.jpg" alt="프로필">
                 </button>
                 <div class="comment-input-box">
                     <input type="text" class="comment-input" placeholder="댓글을 입력해주세요.">
                     <div class="comment-actions">
                         <button type="button" class="comment-action-btn">
-                            <img src="http://localhost:3845/assets/8cbd55c34041aa4ee4ddb9d55a87586bf87c710a.svg" alt="이모티콘">
+                            <img src="/image/icon/mood.svg" alt="이모티콘">
                         </button>
                         <button type="button" class="comment-action-btn">
-                            <img src="http://localhost:3845/assets/28780fb6ea894269265538f36a07afe8be3db15f.svg" alt="전송">
+                            <img src="/image/icon/send.svg" alt="전송">
                         </button>
                     </div>
                 </div>

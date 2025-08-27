@@ -63,7 +63,7 @@
         /* 필터 영역 */
         .filters {
             display: flex;
-            gap: 27px;
+            gap: 24px;
             margin-bottom: 60px;
         }
 

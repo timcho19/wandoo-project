@@ -25,14 +25,15 @@ body {
   font-size: 32px;
   font-weight: 700;
   font-family: 'Pretendard', sans-serif;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   letter-spacing: 2px;
+  position: relative;
 }
 .login-subtitle {
   color: #1b1b1b;
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .login-desc {
   color: #1b1b1b;
@@ -41,15 +42,27 @@ body {
   margin-bottom: 32px;
   text-align: center;
 }
-
+.login-title span{
+  position: absolute;  /* 화면에서 위치 이동 */
+  width: 1px;          /* 거의 안 보이는 크기 */
+  height: 1px;
+  padding: 0;
+  margin: -1px;        /* 레이아웃 공간 제거 */
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* 화면에서 잘림 */
+  white-space: nowrap;
+  border: 0;
+}
+.login-title img{
+  width: 200px;
+}
 /* 로그인 폼 */
 .login-form {
   width: 100%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 필드 간격 */
-  margin-bottom: 24px;
+  gap: 12px; /* 필드 간격 */
 }
 .login-field {
   display: flex;
@@ -64,8 +77,9 @@ body {
 }
 .login-input {
   width: 100%;
+  height: 36px;
   box-sizing: border-box;
-  padding: 8px 13px;
+  padding: 6px 12px;
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 14px;
@@ -74,12 +88,19 @@ body {
   outline: none;
   margin: 0;
 }
+.login-input:focus{
+  border:#0D6EFD solid 1px;
+}
 
 /* 버튼 */
 .login-btn, .signup-btn {
   width: 100%;
   max-width: 500px;
+  height: 36px;
   border: none;
+  display:flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 600;
@@ -92,14 +113,14 @@ body {
     margin-top: 8px;
 }
 .login-btn { background: #40b440; }
-.signup-btn { background: #66cc66; }
+.signup-btn { margin-bottom:12px; background: #66cc66; }
 
 /* 링크 */
 .login-link {
   color: #000;
   font-size: 12px;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: block;
 }
 
@@ -107,7 +128,7 @@ body {
 .login-hr {
   width: 100%;
   max-width: 500px;
-  margin: 24px 0;
+  margin-bottom:24px;
   border: none;
   border-top: 1px solid #e0e0e0;
   height: 1px;
@@ -123,8 +144,9 @@ body {
 }
 .login-sns-list {
   display: flex;
-  gap: 40px;
+  gap: 80px;
   justify-content: center;
+  margin-bottom:24px;
 }
 .sns-item {
   display: flex;
@@ -155,7 +177,6 @@ body {
   color: #777;
   font-size: 12px;
   text-align: center;
-  margin-top: 24px;
 }
 
 /* 반응형 */

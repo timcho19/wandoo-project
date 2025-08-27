@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>완두 - 모임찾기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background-color: #F4F4F4;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 93px;
+        }
+
+        /* 헤더 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            color: #40B440;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 48px;
+        }
+
+        .notification-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bell-icon {
+            width: 21px;
+            height: 24px;
+        }
+
+        /* 검색 영역 */
+        .search-section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 12px;
+            margin-bottom: 60px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+            padding: 0 16px;
+        }
+
+        .filter {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            position: relative;
+        }
+
+        .filter select {
+            appearance: none;
+            border: none;
+            background: none;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 34px;
+            padding-right: 35px;
+            cursor: pointer;
+        }
+
+        .filter select:focus {
+            outline: none;
+        }
+
+        .filter::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 31px;
+            height: 31px;
+            background-image: url('http://localhost:3845/assets/7345b17eedb2f51eb314554a4d47d2c5f9cc1042.svg');
+            background-size: contain;
+            pointer-events: none;
+        }
+
+        .search-bar {
+            background: #D9D9D9;
+            border-radius: 25px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            padding: 0 28px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 16px;
+            outline: none;
+            margin-right: 16px;
+        }
+
+        .search-input::placeholder {
+            color: #777;
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 모임 목록 */
+        .meetings-section {
+            padding: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .meeting-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .meeting-image {
+            width: 100%;
+            height: 195px;
+            object-fit: cover;
+        }
+
+        .meeting-info {
+            padding: 12px;
+        }
+
+        .meeting-category {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #F4F4F4;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .meeting-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1B1B1B;
+            margin-bottom: 8px;
+            line-height: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 40px;
+        }
+
+        .meeting-meta {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #777;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .meta-divider {
+            width: 2px;
+            height: 2px;
+            background: #777;
+            border-radius: 50%;
+            margin: 0 4px;
+        }
+
+        /* 하단 네비게이션 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 720px;
+            height: 93px;
+            background: #fff;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 43px 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+        }
+
+        .nav-icon {
+            width: 43px;
+            height: 43px;
+        }
+
+        .nav-label {
+            font-family: 'Jua', sans-serif;
+            font-size: 14px;
+            color: #C9C9C9;
+            text-align: center;
+        }
+
+        .nav-item.active .nav-label {
+            color: #1B1B1B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1 class="logo">WANDOO</h1>
+            <button type="button" class="notification-btn">
+                <img src="http://localhost:3845/assets/1a6a21aef073534333b9aadced0280c5d923904b.svg" alt="알림" class="bell-icon">
+            </button>
+        </header>
+
+        <!-- 검색 영역 -->
+        <section class="search-section">
+            <div class="filter-row">
+                <div class="filter">
+                    <select>
+                        <option>종로구</option>
+                        <option>중구</option>
+                        <option>용산구</option>
+                        <option>성동구</option>
+                        <option>광진구</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <select>
+                        <option>카테고리</option>
+                        <option>운동/스포츠</option>
+                        <option>문화/예술</option>
+                        <option>취미</option>
+                        <option>스터디</option>
+                        <option>친목</option>
+                    </select>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="검색어를 입력해주세요">
+                <button type="button" class="search-btn">
+                    <img src="http://localhost:3845/assets/df3fb1c98541683c50258f162e88c5f6b92601b1.svg" alt="검색">
+                </button>
+            </div>
+        </section>
+
+        <!-- 배너 -->
+        <section class="banners">
+            <div class="banner green">
+                <p class="banner-subtitle">자유롭게 남기는 우리 동네 이야기</p>
+                <h2 class="banner-title">우리 동네 완두톡</h2>
+            </div>
+            <div class="banner yellow">
+                <p class="banner-subtitle">우리 모임 자랑 좀 들어볼래 ?</p>
+                <h2 class="banner-title">모임 후기 이벤트</h2>
+            </div>
+        </section>
+
+        <!-- 추천 모임 -->
+        <section class="meeting-section">
+            <div class="section-header">
+                <h2 class="section-title">추천 완두 모임</h2>
+                <p class="section-subtitle">나의 관심사 모임을 알아보자</p>
+            </div>
+            <div class="meeting-grid">
+                <article class="meeting-card">
+                    <div class="meeting-image" style="background-image: url('http://localhost:3845/assets/257d0df231c8b3c1fb3f6012beb600ee9e7a313a.png')">
+                        <div class="meeting-category">운동/스포츠</div>
+                    </div>
+                    <div class="meeting-content">
+                        <h3 class="meeting-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
+                        <p class="meeting-schedule">[일정] 매주 토요일 오후 3시</p>
+                        <p class="meeting-location">서울특별시 마포구</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 내 위치 모임 -->
+        <section class="meeting-section">
+            <div class="section-header">
+                <h2 class="section-title">내 위치 완두모임</h2>
+                <p class="section-subtitle">내 근처에 등록된 모임이에요!</p>
+            </div>
+            <div class="meeting-grid">
+                <article class="meeting-card">
+                    <div class="meeting-image" style="background-image: url('http://localhost:3845/assets/257d0df231c8b3c1fb3f6012beb600ee9e7a313a.png')">
+                        <div class="meeting-category">운동/스포츠</div>
+                    </div>
+                    <div class="meeting-content">
+                        <h3 class="meeting-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
+                        <p class="meeting-schedule">[일정] 매주 토요일 오후 3시</p>
+                        <p class="meeting-location">서울특별시 마포구</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 신규 모임 -->
+        <section class="meeting-section">
+            <div class="section-header">
+                <h2 class="section-title">신선한 완두모임</h2>
+                <p class="section-subtitle">완두에 새로 등록된 모임이에요!</p>
+            </div>
+            <div class="meeting-grid">
+                <article class="meeting-card">
+                    <div class="meeting-image" style="background-image: url('http://localhost:3845/assets/257d0df231c8b3c1fb3f6012beb600ee9e7a313a.png')">
+                        <div class="meeting-category">운동/스포츠</div>
+                    </div>
+                    <div class="meeting-content">
+                        <h3 class="meeting-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
+                        <p class="meeting-schedule">[일정] 매주 토요일 오후 3시</p>
+                        <p class="meeting-location">서울특별시 마포구</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 플로팅 버튼 -->
+        <button type="button" class="floating-btn" aria-label="모임 만들기"></button>
+
+        <!-- 하단 네비게이션 -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item">
+                <img src="http://localhost:3845/assets/f79409816cf559e613a73db3df26d86e1099b68a.svg" alt="홈" class="nav-icon">
+                <span class="nav-label">홈</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="http://localhost:3845/assets/89e5d397d21574b2356541614f9617469af45795.svg" alt="완두톡" class="nav-icon">
+                <span class="nav-label">완두톡</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <img src="http://localhost:3845/assets/ddfaa9c87b9c190ece46dcb5d210e007e12b8962.svg" alt="모임찾기" class="nav-icon">
+                <span class="nav-label">모임찾기</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="http://localhost:3845/assets/0bfdccec98496617b3b9cad9b46ce4e74c71d886.svg" alt="마이페이지" class="nav-icon">
+                <span class="nav-label">마이페이지</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

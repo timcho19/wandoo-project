@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>완두톡 글쓰기</title>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background-color: #F4F4F4;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 48px 0;
+        }
+
+        .back-btn {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            text-decoration: none;
+            line-height: 48px;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 48px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 48px;
+            margin-bottom: 48px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            color: #212529;
+            margin-bottom: 8px;
+        }
+
+        .form-select,
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 7px 13px;
+            border: 1px solid #CED4DA;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #212529;
+            background: white;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url('http://localhost:3845/assets/de998501d134a2edc57da055246ada203a4a4f76.svg');
+            background-repeat: no-repeat;
+            background-position: right 13px center;
+            background-size: 12px;
+            padding-right: 30px;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-select::placeholder,
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #6C757D;
+        }
+
+        /* 이미지 업로드 영역 */
+        .upload-area {
+            border: 1px solid #ADB5BD;
+            border-radius: 2px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .upload-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 14px;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+
+        .upload-preview {
+            font-size: 14px;
+            color: #6C757D;
+        }
+
+        #imagePreview {
+            margin-top: 10px;
+        }
+
+        #imagePreview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px 0;
+            background: #40B440;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:hover {
+            background: #379B37;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .header {
+                padding: 24px 0;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .upload-area {
+                padding: 12px;
+            }
+
+            .page-title,
+            .back-btn {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 8px;
+            }
+
+            .form-label {
+                font-size: 14px;
+            }
+
+            .upload-text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <button class="back-btn">←</button>
+            <h1 class="page-title">완두톡</h1>
+        </header>
+
+        <main>
+            <h2 class="section-title">기본 정보</h2>
+            
+            <div class="form-container">
+                <div class="form-group">
+                    <label class="form-label">카테고리</label>
+                    <select class="form-select">
+                        <option value="" disabled selected>카테고리를 선택해주세요.</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">위치</label>
+                    <select class="form-select">
+                        <option value="" disabled selected>위치를 선택해주세요.</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">이미지</label>
+                    <div class="upload-area">
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        <img src="http://localhost:3845/assets/dc9f27e07c8e71ec8ce482aee3f8537c358d7b15.svg" alt="업로드" class="upload-icon">
+                        <p class="upload-text">이미지 파일을 드래그 또는 클릭하여 업로드</p>
+                        <p class="upload-preview">미리보기</p>
+                        <div id="imagePreview"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">글 제목</label>
+                    <input type="text" class="form-input" placeholder="제목을 입력해주세요.">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">설명</label>
+                    <textarea class="form-textarea" placeholder="내용을 입력해주세요"></textarea>
+                </div>
+
+                <button class="submit-btn">개설하기</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 이미지 업로드 기능
+        const uploadArea = document.querySelector('.upload-area');
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreview = document.getElementById('imagePreview');
+        
+        uploadArea.addEventListener('click', () => {
+            imageUpload.click();
+        });
+
+        imageUpload.addEventListener('change', handleImageSelect);
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#40B440';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#ADB5BD';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ADB5BD';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                imageUpload.files = files;
+                handleImageSelect({ target: imageUpload });
+            }
+        });
+
+        function handleImageSelect(e) {
+            const file = e.target.files[0];
+            
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    imagePreview.innerHTML = `<img src="${e.target.result}" alt="미리보기">`;
+                }
+                
+                reader.readAsDataURL(file);
+            } else if (file) {
+                alert('이미지 파일만 업로드 가능합니다.');
+                imageUpload.value = '';
+            }
+        }
+
+        // 뒤로가기 버튼
+        document.querySelector('.back-btn').addEventListener('click', () => {
+            history.back();
+        });
+    </script>
+</body>
+</html>

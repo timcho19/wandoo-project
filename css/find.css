@@ -51,10 +51,6 @@
             margin-bottom: 16px;
         }
 
-        .filter-item {
-            flex: 1;
-        }
-
         .filter-select {
             width: 100%;
             font-size: 24px;
@@ -64,7 +60,7 @@
             background: transparent;
             border: none;
             appearance: none;
-            background-image: url('http://localhost:3845/assets/7345b17eedb2f51eb314554a4d47d2c5f9cc1042.svg');
+            background-image: url('/image/icon/arrow-drop-down.svg');
             background-repeat: no-repeat;
             background-position: right center;
             background-size: 31px;
@@ -178,6 +174,7 @@
         }
 
         .group-card {
+            display:block;
             background: white;
             border-radius: 20px;
             overflow: hidden;
@@ -285,9 +282,9 @@
             bottom: 120px;
             width: 50px;
             height: 50px;
-            background-image: url('http://localhost:3845/assets/e5bad0d47b40f53630dd59b55a21b8ba1d00c285.png');
+            background: #fff;
             background-size: cover;
-            border: none;
+            border-radius: 50%;
             cursor: pointer;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }

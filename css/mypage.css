@@ -160,6 +160,15 @@ body {
   flex-wrap: wrap;
 }
 
+
+/* 호버호과 */
+  .mylists-card:hover,
+  .myprofile:hover,
+  .logout:hover {
+    box-shadow: 0 16px 40px 0 rgba(112, 144, 176, 0.2);
+    transition: box-shadow 0.25s ease;
+  }
+
 /* 반응형 */
 @media (max-width: 720px) {
   .mypage-container {

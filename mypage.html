@@ -4,14 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, max1imum-scale=1.0" />
   <title>마이페이지</title>
-  <link rel="stylesheet" href="globals.css">
+  <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/mypage.css">
 </head>
 <body>
   <div class="mypage-container">
     <div class="mypage-header">
-      <span class="title">MY PAGE</span>
-      <img src="./image/icon/bell.svg" alt="알림" class="alarm">
+      <a href="">
+        <span class="title">MY PAGE</span>
+      </a>
+      <a href="">
+        <img src="./image/icon/bell.svg" alt="알림" class="alarm">
+      </a>
     </div>
     <div class="user-card">
       <img src="./image/profile/person-1.jpg" alt="프로필">
@@ -26,13 +30,13 @@
       <span class="user-info-badge">사교</span>
     </div>
     <div class="mylists">
-      <div class="mylists-card">나의 모임</div>
-      <div class="mylists-card">내가 쓴글</div>
-      <div class="mylists-card">관심 모임</div>
-      <div class="mylists-card">채팅</div>
+      <a href="#" class="mylists-card">나의 모임</a>
+      <a href="#" class="mylists-card">내가 쓴 글</a>
+      <a href="#" class="mylists-card">관심 모임</a>
+      <a href="#" class="mylists-card">채팅</a>
     </div>
-    <div class="myprofile">프로필 설정</div>
-    <div class="logout">로그아웃</div>
+    <button class="myprofile">프로필 설정</button>
+    <button class="logout">로그아웃</button>
     <div class="mypage-footer">
       <div class="footer-logo">WANDOO</div>
       <div style="font-size:16px;line-height:24px;">

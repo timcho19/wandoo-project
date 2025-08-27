@@ -82,7 +82,7 @@
 
         .form-select {
             appearance: none;
-            background-image: url('http://localhost:3845/assets/de998501d134a2edc57da055246ada203a4a4f76.svg');
+            background-image: url('/image/icon/arrow-drop-down.svg');
             background-repeat: no-repeat;
             background-position: right 13px center;
             background-size: 12px;

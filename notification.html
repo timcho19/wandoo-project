@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WANDOO - 알림</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #F4F4F4;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: #F4F4F4;
+        }
+
+        /* 헤더 */
+        .header {
+            background: #fff;
+            height: 48px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            text-decoration: none;
+            line-height: 48px;
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 48px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* 알림 목록 */
+        .notification-list {
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .notification-item {
+            background: #D9D9D9;
+            border-radius: 20px;
+            padding: 20px 16px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .notification-item.unread {
+            background: #fff;
+        }
+
+        .notification-profile {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .notification-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .notification-text {
+            font-size: 14px;
+            color: #000;
+            line-height: 21px;
+        }
+
+        .notification-date {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.5);
+            line-height: 16.8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <a href="#" class="back-button">←</a>
+                <h1 class="header-title">알림</h1>
+            </div>
+            <div class="header-right">
+                <svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="21" height="24" rx="4" fill="#1B1B1B"/>
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="#1B1B1B"/>
+                </svg>
+            </div>
+        </header>
+
+        <div class="notification-list">
+            <div class="notification-item">
+                <img src="http://localhost:3845/assets/684ccdcc3186e07c8c342b81e093eb4572c196d0.png" alt="프로필" class="notification-profile">
+                <div class="notification-content">
+                    <div class="notification-text">[닉네임]님이 내 게시물에 댓글을 남겼습니다.</div>
+                    <div class="notification-date">2025.08.01</div>
+                </div>
+            </div>
+
+            <div class="notification-item">
+                <img src="http://localhost:3845/assets/69680e179291e247098b0173359e51cedc5e56cf.png" alt="프로필" class="notification-profile">
+                <div class="notification-content">
+                    <div class="notification-text">[닉네임]님이 내 모임에 참여 신청을 했습니다.</div>
+                    <div class="notification-date">2025.08.01</div>
+                </div>
+            </div>
+
+            <div class="notification-item unread">
+                <img src="http://localhost:3845/assets/6074ff015164256c309226253848f82d0d30a9d8.png" alt="프로필" class="notification-profile">
+                <div class="notification-content">
+                    <div class="notification-text">[닉네임]님이 내 게시물에 공감했습니다.</div>
+                    <div class="notification-date">2025.08.01</div>
+                </div>
+            </div>
+
+            <div class="notification-item">
+                <img src="http://localhost:3845/assets/ea4643104df8692345acf1fc934150af23da16fd.png" alt="프로필" class="notification-profile">
+                <div class="notification-content">
+                    <div class="notification-text">[닉네임]님이 내 게시물에 댓글을 남겼습니다.</div>
+                    <div class="notification-date">2025.08.01</div>
+                </div>
+            </div>
+
+            <div class="notification-item unread">
+                <img src="http://localhost:3845/assets/74aab0a877477f8f9911940f868c388f5d4eaf9b.png" alt="프로필" class="notification-profile">
+                <div class="notification-content">
+                    <div class="notification-text">[닉네임]님이 내 모임에 참여 신청을 했습니다.</div>
+                    <div class="notification-date">2025.08.01</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

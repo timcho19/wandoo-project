@@ -1,3 +1,6 @@
+@import 'reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 body {
       background: #ffffff;
       margin: 0;
@@ -13,6 +16,7 @@ body {
       width: 100%;
       box-sizing: border-box;
     }
+    /* header start */
     .main-header {
       display: flex;
       align-items: center;
@@ -21,6 +25,7 @@ body {
       position: relative;
       width: 100%;
       box-sizing: border-box;
+      margin-bottom:60px
     }
     .main-header .logo {
       color: #40B440;
@@ -28,12 +33,16 @@ body {
       font-weight: 700;
       font-family: 'Pretendard', sans-serif;
       letter-spacing: 2px;
-      width:200px;
-      height: 48px;;
       display: inline-flex;
       align-items: center;
     }
+    .logo span{
+      text-indent:-9999px;
+    }
+    .logo img{
+      width: 160px;
 
+    }
     .main-header .alarm {
       width: 24px;
       height: 24px;
@@ -56,20 +65,19 @@ body {
     }
     .main-search {
       padding: 0;
-      margin-top: 24px;
       width: 100%;
       box-sizing: border-box;
+      margin-bottom:60px;
     }
     .main-search-title {
       font-size: 24px;
       font-weight: 700;
       color: #1B1B1B;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       font-family: 'Pretendard', sans-serif;
       line-height: 34px;
     }
     .main-search-bar {
-      
       border-radius: 25px;
       height: 48px;
       display: flex;
@@ -78,6 +86,7 @@ body {
       box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
       font-size: 16px;
       color: #777;
+      background: #d9d9d9;
       margin-bottom: 24px;
     }
     .search-input {
@@ -86,13 +95,15 @@ body {
       outline: none;
       background: transparent;
       font-size: 16px;
-      color: #1B1B1B; /* 입력된 텍스트 색 */
+      color: #1B1B1B; 
       font-family: 'Pretendard', sans-serif;
     }
 
     .search-input::placeholder {
-      color: #777; /* 기존 .main-search-bar color 유지 */
+      color: #777; 
     }
+    /* header end */
+    /* category start */
     .main-category {
       padding: 0;
       margin-top: 32px;
@@ -127,7 +138,6 @@ body {
       font-weight: 700;
       color: #fff;
       font-size: 18px;
-      margin-bottom: 8px;
       box-sizing: border-box;
       padding: 0 24px 24px 0;
       background-color: #b2e0ae;
@@ -151,6 +161,8 @@ body {
       font-weight: 700;
       text-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
+    /* category end */
+    /* new group start */
     .main-banner {
       margin: 40px 0 0 0;
       border-radius: 20px;
@@ -209,16 +221,15 @@ body {
       max-width: 336px;
       border-radius: 20px;
       background: #fff;      
-      /* box-shadow: 0 2px 8px rgba(0,0,0,0.04); */
       margin-bottom: 8px;
       overflow: hidden;
       font-family: 'Pretendard', sans-serif;
       display: flex;
       flex-direction: column;
-      transition: width 0.2s, min-width 0.2s;
+      transition: width 0.2s, min-width 0.2s, box-shadow 0.4s;
     }
     .group-card:hover{
-      box-shadow: 0 16px 40px rgba(122,144,176,0.02); 
+      box-shadow: 0 16px 40px rgba(122,144,176,0.2); 
     }
     .group-card .thumb {
       width: 100%;
@@ -238,8 +249,8 @@ body {
     }
     .group-card .thumb span {
       position: absolute;
-      bottom: 24px;  /* 아래 여백 */
-      right: 24px;   /* 오른쪽 여백 */
+      bottom: 24px;  
+      right: 24px;   
     }
     .group-card .desc {
       padding: 12px 16px 16px 16px;
@@ -259,6 +270,8 @@ body {
       font-size: 12px;
       color: #777;
     }
+    /* new group end */
+    /* footer start */
     .main-footer {
       padding: 60px 0 0 0;
       color: #777;
@@ -286,6 +299,8 @@ body {
       color: #000;
       margin-top: 16px;
     }
+    /* footer end */
+    /* 하단 nav start */
     .bottom-nav {
       position: fixed;
       left: 50%;
@@ -334,7 +349,7 @@ body {
       width: 54px;
       gap: 4px;
       font-family: 'Jua', 'Pretendard', sans-serif;
-      font-size: 14px;
+
       color: #c9c9c9;
       cursor: pointer;
       pointer-events: auto;
@@ -356,14 +371,9 @@ body {
       height: 30px;
       margin-bottom: 2px;
     }
-    .nav-item img:active {
+    .nav-item img:active,.nav-item:active img {
       filter: brightness(20%) contrast(100%);
     }
-    .nav-item:first-child span {
-      color: #c9c9c9;
-      font-size: 16px;
-    }
-
     .nav-chat-label {
       position: absolute;
       left: 50%;
@@ -402,3 +412,4 @@ body {
         height: 32px;
       }
     }
+    /*하단 nav end */

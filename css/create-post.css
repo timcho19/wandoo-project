@@ -11,45 +11,55 @@
 
         .container {
             max-width: 720px;
-            width: 100%;
             margin: 0 auto;
-            padding: 0 16px;
-            background: #f4f4f4;
+            min-height: 100vh;
+            background: #F4F4F4;
         }
 
         .header {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 48px 0;
-        }
-
-        .back-btn {
+        background: #fff;
+        height: 48px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: sticky;
+        top: 0;
+    }
+    
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .back-button {
             font-size: 32px;
             font-weight: 700;
             color: #1B1B1B;
             text-decoration: none;
             line-height: 48px;
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
+        
+    }
+    
+    .header-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1B1B1B;
+        line-height: 48px;
+    }
+    
 
-        .page-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1B1B1B;
-            line-height: 48px;
-        }
 
         .section-title {
             font-size: 32px;
             font-weight: 700;
             color: #1B1B1B;
             line-height: 48px;
-            margin-bottom: 48px;
+            max-width: 500px;
+            margin: 48px auto 48px auto;
         }
-
+        
         .form-container {
             max-width: 500px;
             width: 100%;

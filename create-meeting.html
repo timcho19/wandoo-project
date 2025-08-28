@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>완두 - 모임 개설</title>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/create-meeting.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/create-meeting.css">
 </head>
 
 <body>
     <div class="container">
         <header class="header">
-            <a href="#" class="back-btn">←</a>
-            <h1 class="page-title">모임개설</h1>
+            <div class="header-left">
+                <a href="#" class="back-button">←</a>
+                <h1 class="header-title">모임개설</h1>
+            </div>
         </header>
 
         <main>
@@ -96,7 +98,7 @@
                     <label class="form-label">대표이미지</label>
                     <div class="upload-area">
                         <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                        <img src="/image/icon/image_arrow_up.svg" alt="업로드" class="upload-icon">
+                        <img src="./image/icon/image_arrow_up.svg" alt="업로드" class="upload-icon">
                         <p class="upload-text">이미지 파일을 드래그 또는 클릭하여 업로드</p>
                         <p class="upload-preview">미리보기</p>
                         <div id="imagePreview"></div>

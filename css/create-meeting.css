@@ -1,0 +1,252 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+            min-height: 100vh;
+             background-color: #F4F4F4;
+        }
+
+        /* 헤더 스타일 */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 48px 0;
+        }
+
+        .back-btn {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            text-decoration: none;
+            line-height: 48px;
+            cursor: pointer;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 48px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 48px;
+            margin-bottom: 48px;
+        }
+
+        /* 토글 버튼 스타일 */
+        .toggle-buttons {
+            max-width: 500px;
+            width: 100%;
+            height: 48px;
+            border: 1px solid #CED4DA;
+            border-radius: 4px;
+            display: flex;
+            margin-bottom: 12px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            border: none;
+            background: rgba(250, 250, 250, 0.7);
+            font-size: 14px;
+            font-weight: 600;
+            color: #1B1B1B;
+            cursor: pointer;
+            white-space: nowrap;
+            padding: 0 10px;
+        }
+
+        .toggle-btn.active {
+            background: #40B440;
+            color: white;
+        }
+
+        /* 폼 스타일 */
+        .form-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            color: #212529;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .form-select,
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 7px 13px;
+            border: 1px solid #CED4DA;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #6C757D;
+            background: none;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url('/image/icon/arrow-drop-down.svg');
+            background-repeat: no-repeat;
+            background-position: right 13px center;
+            background-size: 12px;
+            padding-right: 30px;
+        }
+
+        .form-input::placeholder,
+        .form-select::placeholder,
+        .form-textarea::placeholder {
+            color: #6C757D;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* 이미지 업로드 영역 */
+        .upload-area {
+            border: 1px solid #ADB5BD;
+            border-radius: 2px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .upload-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 14px;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+
+        .upload-preview {
+            font-size: 14px;
+            color: #6C757D;
+        }
+
+        #imagePreview {
+            margin-top: 10px;
+        }
+
+        #imagePreview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 4px;
+        }
+
+        /* 제출 버튼 */
+        .submit-btn {
+            width: 100%;
+            height: 48px;
+            background: #40B440;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .submit-btn:hover {
+            background: #379B37;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .header {
+                padding: 24px 0;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .upload-area {
+                padding: 12px;
+            }
+
+            .page-title,
+            .back-btn {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 8px;
+            }
+
+            .form-label {
+                font-size: 14px;
+            }
+
+            .upload-text {
+                font-size: 12px;
+            }
+
+            .toggle-btn {
+                font-size: 12px;
+                padding: 0 5px;
+            }
+        }
+
+        /* 정기모임 전용 필드 */
+        .regular-fields {
+            display: none;
+        }
+
+        .regular-fields.show {
+            display: block;
+        }
+
+        /* 번개모임 전용 필드 */
+        .instant-fields {
+            display: none;
+        }
+
+        .instant-fields.show {
+            display: block;
+        }

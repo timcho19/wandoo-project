@@ -33,21 +33,31 @@
             color: #40B440;
         }
 
-        .back-btn {
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 48px;
-            color: #1B1B1B;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
         .title {
             font-size: 18px;
             font-weight: 400;
             color: #000;
         }
-
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap:24px;
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 48px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 400;
+            color: #40B440;
+            line-height: 48px;
+            max-width: 500px;
+            margin: 48px auto 48px auto;
+            text-align: center;
+        }
         .header-actions {
             display: flex;
             gap: 16px;
@@ -90,6 +100,7 @@
         .logo img{
           width: 160px;
         }
+        
     /* header end */
 
     /* footer start */

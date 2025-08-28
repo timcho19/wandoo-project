@@ -11,31 +11,42 @@
 
         .container {
             max-width: 720px;
-            width: 100%;
             margin: 0 auto;
-            padding: 0 16px;
             min-height: 100vh;
-             background-color: #F4F4F4;
+            background: #F4F4F4;
         }
 
         /* 헤더 스타일 */
+
         .header {
+        background: #fff;
+        height: 48px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: sticky;
+        top: 0;
+        }
+        
+        .header-left {
             display: flex;
             align-items: center;
             gap: 5px;
-            padding: 48px 0;
         }
-
-        .back-btn {
+        
+        .back-button {
             font-size: 32px;
             font-weight: 700;
             color: #1B1B1B;
             text-decoration: none;
             line-height: 48px;
             cursor: pointer;
+            border: none;
+            background: none;
         }
-
-        .page-title {
+        
+        .header-title {
             font-size: 32px;
             font-weight: 700;
             color: #1B1B1B;
@@ -47,7 +58,8 @@
             font-weight: 700;
             color: #1B1B1B;
             line-height: 48px;
-            margin-bottom: 48px;
+            max-width: 500px;
+            margin: 48px auto 48px auto;
         }
 
         /* 토글 버튼 스타일 */

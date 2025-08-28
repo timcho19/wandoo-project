@@ -1,13 +1,4 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        body {
-            background-color: #ffffff;
-        }
+       
 
         .container {
             max-width: 720px;
@@ -26,6 +17,9 @@
             border-radius: 4px;
             display: flex;
             margin-bottom: 12px;
+        }
+        .section-title{
+            text-align: center;
         }
 
         .toggle-btn {
@@ -153,13 +147,9 @@
 
         /* 반응형 스타일 */
         @media (max-width: 720px) {
-            .container {
-                padding: 0 12px;
-            }
+            
 
-            .header {
-                padding: 24px 0;
-            }
+    
 
             .section-title {
                 font-size: 24px;
@@ -182,9 +172,7 @@
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 8px;
-            }
+            
 
             .form-label {
                 font-size: 14px;

@@ -1,8 +1,4 @@
-body {
-  background: #ffffff;
-  margin: 0;
-  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
-}
+
 
 /* 마이페이지 전체 */
 .mypage-container {
@@ -35,14 +31,15 @@ body {
   height: 55px;
   border-radius: 50%;
   margin-right: 24px;
+  
 }
 .user-card .username {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #1b1b1b;
 }
 .user-card .greeting {
-  font-size: 24px;
+  font-size: 22px;
   color: #1b1b1b;
   margin-left: 8px;
 }
@@ -58,7 +55,7 @@ body {
   box-sizing: border-box;
 }
 .user-info-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #1b1b1b;
   margin-bottom: 8px;
@@ -68,7 +65,7 @@ body {
   background: #e3e3e3;
   border-radius: 50px;
   padding: 5px 12px;
-  font-size: 16px;
+  font-size: 14px;
   color: #1b1b1b;
   margin-right: 8px;
   margin-bottom: 4px;
@@ -76,11 +73,12 @@ body {
 
 /* 리스트 */
 .mylists {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  /* flex-wrap: wrap; */
   gap: 16px;
   margin-bottom: 24px;
   width: 100%;
+  grid-template-columns: 1fr 1fr;
 }
 .mylists-card {
   background: #fff;
@@ -91,7 +89,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #1b1b1b;
   box-sizing: border-box;
@@ -107,7 +105,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #1b1b1b;
   margin-bottom: 16px;
@@ -117,18 +115,20 @@ body {
   background: #e3e3e3;
   color: #1b1b1b;
 }
-
+.mylists-card,.myprofile,.logout{
+  transition: box-shadow 0.25s ease;
+}
 
 /* 호버호과 */
   .mylists-card:hover,
   .myprofile:hover,
   .logout:hover {
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.25s ease;
+    
   }
 
 /* 반응형 */
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
   .mypage-container {
     max-width: 100vw;
   }
@@ -138,35 +138,5 @@ body {
   .mylists-card {
     max-width: 100vw;
   }
-}
-@media (max-width: 480px) {
-  .user-card, .user-info, .myprofile, .logout {
-    padding: 12px 8px;
-  }
-  .mylists {
-    gap: 8px;
-  }
-  .mylists-card {
-    font-size: 18px;
-    height: 100px;
-  }
-}
+} */
 
-@media (max-width: 720px) {
-  .bottom-nav {
-    max-width: 100vw;
-  }
-}
-@media (max-width: 480px) {
-  .bottom-nav-items {
-    gap: 16px;
-    padding: 0 8px 8px 8px;
-  }
-  .nav-item {
-    width: 40px;
-  }
-  .nav-item img {
-    width: 32px;
-    height: 32px;
-  }
-}

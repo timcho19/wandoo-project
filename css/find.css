@@ -1,9 +1,3 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-        }
 
 
         .container {
@@ -213,7 +207,7 @@
             color: #777777;
         }
         /* 플로팅 버튼 */
-        .floating-btn {
+        /* .floating-btn {
             position: fixed;
             right: calc((100% - 720px) / 2 + 16px);
             bottom: 120px;
@@ -224,8 +218,8 @@
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
+        } */
+    
 
         /* 반응형 스타일 */
         @media (max-width: 480px) {

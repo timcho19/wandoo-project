@@ -1,8 +1,4 @@
-body {
-  background: #ffffff;
-  margin: 0;
-  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
-}
+
 
 /* 컨테이너 */
 .login-container {
@@ -25,7 +21,7 @@ body {
   font-size: 32px;
   font-weight: 700;
   font-family: 'Pretendard', sans-serif;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   letter-spacing: 2px;
   position: relative;
 }

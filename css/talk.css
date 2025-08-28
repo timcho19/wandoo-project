@@ -1,13 +1,4 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #ffffff;
-        }
 
         .container {
             max-width: 720px;
@@ -63,10 +54,11 @@
 
         /* 게시글 */
         .post {
+            display: block;
             background: #fff;
             border-radius: 20px;
             margin-bottom: 60px;
-            width: 688px;
+            width: 100%;
         }
 
         .post-header {
@@ -117,7 +109,7 @@
             line-height: 24px;
             color: #1B1B1B;
             margin-bottom: 8px;
-            width: 657px;
+            width:100%;
         }
 
         .more-btn {
@@ -145,17 +137,4 @@
             height: 24px;
         }
 
-        /* 플로팅 버튼 */
-        .floating-btn {
-            position: fixed;
-            bottom: 120px;
-            right: calc((100% - 720px)/2 + 16px);
-            width: 50px;
-            height: 50px;
-            background-image: url('../image/icon/add.svg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            cursor: pointer;
-        }
+    

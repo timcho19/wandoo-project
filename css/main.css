@@ -9,58 +9,10 @@ body {
       max-width: 720px;
       margin: 0 auto;
       background: #f4f4f4;
-
-      padding: 0 16px 60px 16px;
+      padding: 133px 16px 60px 16px;
       position: relative;
       width: 100%;
       box-sizing: border-box;
-    }
-    /* header start */
-    .main-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 0 0 0;
-      position: relative;
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom:60px
-    }
-    .main-header .logo {
-      color: #40B440;
-      font-size: 32px;
-      font-weight: 700;
-      font-family: 'Pretendard', sans-serif;
-      letter-spacing: 2px;
-      display: inline-flex;
-      align-items: center;
-    }
-    .logo span{
-      text-indent:-9999px;
-    }
-    .logo img{
-      width: 160px;
-
-    }
-    .main-header .alarm {
-      width: 24px;
-      height: 24px;
-    }
-    .main-header .noti-badge {
-      position: absolute;
-      right:-3px;
-      top: 28px;
-      background: #ff0000;
-      color: #fff;
-      font-size: 12px;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Pretendard', sans-serif;
-      font-weight: 400;
     }
     .main-search {
       padding: 0;

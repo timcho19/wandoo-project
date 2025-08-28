@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WANDOO TALK - 글보기</title>
     <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/post.css">
 </head>
+
 <body>
     <div class="container">
         <!-- 헤더 -->
         <header class="header">
-            <a href="#" class="back-button">←</a>
+            <a href="talk.html" class="back-button"><img src="./image/icon/arrow-left.svg" alt=""></a>
             <h1 class="page-title">오늘의 하늘</h1>
             <div class="header-actions">
-                <button type="button" class="icon-btn"><img src="/image/icon/sharing.svg" alt="공유" class="header-icon"></button>
-                <button type="button" class="icon-btn"><img src="/image/icon/heart.svg" alt="저장" class="header-icon"></button>
-                <button type="button" class="icon-btn"><img src="/image/icon/report.svg" alt="신고" class="header-icon"></button>
+                <button type="button" class="icon-btn"><img src="/image/icon/sharing.svg" alt="공유"
+                        class="header-icon"></button>
+                <button type="button" class="icon-btn"><img src="/image/icon/heart.svg" alt="저장"
+                        class="header-icon"></button>
+                <button type="button" class="icon-btn"><img src="/image/icon/report.svg" alt="신고"
+                        class="header-icon"></button>
             </div>
         </header>
 
         <!-- 게시글 -->
-        <article class="post">
-            <div class="post-header">
-                <div class="post-user">
-                    <button type="button" class="profile-btn">
-                        <img src="/image/profile/person-8.jpg" alt="프로필">
-                    </button>
-                    <div class="user-info">
-                        <span class="username">감성좌</span>
-                        <span class="post-meta">영화 · 인사동 · 1시간전</span>
+        <main>
+            <article class="post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <button type="button" class="profile-btn">
+                            <img src="/image/profile/person-8.jpg" alt="프로필">
+                        </button>
+                        <div class="user-info">
+                            <span class="username">감성좌</span>
+                            <span class="post-meta">영화 · 인사동 · 1시간전</span>
+                        </div>
+                    </div>
+                    <button type="button" class="icon-btn"><img src="/image/icon/more-vert.svg" alt="더보기"
+                            class="more-options"></button>
+                </div>
+                <img src="/image/start.jpg" alt="게시글 이미지" class="post-image">
+                <div class="post-content">
+                    <p>퇴근 하는길에 하늘을 봤더니, 별이 엄청 많아서 한장 찍어봤습니다<br>엄청 이쁘네요. 같이 가실분 댓글 주세요 ~</p>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn">
+                        <button type="button" class="icon-btn"><img src="/image/icon/comment.svg" alt="댓글"
+                                class="action-icon"></button>
+                        <span>5</span>
+                    </div>
+                    <div class="action-btn">
+                        <button type="button" class="icon-btn"><img src="/image/icon/heart-1.svg" alt="좋아요"
+                                class="action-icon"></button>
+                        <span>9</span>
                     </div>
                 </div>
-                <button type="button" class="icon-btn"><img src="/image/icon/more-vert.svg" alt="더보기" class="more-options"></button>
-            </div>
-            <img src="/image/start.jpg" alt="게시글 이미지" class="post-image">
-            <div class="post-content">
-                <p>퇴근 하는길에 하늘을 봤더니, 별이 엄청 많아서 한장 찍어봤습니다<br>엄청 이쁘네요. 같이 가실분 댓글 주세요 ~</p>
-            </div>
-            <div class="post-actions">
-                <div class="action-btn">
-                    <button type="button" class="icon-btn"><img src="/image/icon/comment.svg" alt="댓글" class="action-icon"></button>
-                    <span>5</span>
-                </div>
-                <div class="action-btn">
-                    <button type="button" class="icon-btn"><img src="/image/icon/heart-1.svg" alt="좋아요" class="action-icon"></button>
-                    <span>9</span>
-                </div>
-            </div>
-        </article>
-
+            </article>
+        </main>
         <!-- 댓글 섹션 -->
         <section class="comments-section">
             <h2 class="comments-title">댓글</h2>
-            
+
             <div class="comments-list">
                 <!-- 댓글 반복 -->
                 <div class="comment">
@@ -65,11 +75,12 @@
                             <span class="username">홍길동</span>
                             <span style="color: #777; font-size: 12px;">· 30분전</span>
                         </div>
-                        <button type="button" class="icon-btn"><img src="/image/icon/more-vert.svg" alt="더보기" class="more-options"></button>
+                        <button type="button" class="icon-btn"><img src="/image/icon/more-vert.svg" alt="더보기"
+                                class="more-options"></button>
                     </div>
                     <p class="comment-content">오늘 하늘 진짜 예술이었어요… 저도 잠깐 멍 때리고 봤네요.</p>
                 </div>
-                 <div class="comment">
+                <div class="comment">
                     <div class="comment-header">
                         <div class="comment-user">
                             <button type="button" class="profile-btn">
@@ -108,4 +119,5 @@
         </div>
     </div>
 </body>
+
 </html>

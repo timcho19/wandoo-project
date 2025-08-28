@@ -5,35 +5,13 @@
             font-family: 'Pretendard', sans-serif;
         }
 
-        body {
-            background-color: #F4F4F4;
-        }
 
         .container {
             max-width: 720px;
             width: 100%;
             margin: 0 auto;
-            padding: 24px 16px 60px;
-        }
-
-        /* 헤더 */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .logo {
-            font-size: 32px;
-            font-weight: 700;
-            color: #40B440;
-            line-height: 48px;
-        }
-
-        .notification-icon {
-            width: 21px;
-            height: 24px;
+            padding: 133px 16px 60px 16px;
+            background:#f4f4f4;
         }
 
         /* 검색 영역 */
@@ -234,47 +212,6 @@
             line-height: 16.8px;
             color: #777777;
         }
-
-        /* 하단 네비게이션 */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 720px;
-            width: 100%;
-            height: 93px;
-            background: white;
-            border-radius: 10px 10px 0 0;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: flex-end;
-            padding: 0 20px 24px;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .nav-icon {
-            width: 40px;
-            height: 40px;
-        }
-
-        .nav-text {
-            font-family: 'Jua', sans-serif;
-            font-size: 14px;
-            color: #C9C9C9;
-        }
-
-        .nav-item.active .nav-text {
-            color: #1B1B1B;
-        }
-
         /* 플로팅 버튼 */
         .floating-btn {
             position: fixed;
@@ -289,36 +226,6 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* 푸터 */
-        .footer {
-            padding: 0 0 60px;
-        }
-
-        .footer-logo {
-            font-size: 32px;
-            font-weight: 700;
-            color: #40B440;
-            line-height: 48px;
-            margin-bottom: 24px;
-        }
-
-        .company-info {
-            font-size: 16px;
-            line-height: 24px;
-            color: #777777;
-            margin-bottom: 24px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-        }
-
-        .footer-link {
-            color: black;
-            text-decoration: none;
-        }
 
         /* 반응형 스타일 */
         @media (max-width: 480px) {

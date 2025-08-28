@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WANDOO 로그인</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/login.css">
 </head>
+
 <body>
   <div class="login-container">
     <a href="" class="login-title">
@@ -14,7 +18,7 @@
     </a>
     <div class="login-subtitle">관심 모임부터 최신 소식까지</div>
     <div class="login-desc">당신의 취향을 한 곳에</div>
-    
+
     <!-- ✅ form 중복 제거 -->
     <form class="login-form">
       <div class="login-field">
@@ -52,5 +56,28 @@
 
     <div class="login-sns-desc">소셜 계정으로 간편하게 로그인하세요</div>
   </div>
+  <!-- 하단 고정 네비게이션 -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-bg"></div>
+    <div class="bottom-nav-items">
+      <a href="index.html" class="nav-item">
+        <img src="/image/icon/home.svg" alt="홈">
+        <span class="nav-label-inactive">홈</span>
+      </a>
+      <a href="talk.html" class="nav-item">
+        <img src="/image/icon/wandoo.svg" alt="완두톡">
+        <span class="nav-label-inactive">완두톡</span>
+      </a>
+      <a href="find.html" class="nav-item">
+        <img src="/image/icon/category.svg" alt="모임찾기">
+        <span class="nav-label-inactive">모임찾기</span>
+      </a>
+      <a href="mypage.html" class="nav-item">
+        <img src="/image/icon/mypage.svg" alt="마이페이지">
+        <span class="nav-label-inactive">마이페이지</span>
+      </a>
+    </div>
+  </nav>
 </body>
+
 </html>

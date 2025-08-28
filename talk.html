@@ -14,10 +14,10 @@
     <div class="container">
         <header class="header">
             <div class="logo">WANDOO TALK</div>
-            <button type="button" class="icon-btn">
-                <img src="/image/icon/bell.svg" alt="알림"
-                    class="bell-icon">
-            </button>
+            <a href="notification.html">
+                <img src="/image/icon/bell.svg" alt="알림" class="bell-icon">
+            </a>
+            <span class="noti-badge">4</span>
         </header>
         <div class="filters">
             <div class="filter">
@@ -45,28 +45,24 @@
                 <div class="post-header">
                     <div class="post-user">
                         <button type="button" style="padding: 0; border: none; background: none; cursor: pointer;">
-                            <img src="/image/profile/person-10.jpg"
-                                alt="프로필" class="profile-img">
+                            <img src="/image/profile/person-10.jpg" alt="프로필" class="profile-img">
                         </button>
                         <span class="username">홍길동</span>
                         <span class="post-meta">인사동 · 1시간전</span>
                     </div>
                 </div>
-                <img src="image/others.jpg" alt="게시글 이미지"
-                    class="post-image">
+                <img src="image/others.jpg" alt="게시글 이미지" class="post-image">
                 <div class="post-content">
                     <p class="post-text">퇴근 하는길에 하늘을 봤더니, 별이 엄청 많아서 한장 찍어봤습니다<br>엄청 이쁘네요. 같이 가실분....</p>
                     <div class="more-btn">더보기</div>
                 </div>
                 <div class="post-actions">
                     <button type="button" class="action-btn">
-                        <img src="/image/icon/comment.svg" alt="댓글"
-                            class="action-icon">
+                        <img src="/image/icon/comment.svg" alt="댓글" class="action-icon">
                         <span>1</span>
                     </button>
                     <button type="button" class="action-btn">
-                        <img src="/image/icon/heart-1.svg" alt="좋아요"
-                            class="action-icon">
+                        <img src="/image/icon/heart-1.svg" alt="좋아요" class="action-icon">
                         <span>2</span>
                     </button>
                 </div>
@@ -95,27 +91,28 @@
             </div>
         </div>
     </div>
+    <!-- 하단 고정 네비게이션 -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-bg"></div>
+        <div class="bottom-nav-items">
+            <a href="index.html" class="nav-item">
+                <img src="/image/icon/home.svg" alt="홈">
+                <span class="nav-label-inactive">홈</span>
+            </a>
+            <a href="talk.html" class="nav-item">
+                <img src="/image/icon/wandoo.svg" alt="완두톡">
+                <span class="nav-label-inactive">완두톡</span>
+            </a>
+            <a href="find.html" class="nav-item">
+                <img src="/image/icon/category.svg" alt="모임찾기">
+                <span class="nav-label-inactive">모임찾기</span>
+            </a>
+            <a href="mypage.html" class="nav-item">
+                <img src="/image/icon/mypage.svg" alt="마이페이지">
+                <span class="nav-label-inactive">마이페이지</span>
+            </a>
+        </div>
+    </nav>
 </body>
-<!-- 하단 고정 네비게이션 -->
-<nav class="bottom-nav">
-    <div class="bottom-nav-bg"></div>
-    <div class="bottom-nav-items">
-        <div class="nav-item">
-            <img src="/image/icon/home.svg" alt="홈">
-            <span class="nav-label-inactive">홈</span>
-        </div>
-        <div class="nav-item">
-            <img src="/image/icon/wandoo.svg" alt="완두톡">
-            <span class="nav-label-inactive">완두톡</span>
-        </div>
-        <div class="nav-item">
-            <img src="/image/icon/category.svg" alt="모임찾기">
-            <span class="nav-label-inactive">모임찾기</span>
-        </div>
-        <div class="nav-item">
-            <img src="/image/icon/mypage.svg" alt="마이페이지">
-            <span class="nav-label-inactive">마이페이지</span>
-        </div>
-    </div>
 
 </html>

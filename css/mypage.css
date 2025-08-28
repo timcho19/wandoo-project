@@ -8,32 +8,14 @@ body {
 .mypage-container {
   max-width: 720px;
   margin: 0 auto;
-  padding: 24px 16px 60px 16px;
+  padding: 120px 16px 60px 16px;
   box-sizing: border-box;
   background: #f4f4f4;
   min-height: 100vh;
   position: relative;
 }
 
-/* 헤더 */
-.mypage-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 32px;
-}
-.mypage-header .title {
-  color: #40b440;
-  font-size: 32px;
-  font-weight: 700;
-  font-family: 'Pretendard', sans-serif;
-  letter-spacing: 2px;
-}
-.mypage-header .alarm {
-  width: 24px;
-  height: 24px;
-}
+
 
 /* 유저 카드 */
 .user-card {
@@ -136,36 +118,12 @@ body {
   color: #1b1b1b;
 }
 
-/* 푸터 */
-.mypage-footer {
-  margin-top: 40px;
-  color: #777;
-  font-size: 18px;
-  text-align: left;
-  width: 100%;
-  box-sizing: border-box;
-}
-.mypage-footer .footer-logo {
-  color: #40B440;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.mypage-footer .footer-links {
-  display: flex;
-  gap: 32px;
-  font-size: 18px;
-  color: #000;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
-
 
 /* 호버호과 */
   .mylists-card:hover,
   .myprofile:hover,
   .logout:hover {
-    box-shadow: 0 16px 40px 0 rgba(112, 144, 176, 0.2);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.25s ease;
   }
 
@@ -192,93 +150,6 @@ body {
     font-size: 18px;
     height: 100px;
   }
-}
-
-/* 하단 네비게이션 */
-.bottom-nav {
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 720px;
-  z-index: 1000;
-  pointer-events: none;
-  height: 93px;
-  display: flex;
-  justify-content: center;
-  background: none;
-}
-.bottom-nav-bg {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 93px;
-  background: #fff;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.04);
-  z-index: 1;
-  pointer-events: auto;
-}
-.bottom-nav-items {
-  position: relative;
-  display: flex;
-  gap: 40px;
-  align-items: flex-end;
-  justify-content: center;
-  width: 100%;
-  height: 93px;
-  z-index: 2;
-  pointer-events: auto;
-  padding: 0 32px 12px 32px;
-  box-sizing: border-box;
-}
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  width: 54px;
-  gap: 4px;
-  font-family: 'Jua', 'Pretendard', sans-serif;
-  font-size: 14px;
-  color: #c9c9c9;
-  cursor: pointer;
-  pointer-events: auto;
-}
-.nav-item img {
-  width: 43px;
-  height: 43px;
-  margin-bottom: 2px;
-}
-.nav-item:last-child span {
-  color: #1b1b1b;
-  font-size: 16px;
-}
-.nav-chat-icon {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.nav-chat-label {
-  position: absolute;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 8px;
-  background: none;
-  font-family: 'Jua', 'Pretendard', sans-serif;
-  white-space: nowrap;
-  pointer-events: none;
-}
-.nav-label-inactive {
-  color: #c9c9c9;
-  font-size: 14px;
 }
 
 @media (max-width: 720px) {

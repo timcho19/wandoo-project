@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, max1imum-scale=1.0" />
   <title>마이페이지</title>
   <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/mypage.css">
 </head>
+
 <body>
   <div class="mypage-container">
-    <div class="mypage-header">
-      <a href="">
-        <span class="title">MY PAGE</span>
+    <header class="header">
+      <div class="logo">MY PAGE</div>
+      <a href="notification.html">
+        <img src="/image/icon/bell.svg" alt="알림" class="bell-icon">
       </a>
-      <a href="">
-        <img src="./image/icon/bell.svg" alt="알림" class="alarm">
-      </a>
-    </div>
+      <span class="noti-badge">4</span>
+    </header>
     <div class="user-card">
       <img src="./image/profile/person-1.jpg" alt="프로필">
       <span class="username">홍길동</span><span class="greeting">님 반갑습니다!</span>
@@ -37,21 +39,20 @@
     </div>
     <button class="myprofile">프로필 설정</button>
     <button class="logout">로그아웃</button>
-    <div class="mypage-footer">
+    <div class="main-footer">
       <div class="footer-logo">WANDOO</div>
+      <div>(주)완두 사업자정보</div>
       <div style="font-size:16px;line-height:24px;">
-        (주)완두 사업자정보<br>
-        상호 : 완두(WANDOO)<br>
         대표 : 미니콩즈<br>
         사업자등록번호 : 111-11-11111<br>
-        제휴문의 : abc1234@gmail.com
+        제휴문의 : abc1234@gmail.com<br>
+        고객센터 : 1544-0000
       </div>
       <div class="footer-links">
-        <span>이용약관</span>
-        <span>개인정보처리방침</span>
-        <span>위치기반서비스</span>
-        <span>이용약관 법적고지</span>
-        <span>고객센터</span>
+        <a href="">이용약관</a>
+        <a href="">개인정보처리방침</a>
+        <a href="">위치기반서비스</a>
+        <a href="">이용약관 법적고지</a>
       </div>
     </div>
   </div>
@@ -59,26 +60,24 @@
   <nav class="bottom-nav">
     <div class="bottom-nav-bg"></div>
     <div class="bottom-nav-items">
-      <div class="nav-item">
-        <img src="http://localhost:3845/assets/f79409816cf559e613a73db3df26d86e1099b68a.svg" alt="홈">
+      <a href="index.html" class="nav-item">
+        <img src="/image/icon/home.svg" alt="홈">
         <span class="nav-label-inactive">홈</span>
-      </div>
-      <div class="nav-item">
-        <div class="nav-chat-icon">
-          <img src="http://localhost:3845/assets/ec761bf462ec620f0ea261ecd2ed59f77560b9ab.svg" alt="완두톡">
-          <span class="nav-chat-label">WanDoo</span>
-        </div>
+      </a>
+      <a href="talk.html" class="nav-item">
+        <img src="/image/icon/wandoo.svg" alt="완두톡">
         <span class="nav-label-inactive">완두톡</span>
-      </div>
-      <div class="nav-item">
-        <img src="http://localhost:3845/assets/5d978476701513d858ca5097cb9392952a85054c.svg" alt="모임찾기">
+      </a>
+      <a href="find.html" class="nav-item">
+        <img src="/image/icon/category.svg" alt="모임찾기">
         <span class="nav-label-inactive">모임찾기</span>
-      </div>
-      <div class="nav-item">
-        <img src="http://localhost:3845/assets/f92f00419a61626430cb7983bebf2bc57cb5b78d.svg" alt="마이페이지">
-        <span style="color:#1b1b1b;font-size:16px;">마이페이지</span>
-      </div>
+      </a>
+      <a href="mypage.html" class="nav-item">
+        <img src="/image/icon/mypage.svg" alt="마이페이지">
+        <span class="nav-label-inactive">마이페이지</span>
+      </a>
     </div>
   </nav>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,18 @@
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/find.css">
 </head>
+
 <body>
     <div class="container">
         <header class="header">
-            <h1 class="logo">WANDOO</h1>
-            <img src="/image/icon/bell.svg" alt="알림" class="notification-icon">
+            <div class="logo">Find a Meetup</div>
+            <a href="notification.html">
+                <img src="/image/icon/bell.svg" alt="알림" class="bell-icon">
+            </a>
+            <span class="noti-badge">4</span>
         </header>
 
         <section class="search-section">
@@ -67,7 +73,8 @@
             <div class="group-list">
                 <!-- 모임 카드 예시 -->
                 <a href="#" class="group-card">
-                    <div class="card-image" style="background-image: url('http://localhost:3845/assets/257d0df231c8b3c1fb3f6012beb600ee9e7a313a.png')">
+                    <div class="card-image"
+                        style="background-image: url('http://localhost:3845/assets/257d0df231c8b3c1fb3f6012beb600ee9e7a313a.png')">
                         <span class="card-category">운동/스포츠</span>
                     </div>
                     <div class="card-content">
@@ -99,45 +106,46 @@
                 <!-- 모임 카드들 반복 -->
             </div>
         </section>
-
-        <footer class="footer">
-            <h2 class="footer-logo">WANDOO</h2>
-            <div class="company-info">
-                <p>(주)완두 사업자정보</p>
-                <p>상호 : 완두(WANDOO)</p>
-                <p>대표 : 미니콩즈</p>
-                <p>사업자등록번호 : 111-11-11111</p>
-                <p>제휴문의 : abc1234@gmail.com</p>
+        <div class="main-footer">
+            <div class="footer-logo">WANDOO</div>
+            <div>(주)완두 사업자정보</div>
+            <div style="font-size:16px;line-height:24px;">
+                대표 : 미니콩즈<br>
+                사업자등록번호 : 111-11-11111<br>
+                제휴문의 : abc1234@gmail.com<br>
+                고객센터 : 1544-0000
             </div>
             <div class="footer-links">
-                <a href="#" class="footer-link">이용약관</a>
-                <a href="#" class="footer-link">개인정보처리방침</a>
-                <a href="#" class="footer-link">위치기반서비스</a>
-                <a href="#" class="footer-link">이용약관 법적고지</a>
+                <a href="">이용약관</a>
+                <a href="">개인정보처리방침</a>
+                <a href="">위치기반서비스</a>
+                <a href="">이용약관 법적고지</a>
             </div>
-        </footer>
+        </div>
     </div>
-
-    <button class="floating-btn" aria-label="모임 만들기"><img src="/image/icon/add.svg" alt=""></button>
-
+    <!-- 하단 고정 네비게이션 -->
     <nav class="bottom-nav">
-        <a href="#" class="nav-item">
-            <img src="http://localhost:3845/assets/d6699d662b7e9edae9055a4782a2488a04d56de8.svg" alt="홈" class="nav-icon">
-            <span class="nav-text">홈</span>
-        </a>
-        <a href="#" class="nav-item">
-            <img src="http://localhost:3845/assets/ec761bf462ec620f0ea261ecd2ed59f77560b9ab.svg" alt="완두톡" class="nav-icon">
-            <span class="nav-text">완두톡</span>
-        </a>
-        <a href="#" class="nav-item active">
-            <img src="http://localhost:3845/assets/7c7c4fed5439e52961744bf6183abc73b17fcb53.svg" alt="모임찾기" class="nav-icon">
-            <span class="nav-text">모임찾기</span>
-        </a>
-        <a href="#" class="nav-item">
-            <img src="http://localhost:3845/assets/0bfdccec98496617b3b9cad9b46ce4e74c71d886.svg" alt="마이페이지" class="nav-icon">
-            <span class="nav-text">마이페이지</span>
-        </a>
+        <div class="bottom-nav-bg"></div>
+        <div class="bottom-nav-items">
+            <a href="index.html" class="nav-item">
+                <img src="/image/icon/home.svg" alt="홈">
+                <span class="nav-label-inactive">홈</span>
+            </a>
+            <a href="talk.html" class="nav-item">
+                <img src="/image/icon/wandoo.svg" alt="완두톡">
+                <span class="nav-label-inactive">완두톡</span>
+            </a>
+            <a href="find.html" class="nav-item">
+                <img src="/image/icon/category.svg" alt="모임찾기">
+                <span class="nav-label-inactive">모임찾기</span>
+            </a>
+            <a href="mypage.html" class="nav-item">
+                <img src="/image/icon/mypage.svg" alt="마이페이지">
+                <span class="nav-label-inactive">마이페이지</span>
+            </a>
+        </div>
     </nav>
+    <button class="floating-btn" aria-label="모임 만들기"><img src="./image/icon/add.svg" alt=""></button>
 
     <script>
         // 모임 데이터
@@ -192,4 +200,5 @@
         });
     </script>
 </body>
+
 </html>

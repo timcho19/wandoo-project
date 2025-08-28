@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/create-post.css">
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -17,7 +19,7 @@
 
         <main>
             <h2 class="section-title">기본 정보</h2>
-            
+
             <div class="form-container">
                 <div class="form-group">
                     <label class="form-label">카테고리</label>
@@ -64,7 +66,7 @@
         const uploadArea = document.querySelector('.upload-area');
         const imageUpload = document.getElementById('imageUpload');
         const imagePreview = document.getElementById('imagePreview');
-        
+
         uploadArea.addEventListener('click', () => {
             imageUpload.click();
         });
@@ -83,7 +85,7 @@
         uploadArea.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadArea.style.borderColor = '#ADB5BD';
-            
+
             const files = e.dataTransfer.files;
             if (files.length > 0) {
                 imageUpload.files = files;
@@ -93,14 +95,14 @@
 
         function handleImageSelect(e) {
             const file = e.target.files[0];
-            
+
             if (file && file.type.startsWith('image/')) {
                 const reader = new FileReader();
-                
-                reader.onload = function(e) {
+
+                reader.onload = function (e) {
                     imagePreview.innerHTML = `<img src="${e.target.result}" alt="미리보기">`;
                 }
-                
+
                 reader.readAsDataURL(file);
             } else if (file) {
                 alert('이미지 파일만 업로드 가능합니다.');
@@ -114,4 +116,5 @@
         });
     </script>
 </body>
+
 </html>

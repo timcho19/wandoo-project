@@ -36,6 +36,7 @@
       animation-name: bubble-rise;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
+      z-index:-1;
     }
 
     /* 좌/우 위치, 각기 다른 이미지 */
@@ -81,22 +82,10 @@
 
     /* 공통 애니메이션 */
     @keyframes bubble-rise {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-
-      50% {
-        transform: translateY(-60vh) translateX(50px);
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(-110vh) translateX(-50px);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      50% { transform: translateY(-400px) translateX(50px); opacity: 1; }
+      100% { transform: translateY(-800px) translateX(-50px); opacity: 0; }
     }
-
     /* body 에니메이션 end */
     /* body end */
     /* header */

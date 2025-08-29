@@ -1,0 +1,150 @@
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding-top: 120px;
+            background: #F4F4F4;
+        }
+
+        .section-title {
+            text-align: center;
+
+        }
+
+        .form-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            color: #212529;
+            margin-bottom: 8px;
+        }
+
+        .form-select,
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 7px 13px;
+            border: 1px solid #CED4DA;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #6C757D;
+            background: none;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url('/image/icon/arrow-drop-down.svg');
+            background-repeat: no-repeat;
+            background-position: right 13px center;
+            background-size: 12px;
+            padding-right: 30px;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-select::placeholder,
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #6C757D;
+        }
+
+        /* 이미지 업로드 영역 */
+        .upload-area {
+            border: 1px solid #ADB5BD;
+            border-radius: 2px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .upload-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 14px;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+
+        .upload-preview {
+            font-size: 14px;
+            color: #6C757D;
+        }
+
+        #imagePreview {
+            margin-top: 10px;
+        }
+
+        #imagePreview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px 0;
+            background: #40B440;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:hover {
+            background: #379B37;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 720px) {
+
+
+            .section-title {
+
+                margin-bottom: 24px;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .upload-area {
+                padding: 12px;
+            }
+
+            .page-title,
+            .back-btn {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .form-label {
+                font-size: 14px;
+            }
+
+            .upload-text {
+                font-size: 12px;
+            }
+        }

@@ -1,4 +1,4 @@
-.container {
+.find-container {
     max-width: 720px;
     width: 100%;
     margin: 0 auto;
@@ -42,7 +42,7 @@
     outline: none;
 }
 
-.search-bar {
+/* .search-bar {
     position: relative;
     margin: 0 auto;
 }
@@ -66,53 +66,9 @@
     transform: translateY(-50%);
     width: 36px;
     height: 38px;
-}
+} */
 
-/* 배너 영역 */
-.banner-section {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 60px;
-}
 
-.banner {
-    position: relative;
-    height: 168px;
-    border-radius: 20px;
-    padding: 46px 28px;
-    color: #1B1B1B;
-    overflow: hidden;
-}
-
-.banner.green {
-    background: #5BC35B;
-}
-
-.banner.yellow {
-    background: #F5EA83;
-}
-
-.banner-subtitle {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 34px;
-    margin-bottom: 12px;
-}
-
-.banner-title {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 48px;
-}
-
-.banner-icon {
-    position: absolute;
-    right: 28px;
-    bottom: 28px;
-    width: 54px;
-    height: 54px;
-}
 
 /* 모임 목록 섹션 */
 .group-section {
@@ -222,29 +178,9 @@
 
 /* 반응형 스타일 */
 @media (max-width: 480px) {
-    .group-list {
-        grid-template-columns: 1fr;
-    }
+    
 
-    .banner {
-        height: 140px;
-        padding: 32px 20px;
-    }
-
-    .banner-subtitle {
-        font-size: 20px;
-        margin-bottom: 8px;
-    }
-
-    .banner-title {
-        font-size: 28px;
-    }
-
-    .banner-icon {
-        width: 40px;
-        height: 40px;
-    }
-
+  
     .section-title {
         font-size: 20px;
     }
@@ -270,18 +206,6 @@
         font-size: 20px;
     }
 
-    .banner {
-        height: 120px;
-        padding: 24px 16px;
-    }
-
-    .banner-subtitle {
-        font-size: 18px;
-    }
-
-    .banner-title {
-        font-size: 24px;
-    }
 
     .card-image {
         height: 160px;

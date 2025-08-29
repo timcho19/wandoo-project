@@ -2,6 +2,7 @@ import '../styles/Home.css'
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import Homeheader from '../components/Homeheader';
+import { Link } from "react-router-dom";
 
 export default function Home(){
   return(
@@ -10,9 +11,9 @@ export default function Home(){
       <Homeheader/>
       <div className="main-search">
       <div className="main-search-title">[동네이름]에서<br/>어떤 모임을 찾고 계신가요?</div>
-      <div className="main-search-bar">
-        <input type="text" placeholder="검색어를 입력해주세요" className="search-input"/>
-      <img src="/image/icon/arrow.svg" alt="검색" style={{width:'38px',height:'38px',verticalAlign:'middle',cursor:'pointer'}}/>
+      <div className="search-bar">
+                <input type="text" className="search-input" placeholder="검색어를 입력해주세요" />
+                <img src="/image/icon/arrow.svg" alt="검색" className="search-icon" />
       </div>
     </div>
     <div className="main-category">
@@ -26,13 +27,14 @@ export default function Home(){
         <a href="" className="category-card other"><span className="label">기타</span></a>
       </div>
     </div>
-    <a href="" className="main-banner">
-      <div>
-        <div className="banner-title">자유롭게 남기는 우리 동네 이야기</div>
-        <div className="banner-sub">우리 동네 완두톡</div>
-      </div>
-  <img src="/image/icon/arrow.svg" alt="배너 아이콘" className="banner-icon"/>
-    </a>
+     <section className="banner-section">
+            <Link to="/talk" className="banner green">
+                <p className="banner-subtitle">자유롭게 남기는 우리 동네 이야기</p>
+                <h2 className="banner-title">우리 동네 완두톡</h2>
+                <img src="/image/icon/arrow.svg" alt="" className="banner-icon" />
+            </Link>
+           
+        </section>
     <div className="main-group">
       <div className="main-group-title">새로운 완두 모임</div>
       <div className="main-group-desc">완두에 새로 등록된 모임이에요!</div>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function Find(){
   return(
     <>
-        <div className="container">
+        <div className="find-container">
         <Link to="/createfind " className="floating-btn" aria-label="모임 만들기"><img src="/image/icon/add.svg" alt="" /></Link>
         <header className="header">
             <div className="logo">Find a Meetup</div>

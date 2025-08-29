@@ -10,6 +10,7 @@ import Login from './pages/login';
 import Signup from './pages/Signup';
 import CreateFind from './pages/CreateFind';
 import FindView from './pages/FindView';
+import CreateTalk from './pages/CreateTalk';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/find" element={<Find/>}/> 
           <Route path="/findview" element={<FindView/>}/> 
           <Route path="/createfind" element={<CreateFind/>}/> 
+          <Route path="/createtalk" element={<CreateTalk/>}/> 
         </Routes>
       </BrowserRouter>
       <Bubble/>

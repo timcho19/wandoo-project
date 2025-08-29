@@ -136,16 +136,6 @@ const GlobalStyle = createGlobalStyle`
       line-height: 48px;
     }
 
-    .section-title {
-      font-size: 24px;
-      font-weight: 400;
-      color: #40B440;
-      line-height: 48px;
-      max-width: 500px;
-      margin: 48px auto 48px auto;
-
-    }
-
     .header-actions {
       display: flex;
       gap: 16px;

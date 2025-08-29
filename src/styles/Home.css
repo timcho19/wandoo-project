@@ -1,0 +1,259 @@
+.main-container {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #f4f4f4;
+  padding: 133px 16px 60px 16px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-search {
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 60px;
+}
+
+.main-search-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1B1B1B;
+  margin-bottom: 16px;
+  font-family: 'Pretendard', sans-serif;
+  line-height: 34px;
+}
+
+.main-search-bar {
+  border-radius: 25px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #777;
+  background: #d9d9d9;
+  margin-bottom: 24px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #1B1B1B;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.search-input::placeholder {
+  color: #777;
+}
+
+/* header end */
+/* category start */
+.main-category {
+  padding: 0;
+  margin-top: 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-category-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1B1B1B;
+  margin-bottom: 16px;
+  font-family: 'Pretendard', sans-serif;
+  line-height: 34px;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.category-card {
+  flex: 1 1 45%;
+  min-width: 160px;
+  max-width: 336px;
+  aspect-ratio: 336/192;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 18px;
+  box-sizing: border-box;
+  padding: 0 24px 24px 0;
+  background-color: #b2e0ae;
+  transition: width 0.2s, min-width 0.2s;
+}
+
+.category-card {
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1))
+}
+
+.category-card.sports {
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/soccer.jpg') center/cover, #b2e0ae;
+}
+
+.category-card.outdoor {
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/travel-1.jpg') center/cover, #5bc35b;
+}
+
+.category-card.culture {
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/movie.jpg') center/cover, #d9d9d9;
+}
+
+.category-card.social {
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/coffee.jpg') center/cover, #d9d9d9;
+}
+
+.category-card.other {
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/others.jpg') center/cover, #d9d9d9;
+}
+
+.category-card .label {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* category end */
+/* new group start */
+.main-banner {
+  margin: 40px 0 0 0;
+  border-radius: 20px;
+  height: 168px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  color: #1b1b1b;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #40B440;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-banner .banner-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.main-banner .banner-sub {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.main-banner .banner-icon {
+  width: 54px;
+  height: 54px;
+}
+
+.main-group {
+  padding: 40px 0 0 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-group-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1B1B1B;
+  margin-bottom: 6px;
+  font-family: 'Pretendard', sans-serif;
+  line-height: 34px;
+}
+
+.main-group-desc {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 24px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.group-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.group-card {
+  flex: 1 1 45%;
+  min-width: 160px;
+  max-width: 336px;
+  border-radius: 20px;
+  background: #fff;
+  margin-bottom: 8px;
+  overflow: hidden;
+  font-family: 'Pretendard', sans-serif;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s, min-width 0.2s, box-shadow 0.4s;
+}
+
+.group-card:hover {
+  box-shadow: 0 16px 40px rgba(122, 144, 176, 0.2);
+}
+
+.group-card .thumb {
+  width: 100%;
+  aspect-ratio: 336/192;
+  background: #b2e0ae;
+  background-size: cover;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+
+  min-height: 100px;
+}
+
+.group-card .thumb span {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+}
+
+.group-card .desc {
+  padding: 12px 16px 16px 16px;
+}
+
+.group-card .desc .title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1b1b1b;
+  margin-bottom: 4px;
+}
+
+.group-card .desc .date {
+  font-size: 16px;
+  color: #1b1b1b;
+  margin-bottom: 4px;
+}
+
+.group-card .desc .place {
+  font-size: 12px;
+  color: #777;
+}
+
+/* new group end */

@@ -1,11 +1,18 @@
+import '../styles/Home.css'
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
+import Homeheader from '../components/Homeheader';
+
 export default function Home(){
   return(
-    <>
+    
+    <div className="main-container">
+      <Homeheader/>
       <div className="main-search">
       <div className="main-search-title">[동네이름]에서<br/>어떤 모임을 찾고 계신가요?</div>
       <div className="main-search-bar">
         <input type="text" placeholder="검색어를 입력해주세요" className="search-input"/>
-  <img src="/image/icon/arrow.svg" alt="검색" style={{width:'38px',height:'38px',verticalAlign:'middle',cursor:'pointer'}}/>
+      <img src="/image/icon/arrow.svg" alt="검색" style={{width:'38px',height:'38px',verticalAlign:'middle',cursor:'pointer'}}/>
       </div>
     </div>
     <div className="main-category">
@@ -43,7 +50,7 @@ export default function Home(){
         </a>
         <a href="" className="group-card">
           <div className="thumb"
-            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/image/ironman.jpg')"}}>
+            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/ironman.jpg')"}}>
             <span>문학</span>
           </div>
           <div className="desc">
@@ -54,7 +61,7 @@ export default function Home(){
         </a>
         <a href="" className="group-card">
           <div className="thumb"
-            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/image/coffee.jpg')"}}>
+            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/coffee.jpg')"}}>
             <span>사교</span>
           </div>
           <div className="desc">
@@ -65,7 +72,7 @@ export default function Home(){
         </a>
         <a href="" className="group-card">
           <div className="thumb"
-            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/image/health-club-1.jpg')"}}>
+            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/health-club-1.jpg')"}}>
             <span>운동/스포츠</span>
           </div>
           <div className="desc">
@@ -76,23 +83,10 @@ export default function Home(){
         </a>
       </div>
     </div>
-    <div className="main-footer">
-      <div className="footer-logo">WANDOO</div>
-      <div>(주)완두 사업자정보</div>
-  <div style={{fontSize:'16px',lineHeight:'24px'}}>
-        대표 : 미니콩즈<br/>
-        사업자등록번호 : 111-11-11111<br/>
-        제휴문의 : abc1234@gmail.com<br/>
-        고객센터 : 1544-0000
-      </div>
-      <div className="footer-links">
-        <a href="">이용약관</a>
-        <a href="">개인정보처리방침</a>
-        <a href="">위치기반서비스</a>
-        <a href="">이용약관 법적고지</a>
-      </div>
-    </div>
+    <Footer/>
+    <Nav/>
     
-    </>
+    </div>
+  
   )
 }

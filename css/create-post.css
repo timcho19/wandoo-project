@@ -2,14 +2,15 @@
             max-width: 720px;
             margin: 0 auto;
             min-height: 100vh;
-            padding-top:120px;
+            padding-top: 120px;
             background: #F4F4F4;
         }
-         .section-title {
+
+        .section-title {
             text-align: center;
-                
+
         }
-        
+
         .form-container {
             max-width: 500px;
             width: 100%;
@@ -115,10 +116,10 @@
 
         /* 반응형 스타일 */
         @media (max-width: 720px) {
-           
+
 
             .section-title {
-              
+
                 margin-bottom: 24px;
             }
 
@@ -138,7 +139,7 @@
         }
 
         @media (max-width: 480px) {
-           
+
             .form-label {
                 font-size: 14px;
             }

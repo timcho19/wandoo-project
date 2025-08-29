@@ -1,5 +1,3 @@
-
-
 /* 컨테이너 */
 .login-container {
   max-width: 720px;
@@ -25,12 +23,14 @@
   letter-spacing: 2px;
   position: relative;
 }
+
 .login-subtitle {
   color: #1b1b1b;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 6px;
 }
+
 .login-desc {
   color: #1b1b1b;
   font-size: 20px;
@@ -38,39 +38,51 @@
   margin-bottom: 32px;
   text-align: center;
 }
-.login-title span{
-  position: absolute;  /* 화면에서 위치 이동 */
-  width: 1px;          /* 거의 안 보이는 크기 */
+
+.login-title span {
+  position: absolute;
+  /* 화면에서 위치 이동 */
+  width: 1px;
+  /* 거의 안 보이는 크기 */
   height: 1px;
   padding: 0;
-  margin: -1px;        /* 레이아웃 공간 제거 */
+  margin: -1px;
+  /* 레이아웃 공간 제거 */
   overflow: hidden;
-  clip: rect(0, 0, 0, 0); /* 화면에서 잘림 */
+  clip: rect(0, 0, 0, 0);
+  /* 화면에서 잘림 */
   white-space: nowrap;
   border: 0;
 }
-.login-title img{
+
+.login-title img {
   width: 200px;
 }
+
 /* 로그인 폼 */
 .login-form {
   width: 100%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 12px; /* 필드 간격 */
+  gap: 12px;
+  /* 필드 간격 */
 }
+
 .login-field {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* 라벨-인풋 간격 */
+  gap: 8px;
+  /* 라벨-인풋 간격 */
 }
+
 .login-label {
   color: #212529;
   font-size: 16px;
   font-weight: 400;
   margin: 0;
 }
+
 .login-input {
   width: 100%;
   height: 36px;
@@ -79,22 +91,24 @@
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   background: #fff;
   outline: none;
   margin: 0;
 }
-.login-input:focus{
-  border:#0D6EFD solid 1px;
+
+.login-input:focus {
+  border: #0D6EFD solid 1px;
 }
 
 /* 버튼 */
-.login-btn, .signup-btn {
+.login-btn,
+.signup-btn {
   width: 100%;
   max-width: 500px;
   height: 36px;
   border: none;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
@@ -102,14 +116,22 @@
   font-weight: 600;
   color: #fff;
   padding: 16px 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
-.login-btn{
-    margin-top: 8px;
+
+.login-btn {
+  margin-top: 8px;
 }
-.login-btn { background: #40b440; }
-.signup-btn { margin-bottom:12px; background: #66cc66; }
+
+.login-btn {
+  background: #40b440;
+}
+
+.signup-btn {
+  margin-bottom: 12px;
+  background: #66cc66;
+}
 
 /* 링크 */
 .login-link {
@@ -124,7 +146,7 @@
 .login-hr {
   width: 100%;
   max-width: 500px;
-  margin-bottom:24px;
+  margin-bottom: 24px;
   border: none;
   border-top: 1px solid #e0e0e0;
   height: 1px;
@@ -138,18 +160,21 @@
   margin-bottom: 24px;
   text-align: center;
 }
+
 .login-sns-list {
   display: flex;
   gap: 80px;
   justify-content: center;
-  margin-bottom:24px;
+  margin-bottom: 24px;
 }
+
 .sns-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
 }
+
 .login-sns-btn {
   width: 50px;
   height: 50px;
@@ -157,18 +182,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   margin-bottom: 4px;
 }
-.login-sns-btn.kakao { background: #fee500; }
-.login-sns-btn.naver { background: #03c75a; }
-.login-sns-btn.google { background: #fff; border: 1px solid #dadce0; }
-.login-sns-btn img { width: 30px; height: 30px; }
+
+.login-sns-btn.kakao {
+  background: #fee500;
+}
+
+.login-sns-btn.naver {
+  background: #03c75a;
+}
+
+.login-sns-btn.google {
+  background: #fff;
+  border: 1px solid #dadce0;
+}
+
+.login-sns-btn img {
+  width: 30px;
+  height: 30px;
+}
+
 .login-sns-label {
   font-size: 12px;
   text-align: center;
 }
+
 .login-sns-desc {
   color: #777;
   font-size: 12px;
@@ -177,33 +218,89 @@
 
 /* 반응형 */
 @media (max-width: 720px) {
-  .login-container { padding: 16px 4vw 60px; }
-  .login-form, .login-btn, .signup-btn, .login-hr {
+  .login-container {
+    padding: 16px 4vw 60px;
+  }
+
+  .login-form,
+  .login-btn,
+  .signup-btn,
+  .login-hr {
     max-width: 100vw;
   }
-  .login-form { gap: 12px; }
-  .login-title { font-size: 24px; }
-  .login-subtitle { font-size: 18px; }
-  .login-desc { font-size: 16px; }
-  .login-sns-title { font-size: 18px; }
-  .login-sns-list { gap: 20px; }
+
+  .login-form {
+    gap: 12px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .login-subtitle {
+    font-size: 18px;
+  }
+
+  .login-desc {
+    font-size: 16px;
+  }
+
+  .login-sns-title {
+    font-size: 18px;
+  }
+
+  .login-sns-list {
+    gap: 20px;
+  }
 }
+
 @media (max-width: 480px) {
-  .login-container { padding: 8px 2vw 60px; }
-  .login-form { gap: 8px; }
-  .login-title { font-size: 18px; }
-  .login-subtitle { font-size: 14px; }
-  .login-desc { font-size: 12px; }
-  .login-sns-title { font-size: 14px; }
-  .login-sns-list { gap: 8px; }
-  .login-btn, .signup-btn {
+  .login-container {
+    padding: 8px 2vw 60px;
+  }
+
+  .login-form {
+    gap: 8px;
+  }
+
+  .login-title {
+    font-size: 18px;
+  }
+
+  .login-subtitle {
+    font-size: 14px;
+  }
+
+  .login-desc {
+    font-size: 12px;
+  }
+
+  .login-sns-title {
+    font-size: 14px;
+  }
+
+  .login-sns-list {
+    gap: 8px;
+  }
+
+  .login-btn,
+  .signup-btn {
     font-size: 12px;
     padding: 12px 0;
   }
+
   .login-input {
     font-size: 12px;
     padding: 6px 8px;
   }
-  .login-sns-btn { width: 36px; height: 36px; }
-  .login-sns-btn img { width: 22px; height: 22px; }
+
+  .login-sns-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .login-sns-btn img {
+    width: 22px;
+    height: 22px;
+  }
 }

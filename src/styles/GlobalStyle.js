@@ -195,6 +195,82 @@ const GlobalStyle = createGlobalStyle`
 
     /* header end */
 
+    /* serch bar*/
+    .search-bar {
+    position: relative;
+    margin: 0 auto;
+    }
+
+    .search-input {
+        width: 100%;
+        height: 48px;
+        background: #D9D9D9;
+        border: none;
+        border-radius: 25px;
+        padding: 0 60px 0 28px;
+        font-size: 16px;
+        color: #777777;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 38px;
+    }
+
+        /* serch bar end*/
+        /*배너*/
+        /* 배너 영역 */
+    .banner-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 60px;
+    }
+
+    .banner {
+        position: relative;
+        height: 168px;
+        border-radius: 20px;
+        padding: 46px 28px;
+        color: #1B1B1B;
+        overflow: hidden;
+    }
+
+    .banner.green {
+        background: #5BC35B;
+    }
+
+    .banner.yellow {
+        background: #F5EA83;
+    }
+
+    .banner-subtitle {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 34px;
+        margin-bottom: 12px;
+    }
+
+    .banner-title {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 48px;
+    }
+
+    .banner-icon {
+        position: absolute;
+        right: 28px;
+        bottom: 28px;
+        width: 54px;
+        height: 54px;
+    }
+    /*배너 end*/
+
     /* footer start */
     .main-footer {
       padding: 60px 0 0 0;
@@ -353,6 +429,44 @@ const GlobalStyle = createGlobalStyle`
         width: 32px;
         height: 32px;
       }
+      /*배너*/
+        .banner {
+        height: 140px;
+        padding: 32px 20px;
+    }
+
+    .banner-subtitle {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .banner-title {
+        font-size: 28px;
+    }
+
+    .banner-icon {
+        width: 40px;
+        height: 40px;
+    }
+        .banner {
+        height: 120px;
+        padding: 24px 16px;
+    }
+
+    .banner-subtitle {
+        font-size: 18px;
+    }
+
+    .banner-title {
+        font-size: 24px;
+    }
+
+
+    /*배너 end*/  
+    .group-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
     }
 
     /*하단 nav end */

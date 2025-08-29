@@ -9,6 +9,7 @@ import Bubble from './components/Bubble';
 import Login from './pages/login';
 import Signup from './pages/Signup';
 import CreateFind from './pages/CreateFind';
+import FindView from './pages/FindView';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login/>}/> 
           <Route path="/signup" element={<Signup/>}/> 
           <Route path="/find" element={<Find/>}/> 
+          <Route path="/findview" element={<FindView/>}/> 
           <Route path="/createfind" element={<CreateFind/>}/> 
         </Routes>
       </BrowserRouter>

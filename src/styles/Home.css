@@ -101,23 +101,23 @@
 }
 
 .category-card.sports {
-  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('../image/soccer.jpg') center/cover, #b2e0ae;
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/soccer.jpg') center/cover, #b2e0ae;
 }
 
 .category-card.outdoor {
-  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('../image/travel-1.jpg') center/cover, #5bc35b;
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/travel-1.jpg') center/cover, #5bc35b;
 }
 
 .category-card.culture {
-  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('../image/movie.jpg') center/cover, #d9d9d9;
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/movie.jpg') center/cover, #d9d9d9;
 }
 
 .category-card.social {
-  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('../image/coffee.jpg') center/cover, #d9d9d9;
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/coffee.jpg') center/cover, #d9d9d9;
 }
 
 .category-card.other {
-  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('../image/others.jpg') center/cover, #d9d9d9;
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)), url('/image/others.jpg') center/cover, #d9d9d9;
 }
 
 .category-card .label {

@@ -1,9 +1,8 @@
-    /* @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap'); */
-    @import 'reset.css';
+import { createGlobalStyle } from 'styled-components';
+import '../styles/Reset.css';
 
-
-    /* all */
-    * {
+const GlobalStyle = createGlobalStyle`
+  * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -382,3 +381,6 @@
     }
 
     /*플로팅 버튼 end */
+`;
+
+export default GlobalStyle;

@@ -7,7 +7,7 @@ export default function Signup(){
   return(
     <>
       <div className="login-container">
-    <div className="login-subtitle">회원가입</div>
+    <div className="login-subtitle">회원가입</div>-=
     <form className="login-form">
       <div className="signup-field">
         <label className="login-label" htmlFor="signup-id">아이디</label>

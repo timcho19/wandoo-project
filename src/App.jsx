@@ -8,6 +8,7 @@ import Find from './pages/Find';
 import Bubble from './components/Bubble';
 import Login from './pages/login';
 import Signup from './pages/Signup';
+import CreateFind from './pages/CreateFind';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login/>}/> 
           <Route path="/signup" element={<Signup/>}/> 
           <Route path="/find" element={<Find/>}/> 
+          <Route path="/createfind" element={<CreateFind/>}/> 
         </Routes>
       </BrowserRouter>
       <Bubble/>

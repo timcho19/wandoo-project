@@ -17,10 +17,16 @@
            display: flex;
            margin-bottom: 12px;
        }
-
-       .section-title {
-           text-align: center;
-       }
+       
+        .section-title {
+          font-size: 24px;
+          font-weight: 400;
+          color: #40B440;
+          line-height: 48px;
+          max-width: 500px;
+          margin: 48px auto 48px auto;
+          text-align: center;
+        }
 
        .toggle-btn {
            flex: 1;

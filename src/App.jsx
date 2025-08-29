@@ -1,7 +1,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './styles/GlobalStyle';
-import Index from './pages/Index';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* 예시: <Route path="/login" element={<LoginPage />} /> */}
-          <Route path="/" element={<Index/>}/> 
+          <Route path="/" element={<Home/>}/> 
         </Routes>
       </BrowserRouter>
     </>

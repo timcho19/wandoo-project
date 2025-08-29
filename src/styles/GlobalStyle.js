@@ -1,12 +1,385 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #f8f8f8;
-  }
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    /* body start */
+    /* body 에니메이션 */
+    body {
+      background-image: linear-gradient(to bottom,
+          #fffdf8 0%,
+          /* 아침: 아주 연한 크림 베이지 */
+          #f4f4f4 45%,
+          /* 낮 중간: 컨테이너 배경과 동일 톤 */
+          #dce3e8 80%,
+          /* 저녁: 부드러운 블루 그레이 */
+          #c4cbd4 100%
+          /* 밤: 은은한 차가운 그레이 블루 */
+        );
+    }
+
+    .pea-bubble {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      bottom: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      animation-name: bubble-rise;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      z-index:-1;
+    }
+
+    /* 좌/우 위치, 각기 다른 이미지 */
+    .bubble-1 {
+      animation-duration: 8s;
+      animation-delay: 0s;
+      left: 50px;
+      background-image: url('../image/character/wandoo1.png');
+      opacity: 0;
+    }
+
+    .bubble-2 {
+      animation-duration: 10s;
+      animation-delay: 2s;
+      left: 120px;
+      background-image: url('../image/character/wandoo2.png');
+      opacity: 0;
+    }
+
+    .bubble-3 {
+      animation-duration: 7s;
+      animation-delay: 1s;
+      right: 50px;
+      background-image: url('../image/character/wandoo3.png');
+      opacity: 0;
+    }
+
+    .bubble-4 {
+      animation-duration: 9s;
+      animation-delay: 3s;
+      right: 120px;
+      background-image: url('../image/character/wandoo1.png');
+      opacity: 0;
+    }
+
+    .bubble-5 {
+      animation-duration: 11s;
+      animation-delay: 1.5s;
+      left: 250px;
+      background-image: url('../image/character/wandoo2.png');
+      opacity: 0;
+    }
+
+    /* 공통 애니메이션 */
+    @keyframes bubble-rise {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      50% { transform: translateY(-400px) translateX(50px); opacity: 1; }
+      100% { transform: translateY(-800px) translateX(-50px); opacity: 0; }
+    }
+    /* body 에니메이션 end */
+    /* body end */
+    /* header */
+    .header {
+      max-width: 720px;
+      width: 100%;
+      height: 73px;
+      background-color: white;
+      /*background:linear-gradient(rgba(248,255,252),rgba(255,254,247));*/
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999999;
+    }
+
+    .header .alarm {
+      width: 24px;
+      height: 24px;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
+      color: #40B440;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 400;
+      color: #000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1B1B1B;
+      line-height: 48px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 400;
+      color: #40B440;
+      line-height: 48px;
+      max-width: 500px;
+      margin: 48px auto 48px auto;
+
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .header .noti-badge {
+      position: absolute;
+      right: 10px;
+      top: 25px;
+      background: #ff0000;
+      color: #fff;
+      font-size: 12px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 400;
+    }
+
+    .logo span {
+      text-indent: -9999px;
+      display: none
+    }
+
+    .logo img {
+      width: 160px;
+    }
+
+    /* header end */
+
+    /* footer start */
+    .main-footer {
+      padding: 60px 0 0 0;
+      color: #777;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 18px;
+      text-align: left;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .main-footer .footer-logo {
+      color: #40B440;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .main-footer div {
+      margin-bottom: 24px;
+    }
+
+    .main-footer .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #333;
+      margin-top: 16px;
+    }
+
+    /* footer end */
+    /* 하단 nav start */
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      max-width: 720px;
+      width: 100%;
+      z-index: 1000;
+      pointer-events: none;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      background: none;
+    }
+
+    .bottom-nav-bg {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      background: #fff;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .bottom-nav-items {
+      position: relative;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 70px;
+      z-index: 2;
+      pointer-events: auto;
+      padding: 0 16px 0 16px;
+      box-sizing: border-box;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      gap: 4px;
+      color: #c9c9c9;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .nav-item img,
+    .nav-item .nav-label-inactive {
+      transition: 0.6s
+    }
+
+    .nav-item:active img,
+    .nav-item:active span {
+      transform: scale(0.8);
+    }
+
+    .nav-item {
+      transition: 0.6s;
+    }
+
+    .nav-item:active .nav-label-inactive {
+      color: #333;
+    }
+
+    .nav-item img {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 2px;
+    }
+
+    .nav-item img:active,
+    .nav-item:active img {
+      filter: brightness(20%) contrast(100%);
+    }
+
+    .nav-chat-label {
+      position: absolute;
+      left: 50%;
+      top: 70%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 8px;
+      background: none;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .nav-label-inactive {
+      color: #c9c9c9;
+      font-size: 14px;
+      white-space: nowrap;
+      line-height: 14px;
+      text-align: center;
+      display: block;
+    }
+
+    @media (max-width: 720px) {
+      .bottom-nav {
+        max-width: 100vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bottom-nav-items {
+        gap: 16px;
+        padding: 0 8px 8px 8px;
+      }
+
+      .nav-item {
+        width: 40px;
+      }
+
+      .nav-item img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    /*하단 nav end */
+
+
+
+    /*플로팅 버튼 */
+    .floating-btn {
+      position: fixed;
+      right: calc(50% - 360px + 16px);
+      /* 720px 컨테이너 기준 */
+      bottom: 120px;
+      width: 50px;
+      height: 50px;
+      z-index: 10;
+    }
+
+    /* 720px 이하에서는 컨테이너가 화면 크기만큼 변하므로 right값을 조정 */
+    @media (max-width: 720px) {
+      .floating-btn {
+        right: 16px;
+        /* 화면 오른쪽 여백만 남기고 붙임 */
+        bottom: 120px;
+
+      }
+    }
+
+    /*플로팅 버튼 end */
 `;
 
 export default GlobalStyle;

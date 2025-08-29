@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import '../styles/Login.css'
+
 export default function Login(){
   return(
     <>

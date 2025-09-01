@@ -12,6 +12,7 @@ import CreateFind from './pages/CreateFind';
 import FindView from './pages/FindView';
 import CreateTalk from './pages/CreateTalk';
 import Notification from './pages/Notification';
+import { supabase } from './supabase';
 
 function App() {
   return (

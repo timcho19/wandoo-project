@@ -39,50 +39,36 @@ export default function Home(){
       <div className="main-group-title">새로운 완두 모임</div>
       <div className="main-group-desc">완두에 새로 등록된 모임이에요!</div>
       <div className="group-list">
-        <a href="" className="group-card">
-          <div className="thumb"
-            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/badminton.jpg')"}}>
-            <span>운동/스포츠</span>
-          </div>
-          <div className="desc">
-            <div className="title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</div>
-            <div className="date">[일정] 매주 토요일 오후 3시</div>
-            <div className="place">서울특별시 마포구</div>
-          </div>
-        </a>
-        <a href="" className="group-card">
-          <div className="thumb"
-            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/ironman.jpg')"}}>
-            <span>문학</span>
-          </div>
-          <div className="desc">
-            <div className="title">[번개모임] 판타스틱4 보러 가실분 (3/4)</div>
-            <div className="date">[일정] 2025.08.19 오후 18:00</div>
-            <div className="place">서울특별시 종로구</div>
-          </div>
-        </a>
-        <a href="" className="group-card">
-          <div className="thumb"
-            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/coffee.jpg')"}}>
-            <span>사교</span>
-          </div>
-          <div className="desc">
-            <div className="title">[정기모임] 주말 카페 수다모임 (1/4)</div>
-            <div className="date">[일정] 매주 일요일 오후 3시</div>
-            <div className="place">서울특별시 마포구</div>
-          </div>
-        </a>
-        <a href="" className="group-card">
-          <div className="thumb"
-            style={{backgroundImage:"linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/health-club-1.jpg')"}}>
-            <span>운동/스포츠</span>
-          </div>
-          <div className="desc">
-            <div className="title">[정기모임] 주말 헬스 모임 (1/2)</div>
-            <div className="date">[일정] 매주 일요일 오후 5시</div>
-            <div className="place">서울특별시 은평구</div>
-          </div>
-        </a>
+        <Link to="/findview" className="group-card">
+            <div className="thumb">
+                <span className="card-category">운동/스포츠</span>
+            </div>
+            <div className="card-content">
+                <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
+                <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
+                <p className="card-location">서울특별시 마포구</p>
+            </div>
+        </Link>
+       <Link to="/findview" className="group-card">
+            <div className="thumb">
+                <span className="card-category">운동/스포츠</span>
+            </div>
+            <div className="card-content">
+                <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
+                <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
+                <p className="card-location">서울특별시 마포구</p>
+            </div>
+        </Link>
+        <Link to="/findview" className="group-card">
+            <div className="thumb">
+                <span className="card-category">운동/스포츠</span>
+            </div>
+            <div className="card-content">
+                <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
+                <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
+                <p className="card-location">서울특별시 마포구</p>
+            </div>
+        </Link>
       </div>
     </div>
     <Footer/>

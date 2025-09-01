@@ -1,4 +1,4 @@
-.container {
+.talk-container {
     max-width: 720px;
     margin: 0 auto;
     padding: 133px 16px 60px;
@@ -9,46 +9,7 @@
 
 /* 헤더 */
 
-/* 필터 영역 */
-.filters {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 60px;
-}
 
-.filter {
-    position: relative;
-}
-
-.filter select {
-    appearance: none;
-    -webkit-appearance: none;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1B1B1B;
-    line-height: 34px;
-    border: none;
-    background: none;
-    padding-right: 35px;
-    cursor: pointer;
-}
-
-.filter select:focus {
-    outline: none;
-}
-
-.filter::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 31px;
-    height: 31px;
-    background-image: url('/image/icon/arrow-drop-down.svg');
-    background-size: contain;
-    pointer-events: none;
-}
 
 /* 게시글 */
 .post {

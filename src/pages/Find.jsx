@@ -61,13 +61,12 @@ export default function Find(){
 
         <section className="group-section">
             <div className="section-header">
-                <h2 className="section-title">추천 완두 모임</h2>
+                <h2 className="members-title">추천 완두 모임</h2>
                 <p className="section-subtitle">나의 관심사 모임을 알아보자</p>
             </div>
             <div className="group-list">
                 <Link to="/findview" className="group-card">
-                    <div className="card-image"
-                        style={{backgroundImage: "url('/image/badminton.jpg')"}}>
+                    <div className="thumb">
                         <span className="card-category">운동/스포츠</span>
                     </div>
                     <div className="card-content">
@@ -76,6 +75,7 @@ export default function Find(){
                         <p className="card-location">서울특별시 마포구</p>
                     </div>
                 </Link>
+               
                 
             </div>
             
@@ -83,41 +83,21 @@ export default function Find(){
 
         <section className="group-section">
             <div className="section-header">
-                <h2 className="section-title">내 위치 완두모임</h2>
+                <h2 className="members-title">내 위치 완두모임</h2>
                 <p className="section-subtitle">내 근처에 등록된 모임이에요!</p>
             </div>
             <div className="group-list">
-              <Link to="/findview" className="group-card">
-                    <div className="card-image"
-                        style={{backgroundImage: "url('/image/badminton.jpg')"}}>
-                        <span className="card-category">운동/스포츠</span>
-                    </div>
-                    <div className="card-content">
-                        <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
-                        <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
-                        <p className="card-location">서울특별시 마포구</p>
-                    </div>
-                </Link>
+              
             </div>
         </section>
 
         <section className="group-section">
             <div className="section-header">
-                <h2 className="section-title">신선한 완두모임</h2>
+                <h2 className="members-title">신선한 완두모임</h2>
                 <p className="section-subtitle">완두에 새로 등록된 모임이에요!</p>
             </div>
             <div className="group-list">
-              <Link to="/findview" className="group-card">
-                    <div className="card-image"
-                        style={{backgroundImage: "url('/image/badminton.jpg')"}}>
-                        <span className="card-category">운동/스포츠</span>
-                    </div>
-                    <div className="card-content">
-                        <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
-                        <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
-                        <p className="card-location">서울특별시 마포구</p>
-                    </div>
-                </Link>
+             
             </div>
         </section>
        <Footer/>

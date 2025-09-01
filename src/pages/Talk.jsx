@@ -55,10 +55,10 @@ export default function Talk() {
             <div className="more-btn">더보기</div>
           </div>
           <div className="post-actions">
-            <button type="button" className="action-btn">
+            <Link to ="/TalkView" className="action-btn">
               <img src="/image/icon/comment.svg" alt="댓글" className="action-icon" />
               <span>1</span>
-            </button>
+            </Link>
             <button type="button" className="action-btn">
               <img src="/image/icon/heart-1.svg" alt="좋아요" className="action-icon" />
               <span>2</span>

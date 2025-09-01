@@ -13,6 +13,7 @@ import FindView from './pages/FindView';
 import CreateTalk from './pages/CreateTalk';
 import Notification from './pages/Notification';
 import Talk from './pages/Talk';
+import TalkView from './pages/TalkView';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/createtalk" element={<CreateTalk/>}/>
           <Route path="/notification" element={<Notification/>}/>
           <Route path="/talk" element={<Talk/>}/>
+          <Route path="/talkview" element={<TalkView/>}/>
         </Routes>
       </BrowserRouter>
       <Bubble/>

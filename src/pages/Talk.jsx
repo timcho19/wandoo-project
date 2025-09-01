@@ -36,7 +36,7 @@ export default function Talk() {
       </div>
 
       <main>
-        <Link to="/post" className="post">
+        <Link to="/talkview" className="post">
           <div className="post-header">
             <div className="post-user">
               <button type="button" style={{ padding: 0, border: 'none', background: 'none', cursor: 'pointer' }}>

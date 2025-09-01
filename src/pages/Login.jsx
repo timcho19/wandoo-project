@@ -1,9 +1,33 @@
 
+import { useState } from 'react';
+import { supabase } from '../supabase';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
+import bcrypt from 'bcryptjs';
 import '../styles/Login.css'
 
-export default function Login(){
+export default function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const { data, error } = await supabase
+      .from('user')
+      .select('*')
+      .eq('username', username.trim().toLowerCase())
+      .single();
+
+    if (error || !data) {
+      alert('사용자 없음');
+      return;
+    }
+
+    const isValid = bcrypt.compareSync(password, data.password_hash);
+    if (isValid) alert('로그인 성공!');
+    else alert('비밀번호 틀림');
+  };
+
   return(
     <>
     <div className="login-container">
@@ -14,15 +38,15 @@ export default function Login(){
     <div className="login-subtitle">관심 모임부터 최신 소식까지</div>
     <div className="login-desc">당신의 취향을 한 곳에</div>
 
-    <form className="login-form">
+    <form className="login-form" onSubmit={handleLogin}>
       <div className="login-field">
         <label className="login-label" htmlFor="login-id">아이디</label>
-        <input className="login-input" id="login-id" type="text" placeholder="아이디를 입력해주세요."/>
+        <input className="login-input" id="login-id" type="text" placeholder="아이디를 입력해주세요."onChange={e => setUsername(e.target.value)}/>
       </div>
 
       <div className="login-field">
         <label className="login-label" htmlFor="login-pw">비밀번호</label>
-        <input className="login-input" id="login-pw" type="password" placeholder="비밀번호를 입력해주세요."/>
+        <input className="login-input" id="login-pw" type="password" placeholder="비밀번호를 입력해주세요." onChange={e => setPassword(e.target.value)}/>
       </div>
 
       <button type="submit" className="login-btn">로그인</button>

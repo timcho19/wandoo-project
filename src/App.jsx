@@ -12,7 +12,12 @@ import CreateFind from './pages/CreateFind';
 import FindView from './pages/FindView';
 import CreateTalk from './pages/CreateTalk';
 import Notification from './pages/Notification';
+<<<<<<< HEAD
 import { supabase } from './supabase';
+=======
+import Talk from './pages/Talk';
+import TalkView from './pages/TalkView';
+>>>>>>> a5f53e59cb35510f88cabdaaa63b94f74ab0f657
 
 function App() {
   return (
@@ -30,6 +35,8 @@ function App() {
           <Route path="/createfind" element={<CreateFind/>}/> 
           <Route path="/createtalk" element={<CreateTalk/>}/>
           <Route path="/notification" element={<Notification/>}/>
+          <Route path="/talk" element={<Talk/>}/>
+          <Route path="/talkview" element={<TalkView/>}/>
         </Routes>
       </BrowserRouter>
       <Bubble/>

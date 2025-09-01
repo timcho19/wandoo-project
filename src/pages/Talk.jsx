@@ -55,7 +55,7 @@ export default function Talk() {
             <div className="more-btn">더보기</div>
           </div>
           <div className="post-actions">
-            <Link to ="/TalkView" className="action-btn">
+            <Link to ="/talkview" className="action-btn">
               <img src="/image/icon/comment.svg" alt="댓글" className="action-icon" />
               <span>1</span>
             </Link>
@@ -68,7 +68,7 @@ export default function Talk() {
         {/* 추가 게시글들 */}
       </main>
 
-      <Link to="/create-post" className="floating-btn" aria-label="모임 만들기">
+      <Link to="/createtalk" className="floating-btn" aria-label="모임 만들기">
         <img src="/image/icon/add.svg" alt="추가 버튼" />
       </Link>
 

@@ -42,7 +42,7 @@ export default function FindView(){
             </section>
 
             <section className="info-section">
-                <h2 className="section-title">모임 소개</h2>
+                <h2 className="members-title">모임 소개</h2>
                 <div className="info-content">
                   <pre>{`
   🏊🏻‍♀️입수큐즈미🏊🏻‍♂️
@@ -79,7 +79,7 @@ export default function FindView(){
             </section>
 
             <section className="members-section">
-                <h2 className="section-title">현재 참여 인원</h2>
+                <h2 className="members-title">현재 참여 인원</h2>
                 <div className="member-list">
                     <div className="member-item">
                         <div className="member-avatar">

@@ -5,7 +5,7 @@ import '../styles/Talk.css';
 export default function Talk() {
   return (
     <>
-    <div className="container">
+    <div className="talk-container">
       <header className="header">
         <div className="logo">WANDOO TALK</div>
         <Link to="/notification">
@@ -14,26 +14,35 @@ export default function Talk() {
         <span className="noti-badge">4</span>
       </header>
 
-      <div className="filters">
-        <div className="filter">
-          <select name="location">
-            <option value="종로구">종로구</option>
-            <option value="중구">중구</option>
-            <option value="용산구">용산구</option>
-            <option value="성동구">성동구</option>
-            <option value="광진구">광진구</option>
-          </select>
-        </div>
-        <div className="filter">
-          <select name="category">
-            <option value="all">카테고리</option>
-            <option value="culture">문화/예술</option>
-            <option value="sports">운동/스포츠</option>
-            <option value="study">스터디</option>
-            <option value="hobby">취미</option>
-          </select>
-        </div>
-      </div>
+        <section className="search-section">
+            <div className="filter-area">
+                <div className="filter-item">
+                    <select className="filter-select" defaultValue="지역선택">
+                        <option value="지역선택" disabled>지역</option>
+                        <option value="종로구">종로구</option>
+                        <option value="강남구">강남구</option>
+                        <option value="서초구">서초구</option>
+                        <option value="마포구">마포구</option>
+                        <option value="용산구">용산구</option>
+                    </select>
+                </div>
+                <div className="filter-item">
+                    <select className="filter-select" defaultValue="카테고리">
+                        <option value="카테고리" disabled>카테고리</option>
+                        <option value="all">전체</option>
+                        <option value="sports">운동/스포츠</option>
+                        <option value="culture">문화/예술</option>
+                        <option value="hobby">취미</option>
+                        <option value="study">스터디</option>
+                        <option value="social">친목</option>
+                    </select>
+                </div>
+            </div>
+            <div className="search-bar">
+                <input type="text" className="search-input" placeholder="검색어를 입력해주세요" />
+                <img src="/image/icon/arrow.svg" alt="검색" className="search-icon" />
+            </div>
+        </section>
 
       <main>
         <Link to="/talkview" className="post">

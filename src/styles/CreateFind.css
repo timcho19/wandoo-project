@@ -64,18 +64,7 @@
            font-weight: 400;
        }
 
-       .form-select,
-       .form-input,
-       .form-textarea {
-           width: 100%;
-           padding: 7px 13px;
-           border: 1px solid #CED4DA;
-           border-radius: 4px;
-           font-size: 14px;
-           color: #6C757D;
-           background: none;
-           box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-       }
+
 
        .form-select {
            appearance: none;
@@ -97,42 +86,7 @@
            resize: vertical;
        }
 
-       /* 이미지 업로드 영역 */
-       .upload-area {
-           border: 1px solid #ADB5BD;
-           border-radius: 2px;
-           padding: 16px;
-           text-align: center;
-           margin-bottom: 8px;
-       }
-
-       .upload-icon {
-           width: 24px;
-           height: 24px;
-           margin-bottom: 20px;
-       }
-
-       .upload-text {
-           font-size: 14px;
-           color: #212529;
-           margin-bottom: 4px;
-       }
-
-       .upload-preview {
-           font-size: 14px;
-           color: #6C757D;
-       }
-
-       #imagePreview {
-           margin-top: 10px;
-       }
-
-       #imagePreview img {
-           max-width: 100%;
-           max-height: 200px;
-           border-radius: 4px;
-       }
-
+  
        /* 제출 버튼 */
        .submit-btn {
            width: 100%;

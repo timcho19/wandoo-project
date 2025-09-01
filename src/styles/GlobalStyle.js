@@ -263,33 +263,40 @@ const GlobalStyle = createGlobalStyle`
 
     /* footer start */
     .main-footer {
-      padding: 60px 0 0 0;
+      
+      padding: 60px 0 24px 0;
       color: #777;
-      font-family: 'Pretendard', sans-serif;
       font-size: 18px;
       text-align: left;
       width: 100%;
       box-sizing: border-box;
+
     }
 
     .main-footer .footer-logo {
+      border-top: 1px solid #e0e0e0;
       color: #40B440;
       font-size: 32px;
       font-weight: 700;
       margin-bottom: 24px;
+      padding-top: 16px;
     }
 
     .main-footer div {
-      margin-bottom: 24px;
+      margin-bottom: 12px;
+    }
+    .footer-title{
+    font-size: 14px;
     }
 
     .main-footer .footer-links {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       font-size: 14px;
       color: #333;
       margin-top: 16px;
+      gap:16px;
     }
 
     /* footer end */
@@ -333,7 +340,7 @@ const GlobalStyle = createGlobalStyle`
       height: 70px;
       z-index: 2;
       pointer-events: auto;
-      padding: 0 16px 0 16px;
+      padding: 0 36px 0 36px;
       box-sizing: border-box;
     }
 
@@ -342,7 +349,7 @@ const GlobalStyle = createGlobalStyle`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 54px;
+      
       gap: 4px;
       color: #c9c9c9;
       cursor: pointer;
@@ -406,23 +413,22 @@ const GlobalStyle = createGlobalStyle`
     }
 
     @media (max-width: 480px) {
-      .bottom-nav-items {
-        gap: 16px;
-        padding: 0 8px 8px 8px;
-      }
+    .bottom-nav-items {
+      gap: 16px;
+      padding: 0 18px 0 18px;
+    }
 
-      .nav-item {
-        width: 40px;
-      }
-
-      .nav-item img {
-        width: 32px;
-        height: 32px;
-      }
-      /*배너*/
-        .banner {
-        height: 140px;
-        padding: 32px 20px;
+    .nav-item img {
+      width: 24px;
+      height: 24px;
+    }
+    .nav-label-inactive{
+      font-size: 12px;
+    }
+    /*배너*/
+      .banner {
+      height: 140px;
+      padding: 32px 20px;
     }
 
     .banner-subtitle {
@@ -485,6 +491,307 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /*플로팅 버튼 end */
+
+    /*input 스타일 */
+      .form-select,
+      .form-input,
+      .form-textarea {
+          width: 100%;
+          padding: 7px 13px;
+          border: 1px solid #CED4DA;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #6C757D;
+          background: #ffffff;
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+
+    /*input 스타일 end*/
+    /*이미지 업로드 영역*/
+      .upload-area {
+          border: 1px solid #CED4DA;
+          padding: 16px;
+          text-align: center;
+          margin-bottom: 8px;
+          background: #ffffff;
+          border-radius: 4px;
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .upload-icon {
+          width: 24px;
+          height: 24px;
+          margin-bottom: 20px;
+      }
+
+      .upload-text {
+          font-size: 14px;
+          color: #212529;
+          margin-bottom: 4px;
+      }
+
+      .upload-preview {
+          font-size: 14px;
+          color: #6C757D;
+      }
+
+      #imagePreview {
+          margin-top: 10px;
+      }
+
+      #imagePreview img {
+          max-width: 100%;
+          max-height: 200px;
+          border-radius: 4px;
+      }
+
+    /*이미지 업로드 end*/
+
+    /*로그인 회원가입 */
+ 
+    .login-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px 16px 60px 16px;
+      box-sizing: border-box;
+      background: #f4f4f4;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 타이틀 영역 */
+    .login-title {
+      color: #40b440;
+      font-size: 32px;
+      font-weight: 700;
+      font-family: 'Pretendard', sans-serif;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    .login-subtitle {
+      color: #1b1b1b;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .login-desc {
+      color: #1b1b1b;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .login-title span {
+      position: absolute;
+      /* 화면에서 위치 이동 */
+      width: 1px;
+      /* 거의 안 보이는 크기 */
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      /* 레이아웃 공간 제거 */
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      /* 화면에서 잘림 */
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .login-title img {
+      width: 200px;
+    }
+
+    /* 로그인 폼 */
+    .login-form {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      /* 필드 간격 */
+    }
+
+    .login-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      /* 라벨-인풋 간격 */
+    }
+
+    .login-label {
+      color: #212529;
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .login-input {
+      width: 100%;
+      height: 36px;
+      box-sizing: border-box;
+      padding: 6px 12px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 14px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      background: #fff;
+      outline: none;
+      margin: 0;
+    }
+
+    .login-input:focus {
+      border: #0D6EFD solid 1px;
+    }
+
+    /* 버튼 */
+    .login-btn,
+    .signup-btn {
+      width: 100%;
+      max-width: 500px;
+      height: 36px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      padding: 16px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      background: #40b440;
+    }
+
+
+
+
+    .signup-btn {
+      margin-bottom: 12px;
+      background: #66cc66;
+    }
+
+    /* 링크 */
+    .login-link {
+      color: #000;
+      font-size: 12px;
+      text-align: center;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    /* 구분선 */
+    .login-hr {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 24px;
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      height: 1px;
+    }
+    /*로그인 회원가입 end */
+
+    /*카드리스트 썸네일 thumb*/
+    .thumb {
+    background:linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/ironman.jpg');
+    }
+    .group-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    }
+
+    .group-card {
+      flex: 1 1 45%;
+      min-width: 160px;
+      max-width: 336px;
+      border-radius: 20px;
+      background: #fff;
+      margin-bottom: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: width 0.2s, min-width 0.2s, box-shadow 0.4s;
+    }
+
+    .group-card:hover {
+      box-shadow: 0 16px 40px rgba(122, 144, 176, 0.2);
+    }
+
+    .group-card .thumb {
+      width: 100%;
+      aspect-ratio: 336/192;
+      background-size: cover;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+
+      min-height: 100px;
+    }
+
+    .card-category {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25.2px;
+        z-index: 1;
+    }
+
+    .card-content {
+        padding: 12px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25.2px;
+        color: #1B1B1B;
+        margin-bottom: 7px;
+    }
+
+    .card-schedule {
+        font-size: 16px;
+        line-height: 24px;
+        color: #1B1B1B;
+        margin-bottom: 7px;
+    }
+
+    .card-location {
+        font-size: 12px;
+        line-height: 16.8px;
+        color: #777777;
+    }
+
+    @media (max-width: 480px) {
+        
+
+        .card-title {
+            font-size: 16px;
+        }
+
+        .card-schedule {
+            font-size: 14px;
+        }
+    }
+
+    /*카드리스트 썸네일 thumb end*/
 `;
 
 export default GlobalStyle;

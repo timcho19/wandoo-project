@@ -4,6 +4,7 @@ import Nav from '../components/Nav';
 import { supabase } from '../supabase';
 import '../styles/Signup.css';
 
+
 export default function Signup() {
   // 폼 입력 상태
   const [password, setPassword] = useState('');
@@ -14,6 +15,10 @@ export default function Signup() {
   const [position, setPosition] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  //이미지 미리보기
+  const [profileImg, setProfileImg] = useState('');
+  const [previewUrl, setPreviewUrl] = useState('');
+
 
   // 필수/선택 체크박스 상태
   const [termsAge, setTermsAge] = useState(false);
@@ -21,12 +26,31 @@ export default function Signup() {
   const [termsPrivacy, setTermsPrivacy] = useState(false);
   const [termsMarketing, setTermsMarketing] = useState(false); // 선택
 
+
+
   // 전체 동의 체크
   const handleTermsAll = (checked) => {
     setTermsAge(checked);
     setTermsService(checked);
     setTermsPrivacy(checked);
     setTermsMarketing(checked);
+  };
+
+  //이미지 미리 보기
+
+  const handleProfileImgChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+      setProfileImg(file); // 실제 업로드용 파일 객체 저장
+    } else {
+      setPreviewUrl('');
+      setProfileImg('');
+    }
   };
 
 
@@ -58,6 +82,35 @@ export default function Signup() {
         return;
       }
 
+
+      // 프로필 이미지 업로드
+      let imageUrl = '';
+      if (profileImg) {
+        const filePath = `test/${Date.now()}-${profileImg.name}`;
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from('posts')
+          .upload(filePath, profileImg);
+
+        if (uploadError) {
+          alert(`이미지 업로드 실패: ${uploadError.message}`);
+          return;
+        }
+
+        // publicUrl 생성
+        const { data: publicUrlData } = supabase.storage
+          .from('posts')
+          .getPublicUrl(filePath);
+        imageUrl = publicUrlData.publicUrl;
+        console.log('profile image publicUrl:', imageUrl);
+        // 실제로 이미지가 보이는지 브라우저에서 확인해보세요.
+        if (!imageUrl) {
+          alert('이미지 publicUrl 생성에 실패했습니다.');
+          return;
+        }
+      }
+
+
+
       const { error: insertError } = await supabase.from('user').insert([{
         nickname: nickname.trim(),
         email: email.trim().toLowerCase(),
@@ -66,7 +119,8 @@ export default function Signup() {
         agree_privacy: termsPrivacy,
         agree_marketing: termsMarketing,
         categories,
-        position
+        position,
+        profile_img: imageUrl
       }]);
 
       if (insertError) {
@@ -137,7 +191,22 @@ export default function Signup() {
               onChange={e => setNickname(e.target.value)}
             />
           </div>
-
+          <div className="login-field">
+  <label className="login-label" htmlFor="signup-profile-img">프로필 이미지 업로드</label>
+  <input
+    className="login-input"
+    id="signup-profile-img"
+    type="file"
+    accept="image/*"
+    onChange={handleProfileImgChange}
+  />
+  {previewUrl && (
+    <div style={{ marginTop: '10px', textAlign: 'center' }}>
+      <img src={previewUrl} alt="미리보기" style={{ width: 80, height: 80, borderRadius: '50%', objectFit: 'cover', border: '1px solid #eee' }} />
+      <div style={{ fontSize: '12px', color: '#888' }}>미리보기</div>
+    </div>
+  )}
+</div>
           <div className="login-field">
             <label className="login-label">관심사</label>
             <div className="category-options">

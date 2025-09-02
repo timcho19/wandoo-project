@@ -38,6 +38,7 @@ useEffect(() => {
     listener?.subscription?.unsubscribe();
   };
 }, []);
+// console.log('Current user:', user);
   return (
     <nav className="bottom-nav">
       <div className="bottom-nav-bg"></div>

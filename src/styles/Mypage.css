@@ -120,6 +120,7 @@
 .logout {
   background: #e3e3e3;
   color: #1b1b1b;
+  cursor: pointer;
 }
 
 .mylists-card,

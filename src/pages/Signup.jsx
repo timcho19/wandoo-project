@@ -70,7 +70,11 @@ export default function Signup() {
       }]);
 
       if (insertError) {
-        alert("추가 정보 저장 실패: " + insertError.message);
+        if (insertError.code === '23505') {
+          alert("이미 등록된 이메일입니다.");
+        } else {
+          alert("추가 정보 저장 실패: " + insertError.message);
+        }
         return;
       }
 

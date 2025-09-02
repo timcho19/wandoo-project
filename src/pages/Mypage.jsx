@@ -2,6 +2,8 @@
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import '../styles/Mypage.css'
+import { Link } from 'react-router-dom';
+
 
 
 export default function Mypage(){
@@ -10,9 +12,9 @@ export default function Mypage(){
       <div className="mypage-container">
         <header className="header">
           <div className="logo">MY PAGE</div>
-          <a href="notification.html">
+          <Link to="/">
             <img src="/image/icon/bell.svg" alt="알림" className="bell-icon"/>
-          </a>
+          </Link>
           <span className="noti-badge">4</span>
         </header>
         <div className="user-card">
@@ -28,10 +30,10 @@ export default function Mypage(){
           <span className="user-info-badge">사교</span>
         </div>
         <div className="mylists">
-          <a href="#" className="mylists-card">나의 모임</a>
-          <a href="#" className="mylists-card">내가 쓴 글</a>
-          <a href="#" className="mylists-card">관심 모임</a>
-          <a href="#" className="mylists-card">채팅</a>
+          <Link to="/" className="mylists-card">나의 모임</Link>
+          <Link to="/" className="mylists-card">내가 쓴 글</Link>
+          <Link to="/" className="mylists-card">관심 모임</Link>
+          <Link to="/" className="mylists-card">채팅</Link>
         </div>
         <button className="myprofile">프로필 설정</button>
         <button className="logout">로그아웃</button>

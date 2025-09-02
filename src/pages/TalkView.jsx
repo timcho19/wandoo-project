@@ -41,9 +41,8 @@ export default function TalkView() {
             </div>
             <img src="/image/start.jpg" alt="게시글 이미지" className="post-image" />
             <div className="post-content">
-              <p>
+              <p className="post-text">
                 퇴근 하는길에 하늘을 봤더니, 별이 엄청 많아서 한장 찍어봤습니다
-                <br />
                 엄청 이쁘네요. 같이 가실분 댓글 주세요 ~
               </p>
             </div>

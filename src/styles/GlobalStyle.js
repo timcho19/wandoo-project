@@ -803,6 +803,104 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /*카드리스트 썸네일 thumb end*/
+
+
+    /*완두톡 게시글 */
+    /* 게시글 */
+    .post {
+        display: block;
+        background: #fff;
+        border-radius: 20px;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+    }
+
+    .post-header {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+
+    }
+
+    .post-user {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .profile-img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .username {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1B1B1B;
+    }
+
+    .post-meta {
+        font-size: 12px;
+        color: #777;
+        padding: 5px 12px;
+        background: #E3E3E3;
+        border-radius: 50px;
+    }
+
+    .more-options {
+        width: 24px;
+        height: 24px;
+    }
+
+    .post-image {
+        display: inline-block;
+        width: 100%;
+        aspect-ratio: 336/192;
+        /* object-fit: cover; */
+    }
+
+    .post-content {
+        padding: 16px;
+        border-bottom: 0.5px solid #D9D9D9;
+    }
+    .post-text {
+        font-size: 16px;
+        line-height: 24px;
+        color: #1B1B1B;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .post-actions {
+        padding: 16px;
+        display: flex;
+        gap: 12px;
+    }
+
+    .action-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #777777;
+        font-size: 16px;
+    }
+
+    .action-icon {
+        width: 24px;
+        height: 24px;
+    }
+    /*완두톡 게시글 end */
 `;
 
 export default GlobalStyle;

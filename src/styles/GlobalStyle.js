@@ -349,39 +349,50 @@ const GlobalStyle = createGlobalStyle`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      
       gap: 4px;
       color: #c9c9c9;
       cursor: pointer;
       pointer-events: auto;
+    
+  
     }
+      .nav-item > div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      }
 
-    .nav-item img,
+
+    .nav-item svg,
     .nav-item .nav-label-inactive {
       transition: 0.6s
     }
 
-    .nav-item:active img,
+    .nav-item:active svg,
     .nav-item:active span {
       transform: scale(0.8);
     }
 
     .nav-item {
       transition: 0.6s;
+      font-size: 14px;
     }
 
     .nav-item:active .nav-label-inactive {
       color: #333;
     }
 
-    .nav-item img {
+    .nav-item svg {
       width: 30px;
       height: 30px;
       margin-bottom: 2px;
+      display: block;
     }
 
-    .nav-item img:active,
-    .nav-item:active img {
+    .nav-item svg:active,
+    .nav-item:active svg {
       filter: brightness(20%) contrast(100%);
     }
 
@@ -399,7 +410,6 @@ const GlobalStyle = createGlobalStyle`
 
     .nav-label-inactive {
       color: #c9c9c9;
-      font-size: 14px;
       white-space: nowrap;
       line-height: 14px;
       text-align: center;
@@ -418,13 +428,14 @@ const GlobalStyle = createGlobalStyle`
       padding: 0 18px 0 18px;
     }
 
-    .nav-item img {
+    .nav-item{
+      font-size: 12px;}
+
+    .nav-item svg {
       width: 24px;
       height: 24px;
     }
-    .nav-label-inactive{
-      font-size: 12px;
-    }
+  
     /*배너*/
       .banner {
       height: 140px;

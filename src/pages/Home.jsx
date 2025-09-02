@@ -19,12 +19,12 @@ export default function Home(){
     <div className="main-category">
       <div className="main-category-title">카테고리별 모임</div>
       <div className="category-list">
-        <a href="" className="category-card"><span className="label">전체보기</span></a>
-        <a href="" className="category-card sports"><span className="label">운동/스포츠</span></a>
-        <a href="" className="category-card outdoor"><span className="label">아웃도어/여행</span></a>
-        <a href="" className="category-card culture"><span className="label">문화/공연</span></a>
-        <a href="" className="category-card social"><span className="label">사교</span></a>
-        <a href="" className="category-card other"><span className="label">기타</span></a>
+        <Link to="/" className="category-card"><span className="label">전체보기</span></Link>
+        <Link to="/find" className="category-card sports"><span className="label">운동/스포츠</span></Link>
+        <Link to="/find" className="category-card outdoor"><span className="label">아웃도어/여행</span></Link>
+        <Link to="/find" className="category-card culture"><span className="label">문화/공연</span></Link>
+        <Link to="/find" className="category-card social"><span className="label">사교</span></Link>
+        <Link to="/find" className="category-card other"><span className="label">기타</span></Link>
       </div>
     </div>
      <section className="banner-section">

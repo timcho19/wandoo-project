@@ -2,13 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import { supabase } from '../supabase';
-import bcrypt from 'bcryptjs';
 import '../styles/Signup.css';
 
 export default function Signup() {
   // 폼 입력 상태
-  const [id, setId] = useState('');
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [nickname, setNickname] = useState('');
@@ -30,41 +27,45 @@ export default function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    // 비밀번호 확인
+
     if (password !== passwordConfirm) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-
-    // 필수 체크 항목 확인
     if (!termsAge || !termsService || !termsPrivacy) {
       alert("필수 항목에 모두 동의해주세요.");
       return;
     }
 
-    // 비밀번호 해시
-    const password_hash = bcrypt.hashSync(password, 10);
+    // Supabase Auth 회원가입 (이메일 인증 필요)
+    const { data, error } = await supabase.auth.signUp({
+      email: email.trim().toLowerCase(),
+      password: password
+    });
 
-    // Supabase에 데이터 삽입
-    const { data, error } = await supabase
-      .from('user')
-      .insert([{ email:email.trim().toLowerCase(), password_hash: password_hash, username: username.trim().toLowerCase() }]);
-
-    if (error) alert("회원가입 실패: " + error.message);
-    else {
-      alert("회원가입 성공!");
-      // 초기화
-      setId('');
-      setPassword('');
-      setPasswordConfirm('');
-      setNickname('');
-      setEmail('');
-      setTermsAge(false);
-      setTermsService(false);
-      setTermsPrivacy(false);
-      setTermsMarketing(false);
+    if (error) {
+      alert("회원가입 실패: " + error.message);
+      return;
     }
-  };
+
+    // user 테이블에 추가 정보 저장 (nickname 등)
+    const { error: insertError } = await supabase.from('user').insert([{
+      nickname: nickname.trim(),
+      email: email.trim().toLowerCase(),
+      is_over_14: termsAge,
+      agree_terms: termsService,
+      agree_privacy: termsPrivacy,
+      agree_marketing: termsMarketing
+    }]);
+
+    if (insertError) {
+      alert("추가 정보 저장 실패: " + insertError.message);
+      return;
+    }
+
+    alert("회원가입 완료! 이메일 인증을 확인해주세요.");
+    window.location.href = "/login";
+  }
 
   return (
     <>
@@ -72,14 +73,14 @@ export default function Signup() {
         <div className="login-subtitle">회원가입</div>
         <form className="login-form" onSubmit={handleSignup}>
           <div className="login-field">
-            <label className="login-label" htmlFor="signup-id">아이디</label>
+            <label className="login-label" htmlFor="signup-email">이메일</label>
             <input
               className="login-input"
-              id="signup-id"
-              type="text"
-              placeholder="아이디를 입력해주세요."
-              value={username}
-              onChange={e => setUsername(e.target.value)}
+              id="signup-email"
+              type="email"
+              placeholder="이메일을 입력해주세요."
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
 
@@ -116,18 +117,6 @@ export default function Signup() {
               placeholder="닉네임을 입력해주세요."
               value={nickname}
               onChange={e => setNickname(e.target.value)}
-            />
-          </div>
-
-          <div className="login-field">
-            <label className="login-label" htmlFor="signup-email">이메일</label>
-            <input
-              className="login-input"
-              id="signup-email"
-              type="email"
-              placeholder="이메일을 입력해주세요."
-              value={email}
-              onChange={e => setEmail(e.target.value)}
             />
           </div>
 

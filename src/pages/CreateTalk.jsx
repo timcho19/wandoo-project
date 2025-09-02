@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import Nav from '../components/Nav';
 import '../styles/CreateTalk.css'
 import { createClient } from '@supabase/supabase-js'
 import { URL, KEY } from '../supabase'

@@ -19,7 +19,7 @@ export default function Mypage(){
           <img src="./image/profile/person-2.jpg" alt="프로필"/>
           <span className="username">홍길동</span><span className="greeting">님 반갑습니다!</span>
         </div>
-        <div className="user-info">
+        <div className="myuser-info">
           <div className="user-info-title">나의 활동 지역</div>
           <span className="user-info-badge">종로구</span>
           <div className="user-info-title" style={{marginTop:'16px'}}>나의 관심 카테고리</div>

@@ -77,7 +77,71 @@
   text-decoration: underline;
 }
 
+/* 체크박스 컨테이너 */
+.category-options {
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap; /* 여러 줄로 넘어가면 자동 줄바꿈 */
+  gap: 4px; /* 체크박스 사이 간격 */
+  margin-top: 6px;
+}
 
+/* 각 체크박스 레이블 */
+.category-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 7px; /* 체크박스와 텍스트 사이 간격 */
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 체크된 항목 강조 */
+.category-checkbox input[type="checkbox"]:checked + span,
+.category-checkbox input[type="checkbox"]:checked {
+  background-color: #6495ED;
+  color: white;
+  border-color: #6495ED;
+}
+
+/* 선택된 항목 태그 스타일 */
+.category-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size:13px
+}
+.category-box{
+  display: flex;
+  align-items: center;
+  gap:6px;
+  width: 100%;
+  min-height: 36px;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background:#fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #757575;
+  font-weight: 400;
+  font-size:14px
+}
+
+.category-tag {
+  display:flex;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
 
 /* 반응형 */
 @media (max-width: 720px) {

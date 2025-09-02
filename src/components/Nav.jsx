@@ -38,11 +38,10 @@ export default function Nav() {
           <img src="/image/icon/category.svg" alt="모임찾기"/>
           <span className="nav-label-inactive">모임찾기</span>
         </Link>
-        {user ? (
-          <Link to="/mypage">마이페이지</Link>
-        ) : (
-          <Link to="/login">로그인</Link>
-        )}
+        <Link to="/mypage" className="nav-item">
+          <img src="/image/icon/mypage.svg" alt="마이페이지"/>
+          <span className="nav-label-inactive">마이페이지</span>
+        </Link>
       </div>
     </nav>
   );

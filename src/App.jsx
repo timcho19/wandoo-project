@@ -38,7 +38,7 @@ function App() {
           <Route path="/createfind" element={<CreateFind />} />
           <Route path="/createtalk" element={<CreateTalk />} />
           <Route path="/findview" element={<FindView />} />
-          <Route path="/talkview" element={<TalkView />} />
+          <Route path="/talkview/:id" element={<TalkView />} />
         </Routes>
       </BrowserRouter>
       <Bubble/>

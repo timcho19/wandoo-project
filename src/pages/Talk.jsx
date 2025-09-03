@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
+
 import '../styles/Talk.css';
 import Footer from '../components/Footer';
 
@@ -112,7 +112,7 @@ export default function Talk() {
       </Link>
       <Footer/>
     </div>
-    <Nav/>
+
     </>
   );
 }

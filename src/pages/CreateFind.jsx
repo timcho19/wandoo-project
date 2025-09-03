@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Nav from '../components/Nav';
+
 import '../styles/CreateFind.css';
 import { supabase } from '../supabase';
 
@@ -298,7 +298,7 @@ export default function CreateFind() {
           </form>
         </main>
       </div>
-      <Nav />
+
     </>
   );
 }

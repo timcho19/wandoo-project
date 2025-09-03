@@ -1,5 +1,5 @@
 import '../styles/Find.css'
-import Nav from '../components/Nav';
+
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom";
 
@@ -103,7 +103,7 @@ export default function Find(){
        <Footer/>
     </div>
     
-    <Nav/>
+
     </>
 
 

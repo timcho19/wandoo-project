@@ -111,7 +111,7 @@ export default function Signup() {
 
 
 
-      const { error: insertError } = await supabase.from('user').insert([{
+      const { error: insertError } = await supabase.from('member').insert([{
         nickname: nickname.trim(),
         email: email.trim().toLowerCase(),
         is_over_14: termsAge,

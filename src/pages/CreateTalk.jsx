@@ -2,10 +2,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../styles/CreateTalk.css';
 import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@supabase/supabase-js';
 import { URL, KEY } from '../supabase';
 
-// Supabase 클라이언트 생성
-const supabase = createClient(URL, KEY);
+// Supabase 클라이언트 생성 (중복 제거)
+// const supabase = createClient(URL, KEY)
 
 export default function CreateTalk() {
   const navigate = useNavigate();

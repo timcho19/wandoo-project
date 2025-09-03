@@ -23,6 +23,7 @@ export default function GroupList({ limit }) {
 
   const [meetings, setMeetings] = useState([]);
   const [count, setCount] = useState(1);
+  const [location, setLocation] = useState('');
 
   useEffect(() => {
     const fetchMeetingsWithMembers = async () => {
@@ -38,6 +39,7 @@ export default function GroupList({ limit }) {
         // 2️⃣ 각 게시글의 member 정보 조회
         const meetingsWithMembers = await Promise.all(
           meetingsData.map(async (post) => {
+            
             const { data: memberData } = await supabase
               .from("member")
               .select("nickname, user_id")
@@ -46,6 +48,7 @@ export default function GroupList({ limit }) {
             return { ...post, member: memberData || null };
           })
         );
+        console.log('All meetings:', meetingsWithMembers);
 
         // 3️⃣ 상태에 세팅
         setMeetings(meetingsWithMembers);
@@ -53,35 +56,60 @@ export default function GroupList({ limit }) {
         console.error("Error fetching posts or members:", error);
       }
     };
+    const fetchUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
 
+
+      if (data?.user?.email) {
+        
+        const { data: userRow, error: userError } = await supabase
+          .from('member')
+          .select('*')
+          .eq('email', data.user.email)
+          .single();
+       
+        console.log('User data:', userRow);
+        if (userRow?.position) setLocation(userRow.position);
+        
+      }
+      
+    
+    console.log('Meetings:', meetings)
+     
+    };
     fetchMeetingsWithMembers();
+    fetchUser();
+   
   }, []);
 
 
 
   return (
-     <div className="group-list">
-  {(limit ? meetings.slice(0, limit) : meetings).map((m, idx) => (
-      <Link to="/findview" className="group-card" key={m.id || idx}>
-            <div
-              className="thumb"
-              style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 70%,rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.6)), url(${m.image_url || '/image/default-group.jpg'})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
-            >
-          <span className="card-category">{m.category}</span>
-        </div>
-        <div className="card-content">
-          <h3 className="card-title">
-            {`[${m.type}]`} {m.title} {`(${count}/${m.participants})`}
-          </h3>
-          <p className="card-schedule">[일정] {m.type === '번개모임' ? formatDateTime(m.date) : `${m.recurrence_type} ${m.recurrence_days}`}</p>
-          <p className="card-location">{m.location}</p>
-        </div>
-      </Link>
-    ))}
-  </div>
+    <div className="group-list">
+      {(limit ? meetings.filter(m => location.includes(m.location)).slice(0, limit)
+      : meetings.filter(m => location.includes(m.location))
+      ).map((m, idx) => (
+        
+        <Link to="/findview" className="group-card" key={m.id || idx}>
+          <div
+            className="thumb"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 70%,rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.6)), url(${m.image_url || '/image/default-group.jpg'})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          >
+            <span className="card-category">{m.category}</span>
+          </div>
+          <div className="card-content">
+            <h3 className="card-title">
+              {`[${m.type}]`} {m.title} {`(${count}/${m.participants})`}
+            </h3>
+            <p className="card-schedule">[일정] {m.type === '번개모임' ? formatDateTime(m.date) : `${m.recurrence_type} ${m.recurrence_days}`}</p>
+            <p className="card-location">{m.location}</p>
+          </div>
+        </Link>
+      ))}
+    </div>
   );
 }

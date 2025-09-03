@@ -3,6 +3,7 @@ import '../styles/Home.css'
 import Footer from '../components/Footer';
 import Homeheader from '../components/Homeheader';
 import { Link } from "react-router-dom";
+import GroupList from '../components/GroupList';
 
 export default function Home(){
   return(
@@ -38,9 +39,9 @@ export default function Home(){
     <div className="main-group">
       <div className="main-group-title">새로운 완두 모임</div>
       <div className="main-group-desc">완두에 새로 등록된 모임이에요!</div>
-      <div className="group-list">
-       
-      </div>
+      
+    <GroupList limit={4}/>
+      
     </div>
     <Footer/>
 

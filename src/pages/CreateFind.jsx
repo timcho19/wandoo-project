@@ -86,7 +86,7 @@ export default function CreateFind() {
       image_url: imagePreview,
       type: meetingType,
       date: meetingType === '번개모임' ? formData.date : null,
-      recurrence_type: meetingType === '정기모임' ? 'weekly' : null,
+      recurrence_type: meetingType === '정기모임' ? formData.week : null,
       recurrence_days: meetingType === '정기모임' ? formData.day : null,
       user_id: user.id
     };
@@ -224,10 +224,10 @@ export default function CreateFind() {
                 onChange={handleChange}
               >
                 <option value="" disabled>위치를 선택해주세요</option>
-                <option value="강남구">강남구</option>
-                <option value="서초구">서초구</option>
-                <option value="마포구">마포구</option>
-                <option value="용산구">용산구</option>
+                <option value="서울특별시 강남구">강남구</option>
+                <option value="서울특별시 서초구">서초구</option>
+                <option value="서울특별시 마포구">마포구</option>
+                <option value="서울특별시 용산구">용산구</option>
               </select>
             </div>
 

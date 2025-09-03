@@ -6,7 +6,7 @@ import { supabase } from '../supabase';
 
 export default function CreateFind() {
   const navigate = useNavigate();
-  const [meetingType, setMeetingType] = useState('번개모임'); // instant = 번개, regular = 정기
+  const [meetingType, setMeetingType] = useState('번개모임'); //
   const [imagePreview, setImagePreview] = useState(null);
   const [user, setUser] = useState(null); // 로그인 사용자
   const [formData, setFormData] = useState({
@@ -85,9 +85,9 @@ export default function CreateFind() {
       participants: Number(formData.participants),
       image_url: imagePreview,
       type: meetingType,
-      date: meetingType === 'instant' ? formData.date : null,
-      recurrence_type: meetingType === 'regular' ? 'weekly' : null,
-      recurrence_days: meetingType === 'regular' ? formData.day : null,
+      date: meetingType === '번개모임' ? formData.date : null,
+      recurrence_type: meetingType === '정기모임' ? 'weekly' : null,
+      recurrence_days: meetingType === '정기모임' ? formData.day : null,
       user_id: user.id
     };
 
@@ -141,7 +141,7 @@ export default function CreateFind() {
             </div>
 
             {/* 번개모임 필드 */}
-            {meetingType === 'instant' && (
+            {meetingType === '번개모임' && (
               <div className="instant-fields show">
                 <div className="form-group">
                   <label className="form-label" htmlFor="date">날짜 및 시간</label>
@@ -157,7 +157,7 @@ export default function CreateFind() {
             )}
 
             {/* 정기모임 필드 */}
-            {meetingType === 'regular' && (
+            {meetingType === '정기모임' && (
               <div className="regular-fields show">
                 <div className="form-group">
                   <label className="form-label" htmlFor="week">주 선택</label>

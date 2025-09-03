@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import Nav from '../components/Nav';
@@ -44,6 +44,29 @@ export default function Login() {
       alert('로그인 중 오류가 발생했습니다.');
     }
   };
+  const handleKakaoLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'kakao',
+      options: {
+        redirectTo: 'http://localhost:5173/oauth', // 개발용 Redirect URI 나중에 배포주소 수정 및 카카오 리다이렉트 주소 수정해야함
+      },
+    });
+    if (error) {
+      console.error('카카오 로그인 실패:', error.message);
+      alert('카카오 로그인 중 오류가 발생했습니다.');
+    }
+  };
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        console.log('로그인 성공, 유저 정보:', session.user);
+        navigate('/'); // 로그인 성공 시 홈으로 이동
+      }
+    });
+  }, []);
+
+
 
   return (
     <>
@@ -88,7 +111,7 @@ export default function Login() {
         <hr className="login-hr" />
         <div className="login-sns-title">간편 로그인</div>
         <div className="login-sns-list">
-          <div className="sns-item">
+          <div className="sns-item" onClick={handleKakaoLogin}>
             <div className="login-sns-btn kakao"><img src="./image/icon/kakao.svg" alt="카카오" /></div>
             <span className="login-sns-label">카카오</span>
           </div>

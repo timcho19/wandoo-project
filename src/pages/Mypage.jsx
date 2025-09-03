@@ -20,7 +20,7 @@ export default function Mypage() {
     if (data?.user?.email) {
       // user 테이블에서 nickname 조회
       const { data: userRow, error: userError } = await supabase
-        .from('user')
+        .from('member')
         .select('*')
         .eq('email', data.user.email)
         .single();

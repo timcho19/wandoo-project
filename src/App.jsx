@@ -24,20 +24,6 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-<<<<<<< HEAD
-          {/* 예시: <Route path="/login" element={<LoginPage />} /> */}
-          <Route path="/" element={<Home/>}/> 
-          <Route path="/mypage" element={<Mypage/>}/> 
-          <Route path="/login" element={<Login/>}/> 
-          <Route path="/signup" element={<Signup/>}/> 
-          <Route path="/find" element={<Find/>}/> 
-          <Route path="/findview" element={<FindView/>}/> 
-          <Route path="/createfind" element={<CreateFind/>}/> 
-          <Route path="/createtalk" element={<CreateTalk/>}/>
-          <Route path="/notification" element={<Notification/>}/>
-          <Route path="/talk" element={<Talk/>}/>
-          <Route path="/talkview/:id" element={<TalkView />} />
-=======
           {/* Nav가 필요한 페이지 */}
           <Route element={<LayoutWithNav />}>
             <Route path="/" element={<Home />} />
@@ -52,8 +38,7 @@ function App() {
           <Route path="/createfind" element={<CreateFind />} />
           <Route path="/createtalk" element={<CreateTalk />} />
           <Route path="/findview" element={<FindView />} />
-          <Route path="/talkview" element={<TalkView />} />
->>>>>>> e5fa969600abd8bed846a5ebebb35457a81e790f
+          <Route path="/talkview/:id" element={<TalkView />} />
         </Routes>
       </BrowserRouter>
       <Bubble/>

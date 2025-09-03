@@ -111,7 +111,7 @@ export default function Signup() {
 
 
 
-      const { error: insertError } = await supabase.from('member').insert([{
+      const { error: insertError } = await supabase.from('user').insert([{
         nickname: nickname.trim(),
         email: email.trim().toLowerCase(),
         is_over_14: termsAge,
@@ -340,7 +340,6 @@ export default function Signup() {
         <Link to="/login" className="login-back">로그인으로 돌아가기</Link>
       </div>
 
-      <Nav />
-    </>
+      </>
   );
 }

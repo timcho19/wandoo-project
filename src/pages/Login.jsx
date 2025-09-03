@@ -30,7 +30,7 @@ export default function Login() {
 
       // 로그인 성공 후 user 테이블에서 추가 정보 가져오기
       const { data: extraData } = await supabase
-        .from('user')
+        .from('member')
         .select('*')
         .eq('email', email.trim().toLowerCase())
         .single();

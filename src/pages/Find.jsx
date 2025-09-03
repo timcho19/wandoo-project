@@ -72,7 +72,7 @@ export default function Find(){
                     <div className="card-content">
                         <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
                         <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
-                        <p className="card-location">서울특별시 마포구</p>
+                        <p className="card-location">서울특별시 마포구.</p>
                     </div>
                 </Link>
                

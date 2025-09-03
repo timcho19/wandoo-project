@@ -365,24 +365,16 @@ const GlobalStyle = createGlobalStyle`
       }
 
 
-    .nav-item svg,
-    .nav-item .nav-label-inactive {
-      transition: 0.6s
-    }
+    
 
-    .nav-item:active svg,
-    .nav-item:active span {
-      transform: scale(0.8);
-    }
+
 
     .nav-item {
-      transition: 0.6s;
+ 
       font-size: 14px;
     }
 
-    .nav-item:active .nav-label-inactive {
-      color: #333;
-    }
+
 
     .nav-item svg {
       width: 30px;
@@ -391,10 +383,7 @@ const GlobalStyle = createGlobalStyle`
       display: block;
     }
 
-    .nav-item svg:active,
-    .nav-item:active svg {
-      filter: brightness(20%) contrast(100%);
-    }
+ 
 
     .nav-chat-label {
       position: absolute;
@@ -713,7 +702,7 @@ const GlobalStyle = createGlobalStyle`
 
     /*카드리스트 썸네일 thumb*/
     .thumb {
-    background:linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/ironman.jpg');
+
     }
     .group-list {
     display: grid;

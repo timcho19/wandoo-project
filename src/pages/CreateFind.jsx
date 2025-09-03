@@ -34,8 +34,8 @@ export default function CreateFind() {
     checkUser();
   }, [navigate]);
 
-  // 렌더링 전에 user 없으면 로딩
-  if (!user) return <p>로딩 중...</p>;
+
+
 
   // 토글 버튼 클릭
   const handleToggle = (type) => setMeetingType(type);

@@ -33,7 +33,7 @@ function App() {
           <Route path="/createtalk" element={<CreateTalk/>}/>
           <Route path="/notification" element={<Notification/>}/>
           <Route path="/talk" element={<Talk/>}/>
-          <Route path="/talkview" element={<TalkView/>}/>
+          <Route path="/talkview/:id" element={<TalkView />} />
         </Routes>
       </BrowserRouter>
       <Bubble/>

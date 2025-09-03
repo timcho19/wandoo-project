@@ -864,10 +864,18 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .post-image {
-        display: inline-block;
-        width: 100%;
-        aspect-ratio: 336/192;
-        /* object-fit: cover; */
+      width: 100%;
+      max-height: 500px;     /* 너무 길게 나오지 않도록 제한 */
+      object-fit: contain;   /* 원본 비율 유지, 잘림 없음 */
+      background: #f8f8f8;   /* 여백 생기면 배경으로 채움 */
+      display: block;
+    }
+    .post-header div{
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      align-items: center;
+
     }
 
     .post-content {

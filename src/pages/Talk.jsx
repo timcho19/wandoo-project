@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../supabase";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../styles/Talk.css";
+=======
+import { Link } from 'react-router-dom';
+
+import '../styles/Talk.css';
+import Footer from '../components/Footer';
+>>>>>>> e5fa969600abd8bed846a5ebebb35457a81e790f
 
 export default function Talk() {
   const [posts, setPosts] = useState([]);
@@ -110,6 +117,7 @@ export default function Talk() {
                       {post.location} · {new Date(post.created_at).toLocaleString()}
                     </span>
 
+<<<<<<< HEAD
                   </div>
                 </div>
 
@@ -176,6 +184,14 @@ export default function Talk() {
         <Footer />
       </div>
       <Nav />
+=======
+      <Link to="/createtalk" className="floating-btn" aria-label="모임 만들기">
+        <img src="/image/icon/add.svg" alt="추가 버튼" />
+      </Link>
+      <Footer/>
+    </div>
+
+>>>>>>> e5fa969600abd8bed846a5ebebb35457a81e790f
     </>
   );
 }

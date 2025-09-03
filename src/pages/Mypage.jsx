@@ -1,4 +1,4 @@
-import Nav from '../components/Nav';
+
 import Footer from '../components/Footer';
 import '../styles/Mypage.css'
 import { Link, useNavigate } from 'react-router-dom';
@@ -94,7 +94,7 @@ useEffect(() => {
         <button className="logout" onClick={handleLogout}>로그아웃</button>
         <Footer />
       </div>
-      <Nav />
+
     </>
   );
 }

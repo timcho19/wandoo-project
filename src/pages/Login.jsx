@@ -126,7 +126,7 @@ export default function Login() {
         </div>
         <div className="login-sns-desc">소셜 계정으로 간편하게 로그인하세요</div>
       </div>
-      <Nav />
+      
     </>
   );
 }

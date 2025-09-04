@@ -1,45 +1,64 @@
-import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { supabase } from '../supabase';
-import '../styles/TalkView.css';
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "../supabase";
+import Comments from "../components/Comments";
+import "../styles/TalkView.css";
 
 export default function TalkView() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const fetchPostWithMember = async () => {
       try {
         setLoading(true);
 
-        // 1️⃣ 게시글 단일 조회
+        // 게시글 단일 조회
         const { data: postData, error: postError } = await supabase
-          .from('posts')
-          .select('*')
-          .eq('id', Number(id))
+          .from("posts")
+          .select("*")
+          .eq("id", Number(id))
           .single();
 
         if (postError) throw postError;
 
-        // 2️⃣ member 정보 조회
+        // member 정보 조회
         const { data: memberData } = await supabase
-          .from('member')
-          .select('nickname, profile_img')
-          .eq('email', postData.email)
+          .from("member")
+          .select("id, nickname, profile_img")
+          .eq("email", postData.email)
           .single();
 
-        // 3️⃣ 게시글에 member 붙이기
         setPost({ ...postData, member: memberData || null });
       } catch (error) {
-        console.error('게시글 불러오기 실패:', error);
+        console.error("게시글 불러오기 실패:", error);
         setPost(null);
       } finally {
         setLoading(false);
       }
     };
 
+    const fetchCurrentUser = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session?.user) return;
+
+      // 현재 로그인 유저의 member 테이블 id 조회
+      const { data: memberData } = await supabase
+        .from("member")
+        .select("id, nickname, profile_img")
+        .eq("email", session.user.email)
+        .single();
+
+      setCurrentUser(memberData || null);
+    };
+
     fetchPostWithMember();
+    fetchCurrentUser();
   }, [id]);
 
   if (loading) return <p>게시글을 불러오는 중...</p>;
@@ -93,63 +112,14 @@ export default function TalkView() {
         </article>
       </main>
 
-      {/* 댓글 섹션 (하드코딩) */}
-      <section className="comments-section">
-        <h2 className="comments-title">댓글</h2>
-        <div className="comments-list">
-          <div className="comment">
-            <div className="comment-header">
-              <div className="comment-user">
-                <button type="button" className="profile-btn">
-                  <img src="/image/profile/person-10.jpg" alt="프로필" />
-                </button>
-                <span className="username">홍길동</span>
-                <span style={{ color: '#777', fontSize: '12px' }}>· 30분전</span>
-              </div>
-              <button type="button" className="icon-btn">
-                <img src="/image/icon/more-vert.svg" alt="더보기" className="more-options" />
-              </button>
-            </div>
-            <p className="comment-content">오늘 하늘 진짜 예술이었어요… 저도 잠깐 멍 때리고 봤네요.</p>
-          </div>
-
-          <div className="comment">
-            <div className="comment-header">
-              <div className="comment-user">
-                <button type="button" className="profile-btn">
-                  <img src="/image/profile/person-9.jpg" alt="프로필" />
-                </button>
-                <span className="username">홍길동</span>
-                <span style={{ color: '#777', fontSize: '12px' }}>· 30분전</span>
-              </div>
-              <button type="button" className="icon-btn">
-                <img src="/image/icon/more-vert.svg" alt="더보기" className="more-options" />
-              </button>
-            </div>
-            <p className="comment-content">오늘 하늘 진짜 예술이었어요… 저도 잠깐 멍 때리고 봤네요.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 댓글 입력창 */}
-      <div className="comment-input-container">
-        <div className="comment-input-wrapper">
-          <button type="button" className="profile-btn">
-            <img src="/image/profile/person-11.jpg" alt="프로필" />
-          </button>
-          <div className="comment-input-box">
-            <input type="text" className="comment-input" placeholder="댓글을 입력해주세요." />
-            <div className="comment-actions">
-              <button type="button" className="comment-action-btn">
-                <img src="/image/icon/mood.svg" alt="이모티콘" />
-              </button>
-              <button type="button" className="comment-action-btn">
-                <img src="/image/icon/send.svg" alt="전송" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* 댓글 */}
+      {currentUser ? (
+        <Comments postId={post.id} currentUser={currentUser} />
+      ) : (
+        <p style={{ padding: "1rem", color: "#777" }}>
+          로그인해야 댓글을 작성할 수 있습니다.
+        </p>
+      )}
     </div>
   );
 }

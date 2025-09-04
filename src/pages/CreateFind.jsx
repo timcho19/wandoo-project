@@ -265,7 +265,11 @@ export default function CreateFind() {
                 <p className="upload-text">이미지 파일을 드래그 또는 클릭하여 업로드</p>
                 {imagePreview && (
                   <div className="upload-preview">
-                    <img src={imagePreview} alt="미리보기" />
+                    <img 
+                    src={imagePreview} 
+                    alt="미리보기" 
+                    style={{ width: "100%", marginTop: "10px", borderRadius: "8px", objectFit: "cover" }}
+                    />
                   </div>
                 )}
               </div>

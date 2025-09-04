@@ -37,7 +37,7 @@ function App() {
           <Route path="/notification" element={<Notification />} />
           <Route path="/createfind" element={<CreateFind />} />
           <Route path="/createtalk" element={<CreateTalk />} />
-          <Route path="/findview" element={<FindView />} />
+          <Route path="/findview/:id" element={<FindView />} /> 
           <Route path="/talkview/:id" element={<TalkView />} />
         </Routes>
       </BrowserRouter>

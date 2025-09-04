@@ -7,6 +7,7 @@ import "../styles/Talk.css";
 
 export default function Talk() {
   const [posts, setPosts] = useState([]);
+  const [expandedPosts, setExpandedPosts] = useState({});
 
   useEffect(() => {
     const fetchPostsWithMembers = async () => {
@@ -19,19 +20,26 @@ export default function Talk() {
 
         if (postsError) throw postsError;
 
-        // 2️⃣ 각 게시글의 member 정보 조회
+        // 2️⃣ 각 게시글의 member 정보와 댓글 수 조회
         const postsWithMembers = await Promise.all(
           postsData.map(async (post) => {
+            // member 조회
             const { data: memberData } = await supabase
               .from("member")
               .select("nickname, profile_img")
               .eq("email", post.email)
               .single();
-            return { ...post, member: memberData || null };
+
+            // 댓글 수 조회
+            const { count: commentCount } = await supabase
+              .from("comments")
+              .select("id", { count: "exact", head: true })
+              .eq("post_id", post.id);
+
+            return { ...post, member: memberData || null, commentCount: commentCount || 0 };
           })
         );
 
-        // 3️⃣ 상태에 세팅
         setPosts(postsWithMembers);
       } catch (error) {
         console.error("Error fetching posts or members:", error);
@@ -41,13 +49,13 @@ export default function Talk() {
     fetchPostsWithMembers();
   }, []);
 
-  const [expandedPosts, setExpandedPosts] = useState({});
   const toggleExpand = (postId) => {
-    setExpandedPosts(prev => ({
+    setExpandedPosts((prev) => ({
       ...prev,
-      [postId]: !prev[postId]
+      [postId]: !prev[postId],
     }));
   };
+
   return (
     <>
       <div className="talk-container">
@@ -95,7 +103,7 @@ export default function Talk() {
           ) : (
             posts.map((post) => (
               <div key={post.id} className="post">
-                {/* 상단 프로필 영역 (링크 없음) */}
+                {/* 상단 프로필 영역 */}
                 <div className="post-header">
                   <div>
                     <div className="post-user">
@@ -109,21 +117,17 @@ export default function Talk() {
                     <span className="post-meta">
                       {post.location} · {new Date(post.created_at).toLocaleString()}
                     </span>
-
                   </div>
                 </div>
 
-                {/* 이미지 클릭 시만 talkview로 이동 */}
+                {/* 이미지 클릭 시 talkview로 이동 */}
                 {post.image_url && (
                   <Link to={`/talkview/${post.id}`}>
-                    <img
-                      src={post.image_url}
-                      alt="게시글 이미지"
-                      className="post-image"
-                    />
+                    <img src={post.image_url} alt="게시글 이미지" className="post-image" />
                   </Link>
                 )}
 
+                {/* 게시글 내용 */}
                 <div className="post-content">
                   <p className="post-text">
                     {expandedPosts[post.id]
@@ -143,23 +147,15 @@ export default function Talk() {
                   )}
                 </div>
 
+                {/* 액션 영역: 댓글/좋아요 */}
                 <div className="post-actions">
-                  {/* 댓글 버튼만 Link */}
                   <Link to={`/talkview/${post.id}`} className="action-btn">
-                    <img
-                      src="/image/icon/comment.svg"
-                      alt="댓글"
-                      className="action-icon"
-                    />
-                    <span>0</span>
+                    <img src="/image/icon/comment.svg" alt="댓글" className="action-icon" />
+                    <span>{post.commentCount}</span>
                   </Link>
 
                   <button type="button" className="action-btn">
-                    <img
-                      src="/image/icon/heart-1.svg"
-                      alt="좋아요"
-                      className="action-icon"
-                    />
+                    <img src="/image/icon/heart-1.svg" alt="좋아요" className="action-icon" />
                     <span>0</span>
                   </button>
                 </div>
@@ -168,11 +164,11 @@ export default function Talk() {
           )}
         </main>
 
-
-
+        {/* 모임 만들기 버튼 */}
         <Link to="/createtalk" className="floating-btn" aria-label="모임 만들기">
           <img src="/image/icon/add.svg" alt="추가 버튼" />
         </Link>
+
         <Footer />
       </div>
       <Nav />

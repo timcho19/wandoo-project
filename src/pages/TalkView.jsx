@@ -61,8 +61,8 @@ export default function TalkView() {
     fetchCurrentUser();
   }, [id]);
 
-  if (loading) return <p>게시글을 불러오는 중...</p>;
-  if (!post) return <p>게시글이 존재하지 않습니다.</p>;
+  if (loading) return;
+  // if (!post) return <p>게시글이 존재하지 않습니다.</p>;
 
   return (
     <div className="container">
@@ -105,8 +105,8 @@ export default function TalkView() {
             </button>
           </div>
 
-          <img src={post.image_url} alt="게시글 이미지" className="post-image" />
-          <div className="post-content">
+          {post.image_url && <img src={post.image_url} alt="게시글 이미지" className="post-image" /> }
+          <div className="postview-content">
             <p className="post-text">{post.description}</p>
           </div>
         </article>

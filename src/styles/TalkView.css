@@ -145,3 +145,10 @@
 .icon-btn {
     cursor: pointer;
 }
+
+.postview-content {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px;
+    
+}

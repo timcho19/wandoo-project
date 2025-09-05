@@ -87,6 +87,7 @@ export default function Login() {
               type="email"
               placeholder="이메일을 입력해주세요."
               value={email}
+              // autoComplete="off"
               onChange={e => setEmail(e.target.value)}
             />
           </div>
@@ -99,6 +100,7 @@ export default function Login() {
               type="password"
               placeholder="비밀번호를 입력해주세요."
               value={password}
+              autoComplete="off"
               onChange={e => setPassword(e.target.value)}
             />
           </div>

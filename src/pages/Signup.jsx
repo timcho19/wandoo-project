@@ -164,6 +164,7 @@ export default function Signup() {
               type="password"
               placeholder="비밀번호를 입력해주세요."
               value={password}
+              autoComplete="off"
               onChange={e => setPassword(e.target.value)}
             />
           </div>
@@ -176,6 +177,7 @@ export default function Signup() {
               type="password"
               placeholder="비밀번호를 다시 입력해주세요."
               value={passwordConfirm}
+              autoComplete="off"
               onChange={e => setPasswordConfirm(e.target.value)}
             />
           </div>

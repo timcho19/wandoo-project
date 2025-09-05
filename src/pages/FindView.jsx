@@ -130,7 +130,7 @@ export default function FindView() {
           </div>
           <div className="tag">
             <img src="/image/icon/date.svg" alt="날짜" />
-            {meeting.date ? new Date(meeting.date).toLocaleDateString() : "날짜 미정"}
+            {meeting.date ? new Date(meeting.date).toLocaleDateString() : `${meeting.recurrence_type} ${meeting.recurrence_days}`}
           </div>
           <div className="tag">
             <img src="/image/icon/clock.svg" alt="시간" />
@@ -180,7 +180,7 @@ export default function FindView() {
         <section className="join-section">
                 {meeting.email === email ? (
                   <div className="host-buttons">
-                    <button className="host-btn-modify">수정</button>
+                    <Link to={`/modifyfind/${meeting.id}`} className="host-btn-modify">수정</Link>
                     <button className="host-btn-delete"  onClick={handlerDelete}>삭제</button>
                   </div>
                 ) : (

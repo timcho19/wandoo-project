@@ -36,19 +36,19 @@ export default function GroupList({ limit }) {
         if (meetingsError) throw meetingsError;
 
         // 2️⃣ 각 게시글의 member 정보 조회
-        const meetingsWithMembers = await Promise.all(
-          meetingsData
-          .filter(post => !!post.email) // email이 있는 경우만
-          .map(async (post) => {
-            const { data: memberData } = await supabase
-              .from("member")
-              .select("*")
-              // .select("nickname, user_id")
-              .eq("email", post.email)
-              .maybeSingle();
-            return { ...post, member: memberData || null };
-          })
-        );
+       // member 정보가 필요한 경우만 조회
+      const meetingsWithMembers = await Promise.all(
+        meetingsData.map(async (post) => {
+          if (!post.email) return { ...post, member: null };
+          // 필요한 정보만 select
+          const { data: memberData } = await supabase
+            .from("member")
+            .select("email")
+            .eq("email", post.email)
+            .maybeSingle();
+          return { ...post, member: memberData || null };
+        })
+      );
 
         // 3️⃣ 상태에 세팅
         setMeetings(meetingsWithMembers);

@@ -48,12 +48,7 @@ export default function Mypage() {
   
 }, []);
 
-// profileImg가 변경될 때마다 콘솔에 출력
-useEffect(() => {
-  if (profileImg) {
-    console.log('마이페이지 프로필 이미지 URL:', profileImg);
-  }
-}, [profileImg]);
+
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -80,7 +75,7 @@ useEffect(() => {
           <span className="user-info-badge">{position}</span>
           <div className="user-info-title" style={{ marginTop: '16px' }}>나의 관심 카테고리</div>
           {categories.map(i => (
-            <span className="user-info-badge">{typeof i === 'string' ? i.replace(/^"|"$/g, '') : i}</span>
+            <span className="user-info-badge"key={typeof i === 'string' ? i : i.id}>{typeof i === 'string' ? i.replace(/^"|"$/g, '') : i}</span>
           ))}
         
         </div>

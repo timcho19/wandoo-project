@@ -38,17 +38,18 @@ export default function GroupList({ limit }) {
 
         // 2️⃣ 각 게시글의 member 정보 조회
         const meetingsWithMembers = await Promise.all(
-          meetingsData.map(async (post) => {
-            
+          meetingsData
+          // .filter(post => !!post.email) // email이 있는 경우만
+          .map(async (post) => {
             const { data: memberData } = await supabase
               .from("member")
-              .select("nickname, user_id")
+              .select("*")
               .eq("email", post.email)
-              .single();
+              .maybeSingle();
             return { ...post, member: memberData || null };
           })
         );
-        console.log('All meetings:', meetingsWithMembers);
+
 
         // 3️⃣ 상태에 세팅
         setMeetings(meetingsWithMembers);
@@ -68,29 +69,32 @@ export default function GroupList({ limit }) {
           .eq('email', data.user.email)
           .single();
        
-        console.log('User data:', userRow);
+
+        
         if (userRow?.position) setLocation(userRow.position);
         
+        
       }
+   
       
-    
-    console.log('Meetings:', meetings)
+
+   
      
     };
     fetchMeetingsWithMembers();
     fetchUser();
    
-  }, []);
+  }, [location]);
 
 
 
   return (
     <div className="group-list">
-      {(limit ? meetings.filter(m => location.includes(m.location)).slice(0, limit)
+      {(limit ? meetings.filter(m => m.location && m.location.includes(location)).slice(0, limit)
       : meetings.filter(m => location.includes(m.location))
       ).map((m, idx) => (
         
-        <Link to="/findview" className="group-card" key={m.id || idx}>
+        <Link to={`/findview/${m.id}`} className="group-card" key={m.id || idx}>
           <div
             className="thumb"
             style={{

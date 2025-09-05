@@ -9,6 +9,7 @@ export default function CreateFind() {
   const [meetingType, setMeetingType] = useState('번개모임'); //
   const [imagePreview, setImagePreview] = useState(null);
   const [user, setUser] = useState(null); // 로그인 사용자
+  const [userEmail, setUserEmail] = useState(''); // 사용자 이메일
   const [formData, setFormData] = useState({
     date: '',
     week: '',
@@ -29,6 +30,7 @@ export default function CreateFind() {
         navigate('/login');
       } else {
         setUser(user);
+        setUserEmail(user.email);
       }
     };
     checkUser();
@@ -88,7 +90,8 @@ export default function CreateFind() {
       date: meetingType === '번개모임' ? formData.date : null,
       recurrence_type: meetingType === '정기모임' ? formData.week : null,
       recurrence_days: meetingType === '정기모임' ? formData.day : null,
-      user_id: user.id
+      user_id: formData.user_id,
+      email: userEmail
     };
 
     try {
@@ -103,6 +106,10 @@ export default function CreateFind() {
     } catch (err) {
       console.error('모임 개설 실패:', err.message);
       alert('모임 개설 중 오류가 발생했습니다.');
+    }
+    if (!userEmail) {
+      alert('로그인 정보가 없습니다.');
+      return;
     }
   };
 

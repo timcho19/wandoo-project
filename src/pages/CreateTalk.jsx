@@ -2,6 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../styles/CreateTalk.css';
 import { supabase } from "../supabase";
+import { createClient } from '@supabase/supabase-js';
+import { URL, KEY } from '../supabase';
 
 // Supabase 클라이언트 생성 (중복 제거)
 // const supabase = createClient(URL, KEY)

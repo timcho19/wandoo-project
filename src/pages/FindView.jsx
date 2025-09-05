@@ -24,13 +24,31 @@ export default function FindView() {
       }
       setLoading(false);
     };
+      const fetchUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
+
+
+      if (data?.user?.email) {
+        // user 테이블에서 nickname 조회
+        const { data: userRow, error: userError } = await supabase
+          .from('member')
+          .select('*')
+          .eq('email', data.user.email)
+          .maybeSingle();
+
+      }
+      
+ 
+     
+    };
 
     if (id) fetchMeeting();
+    fetchUser()
   }, [id]);
 
   // ✅ 로딩 처리
   if (loading) {
-    return <p>불러오는 중...</p>;
+    return;
   }
 
   // ✅ 데이터가 없을 때
@@ -102,9 +120,35 @@ export default function FindView() {
             <pre>{meeting.description || "소개 글이 없습니다."}</pre>
           </div>
         </section>
+        <section className="members-section">
+                <h2 className="members-title">현재 참여 인원</h2>
+                <div className="member-list">
+                    <div className="member-item">
+                        <div className="member-avatar">
+                            <img src="/image/profile/person-3.jpg" alt="프로필 이미지" className="member-picture" />
+                            <img src="/image/icon/crown.svg" alt="방장" className="host-badge" />
+                        </div>
+                        <span className="member-name">홍길동</span>
+                        <Link to="/" className="chat-btn">1:1 문의</Link>
+                    </div>
+                    <div className="member-item">
+                        <div className="member-avatar">
+                            <img src="/image/profile/person-4.jpg" alt="프로필 이미지" className="member-picture"/>
+                        </div>
+                        <span className="member-name">길짱구</span>
+                    </div>
+                    <div className="member-item">
+                        <div className="member-avatar">
+                            <img src="/image/profile/person-5.jpg" alt="프로필 이미지" className="member-picture" />
+                        </div>
+                        <span className="member-name">박철수</span>
+                    </div>
+                </div>
+            </section>
 
         {/* ✅ 참여 버튼 */}
         <section className="join-section">
+     
           <button className="join-btn">참여하기</button>
         </section>
       </main>

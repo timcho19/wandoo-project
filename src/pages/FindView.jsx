@@ -7,6 +7,7 @@ export default function FindView() {
   const { id } = useParams();
   const [meeting, setMeeting] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState(null);
 
   useEffect(() => {
     const fetchMeeting = async () => {
@@ -36,15 +37,18 @@ export default function FindView() {
           .eq('email', data.user.email)
           .maybeSingle();
 
+
+          setEmail(userRow.email)
       }
       
  
-     
     };
 
     if (id) fetchMeeting();
     fetchUser()
+  
   }, [id]);
+  console.log(id)
 
   // ✅ 로딩 처리
   if (loading) {
@@ -54,6 +58,32 @@ export default function FindView() {
   // ✅ 데이터가 없을 때
   if (!meeting) {
     return <p>모임 정보를 찾을 수 없습니다.</p>;
+  }
+  console.log(meeting.email)
+  console.log(email)
+  const handlerDelete = async() => {
+    const confirmDelete = window.confirm('정말로 이 모임을 삭제하시겠습니까?\n삭제 후에는 복구할 수 없습니다.');
+    if (!confirmDelete) return;
+    
+    const {data, error } = await supabase
+      .from('meetings') 
+      .delete()
+      .eq('id', id)
+      //.eq('email', email) // 현재 로그인한 사용자의 이메일과 일치하는 모임만 삭제 가능
+      .select();
+
+      console.log('삭제 쿼리 id:', id);
+      console.log('삭제 쿼리 email:', email);
+      console.log('DB meeting.id:', meeting.id);
+      console.log('DB meeting.email:', meeting.email);
+      
+      console.log('삭제 결과:', data); // 삭제된 row 정보
+    if (error) {
+      console.error('모임 삭제 실패:', error);
+    } else {
+      alert('모임이 삭제되었습니다.');
+      window.location.href = '/find'; // 모임 목록 페이지로 이동
+    } 
   }
 
   return (
@@ -129,7 +159,7 @@ export default function FindView() {
                             <img src="/image/icon/crown.svg" alt="방장" className="host-badge" />
                         </div>
                         <span className="member-name">홍길동</span>
-                        <Link to="/" className="chat-btn">1:1 문의</Link>
+                        <Link to="/" className="chat-btn">{meeting.email === email ? '문의관리': ' 1:1 문의'}</Link>
                     </div>
                     <div className="member-item">
                         <div className="member-avatar">
@@ -148,8 +178,14 @@ export default function FindView() {
 
         {/* ✅ 참여 버튼 */}
         <section className="join-section">
-     
-          <button className="join-btn">참여하기</button>
+                {meeting.email === email ? (
+                  <div className="host-buttons">
+                    <button className="host-btn-modify">수정</button>
+                    <button className="host-btn-delete"  onClick={handlerDelete}>삭제</button>
+                  </div>
+                ) : (
+                    <button className="join-btn">참여하기</button>
+                )}
         </section>
       </main>
     </div>

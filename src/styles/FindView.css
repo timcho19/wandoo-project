@@ -150,6 +150,31 @@
     cursor: pointer;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
+.host-buttons {
+    display: flex;
+    gap: 6px;
+    flex-direction: row;
+
+   
+
+
+}
+.host-buttons button{
+    border-radius: 4px;
+    padding: 12px 24px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+     color: white;
+}
+.host-btn-modify{
+    background-color: rgb(54, 106, 250);
+    
+}
+.host-btn-delete{
+    background-color: #B71C1C;
+}
 
 .join-btn:hover {
     background-color: #379B37;

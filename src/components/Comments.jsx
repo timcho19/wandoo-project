@@ -64,6 +64,17 @@ export default function Comments({ postId, currentUser }) {
                 <span style={{ color: "#777", fontSize: "12px" }}>
                   · {comment.created_at ? new Date(comment.created_at).toLocaleString() : ""}
                 </span>
+
+                {/* 내 댓글이면 더보기 버튼 보여주기 */}
+                {currentUser?.id === comment.member?.id && (
+                  <button type="button" className="icon-btn">
+                    <img
+                      src="/image/icon/more-vert.svg"
+                      alt="더보기"
+                      className="more-options"
+                    />
+                  </button>
+                )}
               </div>
             </div>
             <p className="comment-content">{comment.content}</p>

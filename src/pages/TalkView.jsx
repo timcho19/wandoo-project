@@ -113,10 +113,12 @@ export default function TalkView() {
       </main>
 
       {/* 댓글 */}
-      {currentUser ? (
-        <Comments postId={post.id} currentUser={currentUser} />
-      ) : (
-        <p style={{ padding: "1rem", color: "#777" }}>
+      {/* 댓글 목록은 항상 렌더링 */}
+      <Comments postId={post.id} currentUser={currentUser} />
+
+      {/* 로그인 안내 메시지는 필요하면 따로 */}
+      {!currentUser && (
+        <p style={{ padding: "1rem", color: "#777", textAlign: "center" }}>
           로그인해야 댓글을 작성할 수 있습니다.
         </p>
       )}

@@ -48,7 +48,7 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'kakao',
       options: {
-        redirectTo: 'http://localhost:5173/oauth', // 개발용 Redirect URI 나중에 배포주소 수정 및 카카오 리다이렉트 주소 수정해야함
+        redirectTo: 'http://localhost:5173/', // 개발용 Redirect URI 나중에 배포주소 수정 및 카카오 리다이렉트 주소 수정해야함
       },
     });
     if (error) {

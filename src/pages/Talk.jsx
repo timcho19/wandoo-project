@@ -4,15 +4,26 @@ import { supabase } from "../supabase";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../styles/Talk.css";
+import HeartButton from "../components/HeartButton";
 
 export default function Talk() {
   const [posts, setPosts] = useState([]);
   const [expandedPosts, setExpandedPosts] = useState({});
+  const [currentUser, setCurrentUser] = useState(null); // ← 추가
 
+  // 1️⃣ 현재 로그인한 사용자 가져오기
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setCurrentUser(user);
+    };
+    fetchUser();
+  }, []);
+
+  // 2️⃣ posts와 member, 댓글 수 가져오기
   useEffect(() => {
     const fetchPostsWithMembers = async () => {
       try {
-        // 1️⃣ posts 테이블 조회
         const { data: postsData, error: postsError } = await supabase
           .from("posts")
           .select("*")
@@ -20,17 +31,14 @@ export default function Talk() {
 
         if (postsError) throw postsError;
 
-        // 2️⃣ 각 게시글의 member 정보와 댓글 수 조회
         const postsWithMembers = await Promise.all(
           postsData.map(async (post) => {
-            // member 조회
             const { data: memberData } = await supabase
               .from("member")
               .select("nickname, profile_img")
               .eq("email", post.email)
               .single();
 
-            // 댓글 수 조회
             const { count: commentCount } = await supabase
               .from("comments")
               .select("id", { count: "exact", head: true })
@@ -48,6 +56,7 @@ export default function Talk() {
 
     fetchPostsWithMembers();
   }, []);
+
 
   const toggleExpand = (postId) => {
     setExpandedPosts((prev) => ({
@@ -154,10 +163,7 @@ export default function Talk() {
                     <span>{post.commentCount}</span>
                   </Link>
 
-                  <button type="button" className="action-btn">
-                    <img src="/image/icon/heart-1.svg" alt="좋아요" className="action-icon" />
-                    <span>0</span>
-                  </button>
+                 <HeartButton postId={post.id} currentUser={currentUser} />
                 </div>
               </div>
             ))

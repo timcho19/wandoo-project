@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Comments from "../components/Comments";
 import "../styles/TalkView.css";
+import HeartButton from "../components/HeartButton";
 
 export default function TalkView() {
   const { id } = useParams();
@@ -76,9 +77,7 @@ export default function TalkView() {
           <button type="button" className="icon-btn">
             <img src="/image/icon/sharing.svg" alt="공유" className="header-icon" />
           </button>
-          <button type="button" className="icon-btn">
-            <img src="/image/icon/heart.svg" alt="저장" className="header-icon" />
-          </button>
+          <HeartButton postId={post.id} currentUser={currentUser} showCount={false} />
           <button type="button" className="icon-btn">
             <img src="/image/icon/report.svg" alt="신고" className="header-icon" />
           </button>

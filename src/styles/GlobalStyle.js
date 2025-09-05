@@ -365,24 +365,16 @@ const GlobalStyle = createGlobalStyle`
       }
 
 
-    .nav-item svg,
-    .nav-item .nav-label-inactive {
-      transition: 0.6s
-    }
+    
 
-    .nav-item:active svg,
-    .nav-item:active span {
-      transform: scale(0.8);
-    }
+
 
     .nav-item {
-      transition: 0.6s;
+ 
       font-size: 14px;
     }
 
-    .nav-item:active .nav-label-inactive {
-      color: #333;
-    }
+
 
     .nav-item svg {
       width: 30px;
@@ -391,10 +383,7 @@ const GlobalStyle = createGlobalStyle`
       display: block;
     }
 
-    .nav-item svg:active,
-    .nav-item:active svg {
-      filter: brightness(20%) contrast(100%);
-    }
+ 
 
     .nav-chat-label {
       position: absolute;
@@ -713,7 +702,7 @@ const GlobalStyle = createGlobalStyle`
 
     /*카드리스트 썸네일 thumb*/
     .thumb {
-    background:linear-gradient(rgba(0, 0, 0, 0.0) 80%, rgba(0, 0, 0, 1)),url('/image/ironman.jpg');
+
     }
     .group-list {
     display: grid;
@@ -864,10 +853,18 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .post-image {
-        display: inline-block;
-        width: 100%;
-        aspect-ratio: 336/192;
-        /* object-fit: cover; */
+      width: 100%;
+      max-height: 500px;     /* 너무 길게 나오지 않도록 제한 */
+      object-fit: contain;   /* 원본 비율 유지, 잘림 없음 */
+      background: #f8f8f8;   /* 여백 생기면 배경으로 채움 */
+      display: block;
+    }
+    .post-header div{
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      align-items: center;
+
     }
 
     .post-content {

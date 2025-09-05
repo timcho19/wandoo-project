@@ -340,7 +340,6 @@ export default function Signup() {
         <Link to="/login" className="login-back">로그인으로 돌아가기</Link>
       </div>
 
-      <Nav />
-    </>
+      </>
   );
 }

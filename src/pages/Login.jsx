@@ -14,7 +14,7 @@ export default function Login() {
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email: email.trim().toLowerCase(),
-        password
+        password,
       });
 
       if (error) {
@@ -46,12 +46,16 @@ export default function Login() {
 
   // 소셜 로그인 (provider: kakao, naver, google)
   const handleSocialLogin = async (provider) => {
+    const redirectUrl =
+      window.location.hostname === 'localhost'
+        ? 'http://localhost:5173/login' // 로컬 개발용
+        : 'https://wandoo-project.vercel.app/login'; // 배포용
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: {
-        redirectTo: 'https://wandoo-project.vercel.app/login', // 로그인 페이지로 redirect
-      },
+      options: { redirectTo: redirectUrl },
     });
+
     if (error) {
       console.error(`${provider} 로그인 실패:`, error.message);
       alert(`${provider} 로그인 중 오류가 발생했습니다.`);
@@ -64,6 +68,11 @@ export default function Login() {
       try {
         const { data: { session } } = await supabase.auth.getSession();
         if (!session || !session.user) return;
+
+        // URL 해시(#access_token=...) 제거
+        if (window.location.hash) {
+          window.history.replaceState(null, '', '/login');
+        }
 
         const email = session.user.email;
         if (!email) {

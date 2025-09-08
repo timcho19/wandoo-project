@@ -147,7 +147,7 @@ export default function FindView() {
         <section className="info-section">
           <h2 className="members-title">모임 소개</h2>
           <div className="info-content">
-            <pre>{meeting.description || "소개 글이 없습니다."}</pre>
+            <pre className="description-pre">{meeting.description || "소개 글이 없습니다."}</pre>
           </div>
         </section>
         <section className="members-section">

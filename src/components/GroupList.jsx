@@ -35,23 +35,23 @@ export default function GroupList({ limit }) {
 
         if (meetingsError) throw meetingsError;
 
-        // 2️⃣ 각 게시글의 member 정보 조회
-       // member 정보가 필요한 경우만 조회
-      const meetingsWithMembers = await Promise.all(
-        meetingsData.map(async (post) => {
-          if (!post.email) return { ...post, member: null };
-          // 필요한 정보만 select
-          const { data: memberData } = await supabase
-            .from("member")
-            .select("email")
-            .eq("email", post.email)
-            .maybeSingle();
-          return { ...post, member: memberData || null };
-        })
-      );
+      //   // 2️⃣ 각 게시글의 member 정보 조회
+      //  // member 정보가 필요한 경우만 조회
+      // const meetingsWithMembers = await Promise.all(
+      //   meetingsData.map(async (post) => {
+      //     if (!post.email) return { ...post, member: null };
+      //     // 필요한 정보만 select
+      //     const { data: memberData } = await supabase
+      //       .from("member")
+      //       .select("email")
+      //       .eq("email", post.email)
+      //       .maybeSingle();
+      //     return { ...post, member: memberData || null };
+      //   })
+      // );
 
-        // 3️⃣ 상태에 세팅
-        setMeetings(meetingsWithMembers);
+      //   // 3️⃣ 상태에 세팅
+        setMeetings(meetingsData);
       } catch (error) {
         console.error("Error fetching posts or members:", error);
       }

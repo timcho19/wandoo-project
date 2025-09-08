@@ -60,6 +60,12 @@
     white-space: pre-line;
 }
 
+.description-pre {
+  white-space: pre-wrap;
+  word-break: break-all;
+  /* 필요시 max-width, overflow 등 추가 */
+}
+
 /* 참여 인원 섹션 */
 .members-section {
     padding: 24px 16px;

@@ -1,67 +1,68 @@
 import '../styles/Home.css'
-
 import Footer from '../components/Footer';
 import Homeheader from '../components/Homeheader';
 import { Link } from "react-router-dom";
 import GroupList from '../components/GroupList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 
-export default function Home(){
+export default function Home() {
   const [position, setPosition] = useState('');
-  const [email,setEmail] = useState('')
-  if (data?.user?.email) {
-        // user 테이블에서 nickname 조회
-        const { data: userRow, error: userError } = await supabase
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user?.email) {
+        const { data: userRow, error } = await supabase
           .from('member')
           .select('*')
-          .eq('email', data.user.email)
+          .eq('email', session.user.email)
           .single();
-        
+
         if (userRow?.position) setPosition(userRow.position);
         if (userRow?.email) setEmail(userRow.email);
-  } 
-  return(
-    
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  return (
     <div className="main-container">
       <Homeheader/>
       <div className="main-search">
-      <div className="main-search-title">[{email ? position : '완두'}]에서<br/>어떤 모임을 찾고 계신가요?</div>
-      <div className="search-bar">
-                <input type="text" className="search-input" placeholder="검색어를 입력해주세요" />
-                <img src="/image/icon/arrow.svg" alt="검색" className="search-icon" />
+        <div className="main-search-title">[{email ? position : '완두'}]에서<br/>어떤 모임을 찾고 계신가요?</div>
+        <div className="search-bar">
+          <input type="text" className="search-input" placeholder="검색어를 입력해주세요" />
+          <img src="/image/icon/arrow.svg" alt="검색" className="search-icon" />
+        </div>
       </div>
-    </div>
-    <div className="main-category">
-      <div className="main-category-title">카테고리별 모임</div>
-      <div className="category-list">
-        <Link to="/" className="category-card"><span className="label">전체보기</span></Link>
-        <Link to="/find" className="category-card sports"><span className="label">운동/스포츠</span></Link>
-        <Link to="/find" className="category-card outdoor"><span className="label">아웃도어/여행</span></Link>
-        <Link to="/find" className="category-card culture"><span className="label">문화/공연</span></Link>
-        <Link to="/find" className="category-card social"><span className="label">사교</span></Link>
-        <Link to="/find" className="category-card other"><span className="label">기타</span></Link>
+      <div className="main-category">
+        <div className="main-category-title">카테고리별 모임</div>
+        <div className="category-list">
+          <Link to="/" className="category-card"><span className="label">전체보기</span></Link>
+          <Link to="/find" className="category-card sports"><span className="label">운동/스포츠</span></Link>
+          <Link to="/find" className="category-card outdoor"><span className="label">아웃도어/여행</span></Link>
+          <Link to="/find" className="category-card culture"><span className="label">문화/공연</span></Link>
+          <Link to="/find" className="category-card social"><span className="label">사교</span></Link>
+          <Link to="/find" className="category-card other"><span className="label">기타</span></Link>
+        </div>
       </div>
+      <section className="banner-section">
+        <Link to="/talk" className="banner green">
+          <p className="banner-subtitle">자유롭게 남기는 우리 동네 이야기</p>
+          <h2 className="banner-title">우리 동네 완두톡</h2>
+          <img src="/image/icon/arrow.svg" alt="" className="banner-icon" />
+        </Link>
+      </section>
+      <div className="main-group">
+        <div className="main-group-title">새로운 완두 모임</div>
+        <div className="main-group-desc">완두에 새로 등록된 모임이에요!</div>
+        
+        <GroupList limit={4}/>
+        
+      </div>
+      <Footer/>
     </div>
-     <section className="banner-section">
-            <Link to="/talk" className="banner green">
-                <p className="banner-subtitle">자유롭게 남기는 우리 동네 이야기</p>
-                <h2 className="banner-title">우리 동네 완두톡</h2>
-                <img src="/image/icon/arrow.svg" alt="" className="banner-icon" />
-            </Link>
-           
-        </section>
-    <div className="main-group">
-      <div className="main-group-title">새로운 완두 모임</div>
-      <div className="main-group-desc">완두에 새로 등록된 모임이에요!</div>
-      
-    <GroupList limit={4}/>
-      
-    </div>
-    <Footer/>
-
-    
-    </div>
-  
   )
 }

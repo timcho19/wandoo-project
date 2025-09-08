@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Mypage from './pages/Mypage';
 import Find from './pages/Find';
 import Bubble from './components/Bubble';
-import Login from './pages/login';
+import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateFind from './pages/CreateFind';
 import ModifyFind from './pages/ModifyFind';

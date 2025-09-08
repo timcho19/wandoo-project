@@ -32,7 +32,8 @@ export default function GroupList({ limit }) {
         const { data: meetingsData, error: meetingsError } = await supabase
           .from("meetings")
           .select("*")
-          .order("created_at", { ascending: false });
+          .order("created_at", { ascending: false })
+          .limit(limit || 4); 
 
         if (meetingsError) throw meetingsError;
         
@@ -94,7 +95,9 @@ export default function GroupList({ limit }) {
   }, []);
 
 
-
+    if (!categories || categories.length === 0) {
+    return <div className="group-list">로그인 후 관심사 기반 그룹을 볼 수 있습니다.</div>;
+    }
   return (
     <div className="group-list">
       {(limit ? meetings.filter(m => categories.includes(m.category)).slice(0, limit)

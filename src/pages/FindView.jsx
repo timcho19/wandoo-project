@@ -72,10 +72,6 @@ export default function FindView() {
       //.eq('email', email) // 현재 로그인한 사용자의 이메일과 일치하는 모임만 삭제 가능
       .select();
 
-      console.log('삭제 쿼리 id:', id);
-      console.log('삭제 쿼리 email:', email);
-      console.log('DB meeting.id:', meeting.id);
-      console.log('DB meeting.email:', meeting.email);
       
       console.log('삭제 결과:', data); // 삭제된 row 정보
     if (error) {

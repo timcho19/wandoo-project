@@ -30,8 +30,9 @@ export default function GroupList({ limit }) {
         // 1️⃣ posts 테이블 조회
         const { data: meetingsData, error: meetingsError } = await supabase
           .from("meetings")
-          .select("*")
-          .order("created_at", { ascending: false });
+          .select("id, title, type, participants, category, location, date, recurrence_type, recurrence_days, image_url")
+          .order("created_at", { ascending: false })
+          .limit(limit || 4); 
 
         if (meetingsError) throw meetingsError;
 

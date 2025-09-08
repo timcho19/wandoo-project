@@ -32,7 +32,8 @@ export default function GroupList({ limit }) {
         const { data: meetingsData, error: meetingsError } = await supabase
           .from("meetings")
           .select("*")
-          .order("created_at", { ascending: false });
+          .order("created_at", { ascending: false })
+          .limit(limit || 4); 
 
         if (meetingsError) throw meetingsError;
 
@@ -84,16 +85,20 @@ export default function GroupList({ limit }) {
     fetchMeetingsWithMembers();
     fetchUser();
    
-  }, [location]);
+  }, []);
 
 
+
+  // 로그인하지 않은 경우 안내 메시지 출력
+  if (!location) {
+    return <div className="group-list">로그인 후 위치 기반 그룹을 볼 수 있습니다.</div>;
+  }
 
   return (
     <div className="group-list">
       {(limit ? meetings.filter(m => m.location && m.location.includes(location)).slice(0, limit)
       : meetings.filter(m => location.includes(m.location))
       ).map((m, idx) => (
-        
         <Link to={`/findview/${m.id}`} className="group-card" key={m.id || idx}>
           <div
             className="thumb"

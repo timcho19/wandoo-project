@@ -45,12 +45,18 @@ export default function CreateFind() {
   // 이미지 선택 핸들러
   const handleImageSelect = (e) => {
     const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        alert('이미지 파일만 업로드 가능합니다.');
+        return;
+      }
+      if (file.size > 2 * 1024 * 1024) {
+        alert('이미지 파일은 2MB 이하만 업로드 가능합니다.');
+        return;
+      }
       const reader = new FileReader();
       reader.onload = () => setImagePreview(reader.result);
       reader.readAsDataURL(file);
-    } else if (file) {
-      alert('이미지 파일만 업로드 가능합니다.');
     }
   };
 

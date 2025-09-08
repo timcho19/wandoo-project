@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '../supabase';
 import '../styles/Signup.css';
-
+import { v4 as uuidv4 } from 'uuid';
 export default function Signup() {
   const location = useLocation();
   const [password, setPassword] = useState('');
@@ -91,7 +91,8 @@ export default function Signup() {
 
       let imageUrl = '';
       if (profileImg) {
-        const filePath = `test/${Date.now()}-${profileImg.name}`;
+        const sanitizedFileName = profileImg.name.replace(/[^a-zA-Z0-9.\-_]/g, '');
+        const filePath = `test/${Date.now()}-${uuidv4()}-${sanitizedFileName}`;
         const { error: uploadError } = await supabase.storage.from('posts').upload(filePath, profileImg);
 
         if (uploadError) {

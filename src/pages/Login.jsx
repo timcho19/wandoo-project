@@ -46,14 +46,11 @@ export default function Login() {
 
   // 소셜 로그인 (provider: kakao, naver, google)
   const handleSocialLogin = async (provider) => {
-    const redirectUrl =
-      window.location.hostname === 'localhost'
-        ? 'http://localhost:5173/login' // 로컬 개발용
-        : 'https://wandoo-project.vercel.app/login'; // 배포용
+
 
     const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: { redirectTo: redirectUrl },
+      provider: 'kakao',
+      options: { redirectTo: 'https://wandoo-project.vercel.app/login' },
     });
 
     if (error) {

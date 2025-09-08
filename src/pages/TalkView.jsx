@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Comments from "../components/Comments";
 import "../styles/TalkView.css";
+import { Helmet } from "react-helmet-async";
 
 
 export default function TalkView() {
@@ -95,6 +96,11 @@ export default function TalkView() {
   }
 
   return (
+    <>
+      <Helmet>
+        <title>모임글보기 | Wandoo</title>
+      </Helmet>
+
     <div className="container">
       {/* 헤더 */}
       <header className="header">
@@ -159,5 +165,6 @@ export default function TalkView() {
         </p>
       )}
     </div>
+    </>
   );
 }

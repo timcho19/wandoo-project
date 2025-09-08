@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './styles/GlobalStyle';
+import { HelmetProvider } from "react-helmet-async";
 // import './styles/reset.css';
 
 import Home from './pages/Home';
@@ -21,6 +22,7 @@ import LayoutWithNav from './layouts/LayoutWithNav';
 function App() {
   return (
     <>
+    <HelmetProvider>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
@@ -43,6 +45,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Bubble/>
+    </HelmetProvider>
     </>
   );
 }

@@ -10,6 +10,7 @@ import Bubble from './components/Bubble';
 import Login from './pages/login';
 import Signup from './pages/Signup';
 import CreateFind from './pages/CreateFind';
+import ModifyFind from './pages/ModifyFind';
 import FindView from './pages/FindView';
 import CreateTalk from './pages/CreateTalk';
 import Notification from './pages/Notification';
@@ -36,6 +37,7 @@ function App() {
           {/* Nav가 필요 없는 페이지 */}
           <Route path="/notification" element={<Notification />} />
           <Route path="/createfind" element={<CreateFind />} />
+          <Route path="/modifyfind/:id" element={<ModifyFind />} />
           <Route path="/createtalk" element={<CreateTalk />} />
           <Route path="/findview/:id" element={<FindView />} /> 
           <Route path="/talkview/:id" element={<TalkView />} />

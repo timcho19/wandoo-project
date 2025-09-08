@@ -1,8 +1,9 @@
 import '../styles/Home.css'
-import Nav from '../components/Nav';
+
 import Footer from '../components/Footer';
 import Homeheader from '../components/Homeheader';
 import { Link } from "react-router-dom";
+import GroupList from '../components/GroupList';
 
 export default function Home(){
   return(
@@ -19,12 +20,12 @@ export default function Home(){
     <div className="main-category">
       <div className="main-category-title">카테고리별 모임</div>
       <div className="category-list">
-        <a href="" className="category-card"><span className="label">전체보기</span></a>
-        <a href="" className="category-card sports"><span className="label">운동/스포츠</span></a>
-        <a href="" className="category-card outdoor"><span className="label">아웃도어/여행</span></a>
-        <a href="" className="category-card culture"><span className="label">문화/공연</span></a>
-        <a href="" className="category-card social"><span className="label">사교</span></a>
-        <a href="" className="category-card other"><span className="label">기타</span></a>
+        <Link to="/" className="category-card"><span className="label">전체보기</span></Link>
+        <Link to="/find" className="category-card sports"><span className="label">운동/스포츠</span></Link>
+        <Link to="/find" className="category-card outdoor"><span className="label">아웃도어/여행</span></Link>
+        <Link to="/find" className="category-card culture"><span className="label">문화/공연</span></Link>
+        <Link to="/find" className="category-card social"><span className="label">사교</span></Link>
+        <Link to="/find" className="category-card other"><span className="label">기타</span></Link>
       </div>
     </div>
      <section className="banner-section">
@@ -38,41 +39,12 @@ export default function Home(){
     <div className="main-group">
       <div className="main-group-title">새로운 완두 모임</div>
       <div className="main-group-desc">완두에 새로 등록된 모임이에요!</div>
-      <div className="group-list">
-        <Link to="/findview" className="group-card">
-            <div className="thumb">
-                <span className="card-category">운동/스포츠</span>
-            </div>
-            <div className="card-content">
-                <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
-                <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
-                <p className="card-location">서울특별시 마포구</p>
-            </div>
-        </Link>
-       <Link to="/findview" className="group-card">
-            <div className="thumb">
-                <span className="card-category">운동/스포츠</span>
-            </div>
-            <div className="card-content">
-                <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
-                <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
-                <p className="card-location">서울특별시 마포구</p>
-            </div>
-        </Link>
-        <Link to="/findview" className="group-card">
-            <div className="thumb">
-                <span className="card-category">운동/스포츠</span>
-            </div>
-            <div className="card-content">
-                <h3 className="card-title">[정기모임] 한강 공원 배드민턴 치실분 (1/4)</h3>
-                <p className="card-schedule">[일정] 매주 토요일 오후 3시</p>
-                <p className="card-location">서울특별시 마포구</p>
-            </div>
-        </Link>
-      </div>
+      
+    <GroupList limit={4}/>
+      
     </div>
     <Footer/>
-    <Nav/>
+
     
     </div>
   

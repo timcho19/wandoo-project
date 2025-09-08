@@ -10,91 +10,7 @@
     background-color: #f4f4f4;
 }
 
-/* 게시글 */
-.post {
-    background: #fff;
-    border-radius: 20px;
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
 
-.post-header {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.post-user {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.profile-img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.username {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1B1B1B;
-}
-
-.post-meta {
-    font-size: 12px;
-    color: #777;
-    padding: 5px 12px;
-    background: #E3E3E3;
-    border-radius: 50px;
-}
-
-.more-options {
-    width: 24px;
-    height: 24px;
-}
-
-.post-image {
-    display: inline-block;
-    width: 100%;
-    height: 338px;
-    object-fit: cover;
-}
-
-.post-content {
-    padding: 16px;
-    border-bottom: 0.5px solid #D9D9D9;
-    font-size: 16px;
-    line-height: 24px;
-    color: #1B1B1B;
-}
-
-.post-actions {
-    padding: 16px;
-    display: flex;
-    gap: 12px;
-}
-
-.action-btn {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #777777;
-}
-
-.action-icon {
-    width: 24px;
-    height: 24px;
-}
 
 /* 댓글 섹션 */
 .comments-section {
@@ -228,4 +144,37 @@
 
 .icon-btn {
     cursor: pointer;
+    position: relative;
+}
+
+.postview-content {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px;
+    
+}
+
+/*수정 삭제 버튼*/
+.more-options-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    right: 0;
+    top:calc(100% + 8px);
+}
+.more-options-menu button{
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+}
+.more-options-menu button.modify{
+    background-color: #4234ff;
+}
+.more-options-menu button.delete{
+    background-color: red;
 }

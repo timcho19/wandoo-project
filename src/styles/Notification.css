@@ -17,7 +17,7 @@
         }
 
         .notification-item {
-            background: #93D293;
+            background: #fff;
             border-radius: 20px;
             padding: 20px 16px;
             display: flex;
@@ -26,7 +26,21 @@
         }
 
         .notification-item.unread {
-            background: #fff;
+            background: #9fdf9f;
+            position: relative;
+        }
+
+        .unread::after{
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+
         }
 
         .notification-profile {
@@ -63,3 +77,5 @@
             height: 24px;
             cursor: pointer;
         }
+       
+        

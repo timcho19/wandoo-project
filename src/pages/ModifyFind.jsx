@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import '../styles/CreateFind.css';
 import { supabase } from '../supabase';
 
 export default function CreateFind() {
   const navigate = useNavigate();
-  const [meetingType, setMeetingType] = useState('번개모임'); //
+  const [meetingType, setMeetingType] = useState(''); //
   const [imagePreview, setImagePreview] = useState(null);
   const [user, setUser] = useState(null); // 로그인 사용자
   const [userEmail, setUserEmail] = useState(''); // 사용자 이메일
@@ -15,11 +15,12 @@ export default function CreateFind() {
     week: '',
     day: '',
     category: '',
-    position: '',
+    location: '',
     participants: '',
     title: '',
     comment: ''
   });
+  const { id } = useParams();
 
   // 로그인 체크
   useEffect(() => {
@@ -36,6 +37,37 @@ export default function CreateFind() {
     checkUser();
   }, [navigate]);
 
+  //기존 글 데이터 불러오기
+  useEffect(() => {
+  const fetchMeeting = async () => {
+    const { data, error } = await supabase
+      .from('meetings')
+      .select('title,description,category,location,participants,image_url,date,recurrence_type,recurrence_days,type')
+      .eq('id', id)
+      .single();
+    if (data) {
+      setFormData({
+        title: data.title,
+        description: data.description,
+        category: data.category,
+        location: data.location,
+        participants: data.participants,
+        image_url: data.image_url,
+        date: data.date,
+        week: data.recurrence_type,
+        day: data.recurrence_days,
+        type: data.type
+        // ...필요한 필드 추가
+      });
+        // 기존 데이터의 type에 따라 토글 버튼 활성화
+        if (data.type === '정기모임' || data.type === '번개모임') {
+          setMeetingType(data.type);
+        }
+    }
+  };
+  if (id) fetchMeeting();
+}, [id]);
+
 
 
 
@@ -45,20 +77,20 @@ export default function CreateFind() {
   // 이미지 선택 핸들러
   const handleImageSelect = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      if (!file.type.startsWith('image/')) {
-        alert('이미지 파일만 업로드 가능합니다.');
-        return;
-      }
-      if (file.size > 2 * 1024 * 1024) {
-        alert('이미지 파일은 2MB 이하만 업로드 가능합니다.');
-        return;
-      }
+    if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
       reader.onload = () => setImagePreview(reader.result);
       reader.readAsDataURL(file);
+    } else if (file) {
+      alert('이미지 파일만 업로드 가능합니다.');
     }
   };
+  //기존이미지 썸네일 표시
+  useEffect(() => {
+  if (formData.image_url) {
+    setImagePreview(formData.image_url);
+  }
+}, [formData.image_url]);
 
   // 드래그 앤 드롭
   const handleDrop = (e) => {
@@ -79,45 +111,41 @@ export default function CreateFind() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 입력값 검증 (필수)
-    if (!formData.title || !formData.category || !formData.position || !formData.participants) {
-      alert('필수 항목을 모두 입력해주세요.');
-      return;
-    }
 
-    const insertData = {
+
+    const updateData = {
       title: formData.title,
-      description: formData.comment,
+      description: formData.description,
       category: formData.category,
-      location: formData.position,
+      location: formData.location,
       participants: Number(formData.participants),
       image_url: imagePreview,
-      type: meetingType,
       date: meetingType === '번개모임' ? formData.date : null,
       recurrence_type: meetingType === '정기모임' ? formData.week : null,
       recurrence_days: meetingType === '정기모임' ? formData.day : null,
-      user_id: formData.user_id,
-      email: userEmail
     };
 
     try {
       const { data, error } = await supabase
         .from('meetings')
-        .insert([insertData]);
+        .update([updateData])
+        .eq('id', id)
 
       if (error) throw error;
 
-      alert('모임이 성공적으로 개설되었습니다!');
+      alert('글 수정이 정상적으로 되었습니다!');
       navigate('/');
     } catch (err) {
-      console.error('모임 개설 실패:', err.message);
-      alert('모임 개설 중 오류가 발생했습니다.');
+      console.error('글 수정 실패', err.message);
+      alert('글 수정 중 오류가 발생했습니다.');
     }
     if (!userEmail) {
       alert('로그인 정보가 없습니다.');
       return;
     }
+   
   };
+  
 
   return (
     <>
@@ -127,7 +155,7 @@ export default function CreateFind() {
             <Link to="/find" className="back-button">
               <img src="/image/icon/arrow-left.svg" alt="" />
             </Link>
-            <h1 className="header-title">모임개설</h1>
+            <h1 className="header-title">모임 글 수정</h1>
           </div>
         </header>
 
@@ -140,6 +168,7 @@ export default function CreateFind() {
               <button
                 type="button"
                 className={`toggle-btn ${meetingType === '번개모임' ? 'active' : ''}`}
+                disabled={meetingType !== '번개모임'}
                 onClick={() => handleToggle('번개모임')}
               >
                 번개모임
@@ -147,6 +176,7 @@ export default function CreateFind() {
               <button
                 type="button"
                 className={`toggle-btn ${meetingType === '정기모임' ? 'active' : ''}`}
+                disabled={meetingType !== '정기모임'}
                 onClick={() => handleToggle('정기모임')}
               >
                 정기모임
@@ -229,11 +259,11 @@ export default function CreateFind() {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="position">위치</label>
+              <label className="form-label" htmlFor="location">위치</label>
               <select
                 className="form-select"
-                id="position"
-                value={formData.position}
+                id="location"
+                value={formData.location}
                 onChange={handleChange}
               >
                 <option value="" disabled>위치를 선택해주세요</option>
@@ -305,13 +335,13 @@ export default function CreateFind() {
               <textarea
                 className="form-textarea"
                 placeholder="모임 설명을 해주세요"
-                id="comment"
-                value={formData.comment}
+                id="description"
+                value={formData.description}
                 onChange={handleChange}
               />
             </div>
 
-            <button type="submit" className="submit-btn">개설하기</button>
+            <button type="submit" className="submit-btn">수정하기</button>
           </form>
         </main>
       </div>

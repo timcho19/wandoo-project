@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '../supabase';
 import '../styles/Signup.css';
 
@@ -14,6 +14,7 @@ export default function Signup() {
   const [isLoading, setIsLoading] = useState(false);
   const [isEmailLocked, setIsEmailLocked] = useState(false);
   const [isSocialSignup, setIsSocialSignup] = useState(false);
+  const navigate = useNavigate();
 
   const [profileImg, setProfileImg] = useState('');
   const [previewUrl, setPreviewUrl] = useState('');
@@ -120,7 +121,7 @@ export default function Signup() {
       }
 
       alert("회원가입 완료!");
-      window.location.href = "/login";
+      navigate("/login");
 
     } finally {
       setIsLoading(false);

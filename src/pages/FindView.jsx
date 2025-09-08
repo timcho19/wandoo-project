@@ -7,6 +7,7 @@ export default function FindView() {
   const { id } = useParams();
   const [meeting, setMeeting] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState(null);
 
   useEffect(() => {
     const fetchMeeting = async () => {
@@ -24,18 +25,61 @@ export default function FindView() {
       }
       setLoading(false);
     };
+      const fetchUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
+
+
+      if (data?.user?.email) {
+        // user 테이블에서 nickname 조회
+        const { data: userRow, error: userError } = await supabase
+          .from('member')
+          .select('*')
+          .eq('email', data.user.email)
+          .maybeSingle();
+
+
+          setEmail(userRow.email)
+      }
+      
+ 
+    };
 
     if (id) fetchMeeting();
+    fetchUser()
+  
   }, [id]);
+  console.log(id)
 
   // ✅ 로딩 처리
   if (loading) {
-    return <p>불러오는 중...</p>;
+    return;
   }
 
   // ✅ 데이터가 없을 때
   if (!meeting) {
     return <p>모임 정보를 찾을 수 없습니다.</p>;
+  }
+  console.log(meeting.email)
+  console.log(email)
+  const handlerDelete = async() => {
+    const confirmDelete = window.confirm('정말로 이 모임을 삭제하시겠습니까?\n삭제 후에는 복구할 수 없습니다.');
+    if (!confirmDelete) return;
+    
+    const {data, error } = await supabase
+      .from('meetings') 
+      .delete()
+      .eq('id', id)
+      //.eq('email', email) // 현재 로그인한 사용자의 이메일과 일치하는 모임만 삭제 가능
+      .select();
+
+      
+      console.log('삭제 결과:', data); // 삭제된 row 정보
+    if (error) {
+      console.error('모임 삭제 실패:', error);
+    } else {
+      alert('모임이 삭제되었습니다.');
+      window.location.href = '/find'; // 모임 목록 페이지로 이동
+    } 
   }
 
   return (
@@ -82,7 +126,7 @@ export default function FindView() {
           </div>
           <div className="tag">
             <img src="/image/icon/date.svg" alt="날짜" />
-            {meeting.date ? new Date(meeting.date).toLocaleDateString() : "날짜 미정"}
+            {meeting.date ? new Date(meeting.date).toLocaleDateString() : `${meeting.recurrence_type} ${meeting.recurrence_days}`}
           </div>
           <div className="tag">
             <img src="/image/icon/clock.svg" alt="시간" />
@@ -99,13 +143,45 @@ export default function FindView() {
         <section className="info-section">
           <h2 className="members-title">모임 소개</h2>
           <div className="info-content">
-            <pre>{meeting.description || "소개 글이 없습니다."}</pre>
+            <pre className="description-pre">{meeting.description || "소개 글이 없습니다."}</pre>
           </div>
         </section>
+        <section className="members-section">
+                <h2 className="members-title">현재 참여 인원</h2>
+                <div className="member-list">
+                    <div className="member-item">
+                        <div className="member-avatar">
+                            <img src="/image/profile/person-3.jpg" alt="프로필 이미지" className="member-picture" />
+                            <img src="/image/icon/crown.svg" alt="방장" className="host-badge" />
+                        </div>
+                        <span className="member-name">홍길동</span>
+                        <Link to="/" className="chat-btn">{meeting.email === email ? '문의관리': ' 1:1 문의'}</Link>
+                    </div>
+                    <div className="member-item">
+                        <div className="member-avatar">
+                            <img src="/image/profile/person-4.jpg" alt="프로필 이미지" className="member-picture"/>
+                        </div>
+                        <span className="member-name">길짱구</span>
+                    </div>
+                    <div className="member-item">
+                        <div className="member-avatar">
+                            <img src="/image/profile/person-5.jpg" alt="프로필 이미지" className="member-picture" />
+                        </div>
+                        <span className="member-name">박철수</span>
+                    </div>
+                </div>
+            </section>
 
         {/* ✅ 참여 버튼 */}
         <section className="join-section">
-          <button className="join-btn">참여하기</button>
+                {meeting.email === email ? (
+                  <div className="host-buttons">
+                    <Link to={`/modifyfind/${meeting.id}`} className="host-btn-modify">수정</Link>
+                    <button className="host-btn-delete"  onClick={handlerDelete}>삭제</button>
+                  </div>
+                ) : (
+                    <button className="join-btn">참여하기</button>
+                )}
         </section>
       </main>
     </div>

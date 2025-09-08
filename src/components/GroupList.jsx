@@ -30,25 +30,29 @@ export default function GroupList({ limit }) {
         // 1️⃣ posts 테이블 조회
         const { data: meetingsData, error: meetingsError } = await supabase
           .from("meetings")
-          .select("*")
-          .order("created_at", { ascending: false });
+          .select("id, title, type, participants, category, location, date, recurrence_type, recurrence_days, image_url")
+          .order("created_at", { ascending: false })
+          .limit(limit || 4); 
 
         if (meetingsError) throw meetingsError;
 
-        // 2️⃣ 각 게시글의 member 정보 조회
-        const meetingsWithMembers = await Promise.all(
-          meetingsData.map(async (post) => {
-            const { data: memberData } = await supabase
-              .from("member")
-              .select("nickname, user_id")
-              .eq("email", post.email)
-              .single();
-            return { ...post, member: memberData || null };
-          })
-        );
+      //   // 2️⃣ 각 게시글의 member 정보 조회
+      //  // member 정보가 필요한 경우만 조회
+      // const meetingsWithMembers = await Promise.all(
+      //   meetingsData.map(async (post) => {
+      //     if (!post.email) return { ...post, member: null };
+      //     // 필요한 정보만 select
+      //     const { data: memberData } = await supabase
+      //       .from("member")
+      //       .select("email")
+      //       .eq("email", post.email)
+      //       .maybeSingle();
+      //     return { ...post, member: memberData || null };
+      //   })
+      // );
 
-        // 3️⃣ 상태에 세팅
-        setMeetings(meetingsWithMembers);
+      //   // 3️⃣ 상태에 세팅
+        setMeetings(meetingsData);
       } catch (error) {
         console.error("Error fetching posts or members:", error);
       }
@@ -62,7 +66,7 @@ export default function GroupList({ limit }) {
   return (
      <div className="group-list">
   {(limit ? meetings.slice(0, limit) : meetings).map((m, idx) => (
-      <Link to="/findview" className="group-card" key={m.id || idx}>
+      <Link to={`/findview/${m.id}`} className="group-card" key={m.id || idx}>
             <div
               className="thumb"
               style={{

@@ -32,18 +32,23 @@ export default function GroupList({ limit }) {
         const { data: meetingsData, error: meetingsError } = await supabase
           .from("meetings")
           .select("*")
-          .order("created_at", { ascending: false });
+          .order("created_at", { ascending: false })
+          .limit(limit || 4); 
 
         if (meetingsError) throw meetingsError;
+        
 
         // 2️⃣ 각 게시글의 member 정보 조회
         const meetingsWithMembers = await Promise.all(
-          meetingsData.map(async (post) => {
+          meetingsData
+          // .filter(post => !!post.email) // email이 있는 경우만
+          .map(async (post) => {
             const { data: memberData } = await supabase
               .from("member")
-              .select("nickname, user_id")
+              .select("*")
+              // .select("nickname, user_id")
               .eq("email", post.email)
-              .single();
+              .maybeSingle();
             return { ...post, member: memberData || null };
           })
         );
@@ -65,8 +70,7 @@ export default function GroupList({ limit }) {
           .from('member')
           .select('*')
           .eq('email', data.user.email)
-          .single();
-        console.log('User data:', userRow);
+          .maybeSingle();
         if (userRow?.categories) {
           let arr = userRow.categories;
           if (typeof arr === 'string') {
@@ -89,16 +93,18 @@ export default function GroupList({ limit }) {
     fetchMeetingsWithMembers();
     fetchUser();
   }, []);
-  console.log('Meetings with members:', meetings);
 
 
+    if (!categories || categories.length === 0) {
+    return <div className="group-list">로그인 후 관심사 기반 그룹을 볼 수 있습니다.</div>;
+    }
   return (
     <div className="group-list">
       {(limit ? meetings.filter(m => categories.includes(m.category)).slice(0, limit)
       : meetings.filter(m => categories.includes(m.category))
       ).map((m, idx) => (
         
-        <Link to="/findview" className="group-card" key={m.id || idx}>
+        <Link to={`/findview/${m.id}`} className="group-card" key={m.id || idx}>
           <div
             className="thumb"
             style={{

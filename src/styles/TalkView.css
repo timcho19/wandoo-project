@@ -144,6 +144,7 @@
 
 .icon-btn {
     cursor: pointer;
+    position: relative;
 }
 
 .postview-content {
@@ -151,4 +152,29 @@
     border-radius: 20px;
     padding: 16px;
     
+}
+
+/*수정 삭제 버튼*/
+.more-options-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    right: 0;
+    top:calc(100% + 8px);
+}
+.more-options-menu button{
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+}
+.more-options-menu button.modify{
+    background-color: #4234ff;
+}
+.more-options-menu button.delete{
+    background-color: red;
 }

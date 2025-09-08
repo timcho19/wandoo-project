@@ -20,6 +20,7 @@ const [formData, setFormData] = useState({
 });
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(''); // 이미지 미리보기
+  const [isLoading, setIsLoading] = useState(false);
 
   // 1️⃣ 로그인한 유저 이메일 가져오기 + 로그인 안되면 이동
   useEffect(() => {
@@ -61,6 +62,8 @@ const [formData, setFormData] = useState({
 const handleSubmit = async (e) => {
   e.preventDefault();
 
+  if (isLoading) return; // 중복 제출 방지
+  setIsLoading(true);
 
   if (!formData.title || !formData.description) {
     alert('제목과 설명은 필수입니다.');
@@ -220,7 +223,10 @@ const handleSubmit = async (e) => {
             />
           </div>
 
-          <button type="submit" className="submit-btn">개설하기</button>
+     
+          <button type="submit" className="submit-btn" disabled={isLoading}>
+          {isLoading ? '개설 중...' : '개설 하기'}
+        </button>
         </form>
       </main>
     </div>

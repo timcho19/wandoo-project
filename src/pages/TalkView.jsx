@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Comments from "../components/Comments";
 import "../styles/TalkView.css";
-import HeartButton from "../components/HeartButton";
+
 
 export default function TalkView() {
   const { id } = useParams();
@@ -51,19 +51,48 @@ export default function TalkView() {
       // 현재 로그인 유저의 member 테이블 id 조회
       const { data: memberData } = await supabase
         .from("member")
-        .select("id, nickname, profile_img")
+        .select("id, nickname, profile_img,email")
         .eq("email", session.user.email)
         .single();
 
       setCurrentUser(memberData || null);
+      
     };
-
+   
     fetchPostWithMember();
     fetchCurrentUser();
   }, [id]);
 
   if (loading) return;
   // if (!post) return <p>게시글이 존재하지 않습니다.</p>;
+  const TogleOptions = (e) => {
+    const menu = document.querySelector('.more-options-menu');
+
+    if (menu.style.display === 'none' ) 
+      menu.style.display = 'flex';
+    else
+      menu.style.display = 'none';
+  }
+
+    const handlerDelete = async() => {
+    const confirmDelete = window.confirm('정말로 이 글을 삭제하시겠습니까?\n삭제 후에는 복구할 수 없습니다.');
+    if (!confirmDelete) return;
+    
+    const {data, error } = await supabase
+        .from('posts')
+        .delete()
+        .eq('id', id)
+        .eq('email', currentUser.email);
+    
+      console.log('삭제 결과:', data); // 삭제된 row 정보
+ 
+    if (error) {
+      console.error('글 삭제 실패:', error);
+    } else {
+      alert('글이 삭제되었습니다.');
+      window.location.href = '/talk'; // 모임 목록 페이지로 이동
+    } 
+  }
 
   return (
     <div className="container">
@@ -77,7 +106,6 @@ export default function TalkView() {
           <button type="button" className="icon-btn">
             <img src="/image/icon/sharing.svg" alt="공유" className="header-icon" />
           </button>
-          <HeartButton postId={post.id} currentUser={currentUser} showCount={false} />
           <button type="button" className="icon-btn">
             <img src="/image/icon/report.svg" alt="신고" className="header-icon" />
           </button>
@@ -99,9 +127,18 @@ export default function TalkView() {
                 </span>
               </div>
             </div>
-            <button type="button" className="icon-btn">
+            
+            {
+            post.email === currentUser?.email && (
+              <button type="button" className="icon-btn" onClick={TogleOptions}>
               <img src="/image/icon/more-vert.svg" alt="더보기" className="more-options" />
-            </button>
+              <div className="more-options-menu" style={{ display: 'none' }}>
+                <button className="modify"> 수정 </button>
+                <button className="delete" onClick={handlerDelete}> 삭제 </button>
+              </div>
+            </button>)
+            }
+            
           </div>
 
           {post.image_url && <img src={post.image_url} alt="게시글 이미지" className="post-image" /> }

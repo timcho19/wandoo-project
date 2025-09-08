@@ -859,7 +859,7 @@ const GlobalStyle = createGlobalStyle`
       background: #f8f8f8;   /* 여백 생기면 배경으로 채움 */
       display: block;
     }
-    .post-header div{
+    .post-header .post-user{
       display: flex;
       flex-direction: row;
       gap: 14px;

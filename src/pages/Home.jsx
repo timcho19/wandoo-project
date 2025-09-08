@@ -4,14 +4,26 @@ import Footer from '../components/Footer';
 import Homeheader from '../components/Homeheader';
 import { Link } from "react-router-dom";
 import GroupList from '../components/GroupList';
+import { useState } from 'react';
 
 export default function Home(){
+  const [position, setPosition] = useState('');
+  if (data?.user?.email) {
+        // user 테이블에서 nickname 조회
+        const { data: userRow, error: userError } = await supabase
+          .from('member')
+          .select('*')
+          .eq('email', data.user.email)
+          .single();
+        
+        if (userRow?.position) setPosition(userRow.position);
+  }
   return(
     
     <div className="main-container">
       <Homeheader/>
       <div className="main-search">
-      <div className="main-search-title">[동네이름]에서<br/>어떤 모임을 찾고 계신가요?</div>
+      <div className="main-search-title">[{position}]에서<br/>어떤 모임을 찾고 계신가요?</div>
       <div className="search-bar">
                 <input type="text" className="search-input" placeholder="검색어를 입력해주세요" />
                 <img src="/image/icon/arrow.svg" alt="검색" className="search-icon" />

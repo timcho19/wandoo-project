@@ -13,7 +13,7 @@ export default function Footer() {
       </div>
       <div className="footer-links">
         <Link to="/">이용약관</Link>
-        <Link to="/">개인정보처리방침</Link>
+        <Link to="/" className="policy">개인정보처리방침</Link>
         <Link to="/">위치기반서비스</Link>
         <Link to="/">이용약관 법적고지</Link>
       </div>

@@ -298,7 +298,9 @@ const GlobalStyle = createGlobalStyle`
       margin-top: 16px;
       gap:16px;
     }
-
+    .policy{
+    font-weight: 700;
+    }
     /* footer end */
     /* 하단 nav start */
     .bottom-nav {

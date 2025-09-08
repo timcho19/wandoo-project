@@ -20,7 +20,7 @@ export default function TalkView() {
         const { data: postData, error: postError } = await supabase
           .from("posts")
           .select("*")
-          .eq("id", Number(id))
+          .eq("id", id)
           .single();
 
         if (postError) throw postError;

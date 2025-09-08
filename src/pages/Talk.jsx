@@ -9,13 +9,20 @@ import HeartButton from "../components/HeartButton";
 export default function Talk() {
   const [posts, setPosts] = useState([]);
   const [expandedPosts, setExpandedPosts] = useState({});
-  const [currentUser, setCurrentUser] = useState(null); // ← 추가
+  const [currentUser, setCurrentUser] = useState(null);
 
   // 1️⃣ 현재 로그인한 사용자 가져오기
   useEffect(() => {
     const fetchUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setCurrentUser(user);
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        const { data: memberData } = await supabase
+          .from("member")
+          .select("id, nickname, profile_img")
+          .eq("email", session.user.email)
+          .single();
+        setCurrentUser(memberData || null);
+      }
     };
     fetchUser();
   }, []);
@@ -56,7 +63,6 @@ export default function Talk() {
 
     fetchPostsWithMembers();
   }, []);
-
 
   const toggleExpand = (postId) => {
     setExpandedPosts((prev) => ({
@@ -114,19 +120,17 @@ export default function Talk() {
               <div key={post.id} className="post">
                 {/* 상단 프로필 영역 */}
                 <div className="post-header">
-                  <div>
-                    <div className="post-user">
-                      <img
-                        src={post.member?.profile_img || "/default-profile.png"}
-                        alt="프로필"
-                        className="profile-img"
-                      />
-                      <span className="username">{post.member?.nickname || "익명"}</span>
-                    </div>
-                    <span className="post-meta">
-                      {post.location} · {new Date(post.created_at).toLocaleString()}
-                    </span>
+                  <div className="post-user">
+                    <img
+                      src={post.member?.profile_img || "/default-profile.png"}
+                      alt="프로필"
+                      className="profile-img"
+                    />
+                    <span className="username">{post.member?.nickname || "익명"}</span>
                   </div>
+                  <span className="post-meta">
+                    {post.location} · {new Date(post.created_at).toLocaleString()}
+                  </span>
                 </div>
 
                 {/* 이미지 클릭 시 talkview로 이동 */}
@@ -163,7 +167,7 @@ export default function Talk() {
                     <span>{post.commentCount}</span>
                   </Link>
 
-                 <HeartButton postId={post.id} currentUser={currentUser} />
+                  <HeartButton postId={post.id} currentUser={currentUser} showCount={true} />
                 </div>
               </div>
             ))

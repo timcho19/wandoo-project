@@ -5,6 +5,7 @@ import Homeheader from '../components/Homeheader';
 import { Link } from "react-router-dom";
 import GroupList from '../components/GroupList';
 import { useState } from 'react';
+import { supabase } from '../supabase';
 
 export default function Home(){
   const [position, setPosition] = useState('');

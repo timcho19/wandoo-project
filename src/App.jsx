@@ -16,7 +16,6 @@ import CreateTalk from './pages/CreateTalk';
 import Notification from './pages/Notification';
 import Talk from './pages/Talk';
 import TalkView from './pages/TalkView';
-import { supabase } from './supabase';
 import LayoutWithNav from './layouts/LayoutWithNav';
 
 function App() {

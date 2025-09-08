@@ -49,7 +49,7 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: 'http://localhost:5173/login', // 로그인 페이지로 redirect
+        redirectTo: 'https://wandoo-project.vercel.app/login', // 로그인 페이지로 redirect
       },
     });
     if (error) {

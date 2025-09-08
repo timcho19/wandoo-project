@@ -4,15 +4,33 @@ import { supabase } from "../supabase";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../styles/Talk.css";
+import HeartButton from "../components/HeartButton";
 
 export default function Talk() {
   const [posts, setPosts] = useState([]);
   const [expandedPosts, setExpandedPosts] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
+  // ...기존 코드...
 
+  // 1️⃣ 현재 로그인한 사용자 가져오기
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        const { data: memberData } = await supabase
+          .from("member")
+          .select("id, nickname, profile_img")
+          .eq("email", session.user.email)
+          .single();
+        setCurrentUser(memberData || null);
+      }
+    };
+    fetchUser();
+  }, []);
+  // 2️⃣ posts와 member, 댓글 수 가져오기
   useEffect(() => {
     const fetchPostsWithMembers = async () => {
       try {
-        // 1️⃣ posts 테이블 조회
         const { data: postsData, error: postsError } = await supabase
           .from("posts")
           .select("*")
@@ -20,17 +38,17 @@ export default function Talk() {
 
         if (postsError) throw postsError;
 
-        // 2️⃣ 각 게시글의 member 정보와 댓글 수 조회
+        // 실제 받아온 postsData의 id와 key 값을 모두 출력
+        console.log("postsData id/key:", postsData.map(post => ({ id: post.id, key: post.key })));
+
         const postsWithMembers = await Promise.all(
           postsData.map(async (post) => {
-            // member 조회
             const { data: memberData } = await supabase
               .from("member")
               .select("nickname, profile_img")
               .eq("email", post.email)
               .single();
 
-            // 댓글 수 조회
             const { count: commentCount } = await supabase
               .from("comments")
               .select("id", { count: "exact", head: true })
@@ -55,7 +73,51 @@ export default function Talk() {
       [postId]: !prev[postId],
     }));
   };
+  console.log(posts);
 
+  // 좋아요 클릭 시 posts 테이블 like 컬럼 +1
+  // 좋아요 토글: 누르면 증가, 다시 누르면 감소
+  const handleLike = async (postId, liked) => {
+    try {
+      // 현재 like 값 가져오기
+      const { data: postData, error: getError } = await supabase
+        .from("posts")
+        .select("like")
+        .eq("id", postId)
+        .single();
+      if (getError) throw getError;
+      const currentLike = postData?.like ?? 0;
+      const newLike = liked ? Math.max(currentLike - 1, 0) : currentLike + 1;
+      const { error } = await supabase
+        .from("posts")
+        .update({ like: newLike })
+        .eq("id", postId);
+      if (error) throw error;
+      // 최신 posts 데이터 다시 fetch
+      const { data: postsData } = await supabase
+        .from("posts")
+        .select("*")
+        .order("created_at", { ascending: false });
+      // member/commentCount 정보 다시 매핑
+      const postsWithMembers = await Promise.all(
+        postsData.map(async (post) => {
+          const { data: memberData } = await supabase
+            .from("member")
+            .select("nickname, profile_img")
+            .eq("email", post.email)
+            .single();
+          const { count: commentCount } = await supabase
+            .from("comments")
+            .select("id", { count: "exact", head: true })
+            .eq("post_id", post.id);
+          return { ...post, member: memberData || null, commentCount: commentCount || 0 };
+        })
+      );
+      setPosts(postsWithMembers);
+    } catch (error) {
+      console.error("Error updating like:", error);
+    }
+  };
   return (
     <>
       <div className="talk-container">
@@ -105,19 +167,17 @@ export default function Talk() {
               <div key={post.id} className="post">
                 {/* 상단 프로필 영역 */}
                 <div className="post-header">
-                  <div>
-                    <div className="post-user">
-                      <img
-                        src={post.member?.profile_img || "/default-profile.png"}
-                        alt="프로필"
-                        className="profile-img"
-                      />
-                      <span className="username">{post.member?.nickname || "익명"}</span>
-                    </div>
-                    <span className="post-meta">
-                      {post.location} · {new Date(post.created_at).toLocaleString()}
-                    </span>
+                  <div className="post-user">
+                    <img
+                      src={post.member?.profile_img || "/default-profile.png"}
+                      alt="프로필"
+                      className="profile-img"
+                    />
+                    <span className="username">{post.member?.nickname || "익명"}</span>
                   </div>
+                  <span className="post-meta">
+                    {post.location} · {new Date(post.created_at).toLocaleString()}
+                  </span>
                 </div>
 
                 {/* 이미지 클릭 시 talkview로 이동 */}
@@ -154,10 +214,12 @@ export default function Talk() {
                     <span>{post.commentCount}</span>
                   </Link>
 
-                  <button type="button" className="action-btn">
-                    <img src="/image/icon/heart-1.svg" alt="좋아요" className="action-icon" />
-                    <span>0</span>
-                  </button>
+                  <HeartButton
+                    postId={post.id}
+                    currentUser={currentUser}
+                    likeCount={post.like}
+                    onLike={handleLike}
+                  />
                 </div>
               </div>
             ))

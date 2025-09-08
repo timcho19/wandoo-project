@@ -1,7 +1,8 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './styles/GlobalStyle';
-import { HelmetProvider } from "react-helmet";
+import { Helmet } from 'react-helmet';
+
 // import './styles/reset.css';
 
 import Home from './pages/Home';
@@ -22,7 +23,10 @@ import LayoutWithNav from './layouts/LayoutWithNav';
 function App() {
   return (
     <>
-    <HelmetProvider>
+       <Helmet>
+        <title>WANDOO</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Helmet>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
@@ -45,7 +49,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Bubble/>
-    </HelmetProvider>
+ 
     </>
   );
 }

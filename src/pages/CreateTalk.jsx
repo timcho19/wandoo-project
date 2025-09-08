@@ -4,6 +4,8 @@ import '../styles/CreateTalk.css';
 import { supabase } from "../supabase";
 import { createClient } from '@supabase/supabase-js';
 import { URL, KEY } from '../supabase';
+import { Helmet } from 'react-helmet';
+
 
 // Supabase 클라이언트 생성 (중복 제거)
 // const supabase = createClient(URL, KEY)
@@ -115,6 +117,11 @@ const handleSubmit = async (e) => {
   if (loading) return null;
 
   return (
+    <>
+      <Helmet>
+        <title>완두톡 글쓰기 | WANDOO</title>
+      </Helmet>
+    
     <div className="container">
       <header className="header">
         <div className="header-left">
@@ -230,5 +237,6 @@ const handleSubmit = async (e) => {
         </form>
       </main>
     </div>
+    </>
   );
 }

@@ -25,7 +25,7 @@ function App() {
     <>
        <Helmet>
         <title>WANDOO</title>
-        <link rel="icon" href="/images/character/wandoo2.png" />
+        <link rel="icon" href="/image/character/wandoo2.png" />
 
       </Helmet>
       <GlobalStyle />

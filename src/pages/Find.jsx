@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 import GroupList from '../components/GroupList';
 import InterestGroupList from '../components/InterestGroupList';
 import LocationGroupList from '../components/LocationGroupList';
+import { Helmet } from 'react-helmet';
+
 
 export default function Find(){
   return(
     <>
+        <Helmet>
+            <title>모임찾기 | WANDOO</title>
+         </Helmet>
         <div className="find-container">
         <Link to="/createfind " className="floating-btn" aria-label="모임 만들기"><img src="/image/icon/add.svg" alt="" /></Link>
         <header className="header">

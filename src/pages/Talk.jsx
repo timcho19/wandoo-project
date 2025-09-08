@@ -5,6 +5,8 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../styles/Talk.css";
 import HeartButton from "../components/HeartButton";
+import { Helmet } from 'react-helmet';
+
 
 export default function Talk() {
   const [posts, setPosts] = useState([]);
@@ -120,6 +122,9 @@ export default function Talk() {
   };
   return (
     <>
+      <Helmet>
+        <title>완두톡 | WANDOO</title>
+      </Helmet>
       <div className="talk-container">
         <header className="header">
           <div className="logo">WANDOO TALK</div>

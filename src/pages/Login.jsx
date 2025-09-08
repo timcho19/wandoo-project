@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import '../styles/Login.css';
+import { Helmet } from 'react-helmet';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -107,6 +109,10 @@ export default function Login() {
   }, [navigate]);
 
   return (
+    <>
+    <Helmet>
+        <title>로그인 | WANDOO</title>
+      </Helmet>
     <div className="login-container">
       <Link to="/" className="login-title">
         <img src="./image/logo/wandoologo.png" alt="" />
@@ -163,5 +169,6 @@ export default function Login() {
       </div>
       <div className="login-sns-desc">소셜 계정으로 간편하게 로그인하세요</div>
     </div>
+    </>
   );
 }

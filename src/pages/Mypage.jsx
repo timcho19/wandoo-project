@@ -4,6 +4,8 @@ import '../styles/Mypage.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabase';
+import { Helmet } from 'react-helmet';
+
 
 export default function Mypage() {
   const navigate = useNavigate();
@@ -57,6 +59,9 @@ export default function Mypage() {
 
   return (
     <>
+      <Helmet>
+        <title>마이페이지 | WANDOO</title>
+      </Helmet>
       <div className="mypage-container">
         <header className="header">
           <div className="logo">MY PAGE</div>

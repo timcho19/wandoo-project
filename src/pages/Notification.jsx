@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
 import '../styles/Notification.css'
+import { Helmet } from 'react-helmet';
+
 
 export default function Notification(){
   return(
+    <>
+        <Helmet>
+        <title>회원가입 | WANDOO</title>
+        </Helmet>
+    
     <div className="noti-container">
         <header className="header">
             <Link to="/" className="back-button"><img src="./image/icon/arrow-left.svg" alt=""/></Link>
@@ -64,5 +71,6 @@ export default function Notification(){
         </div>
         
     </div>
+    </>
   )
 }

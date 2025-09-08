@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import '../styles/CreateFind.css';
 import { supabase } from '../supabase';
+import { Helmet } from 'react-helmet';
+
 
 export default function CreateFind() {
   const navigate = useNavigate();
@@ -149,6 +151,9 @@ export default function CreateFind() {
 
   return (
     <>
+      <Helmet>
+        <title>모임개설 수정 | WANDOO</title>
+      </Helmet>
       <div className="container">
         <header className="header">
           <div className="header-left">

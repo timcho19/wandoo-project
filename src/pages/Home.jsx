@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import GroupList from '../components/GroupList';
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
+import { Helmet } from 'react-helmet';
+
 
 export default function Home() {
   const [position, setPosition] = useState('');
@@ -28,6 +30,11 @@ export default function Home() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+        <title>홈 | WANDOO</title>
+      </Helmet>
+    
     <div className="main-container">
       <Homeheader/>
       <div className="main-search">
@@ -64,5 +71,6 @@ export default function Home() {
       </div>
       <Footer/>
     </div>
+    </>
   )
 }

@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '../supabase';
 import '../styles/Signup.css';
 import { v4 as uuidv4 } from 'uuid';
+import { Helmet } from 'react-helmet';
+
 export default function Signup() {
   const location = useLocation();
   const [password, setPassword] = useState('');
@@ -140,6 +142,10 @@ export default function Signup() {
   }, [location]);
 
   return (
+    <>
+    <Helmet>
+      <title>회원가입 | WANDOO</title>
+    </Helmet>
     <div className="login-container">
       <div className="login-subtitle">회원가입</div>
       <form className="login-form" onSubmit={handleSignup}>
@@ -298,5 +304,6 @@ export default function Signup() {
 
       <Link to="/login" className="login-back">로그인으로 돌아가기</Link>
     </div>
+    </>
   );
 }

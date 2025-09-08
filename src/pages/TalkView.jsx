@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Comments from "../components/Comments";
+import { Helmet } from 'react-helmet';
 import "../styles/TalkView.css";
 
 
@@ -97,7 +98,9 @@ export default function TalkView() {
 
   return (
     <>
-  
+    <Helmet>
+      <title>완두톡 글보기 | WANDOO</title>
+    </Helmet>
 
     <div className="container">
       {/* 헤더 */}

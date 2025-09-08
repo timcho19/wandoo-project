@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/FindView.css";
 import { supabase } from "../supabase";
+import { Helmet } from 'react-helmet';
+
 
 export default function FindView() {
   const { id } = useParams();
@@ -83,6 +85,10 @@ export default function FindView() {
   }
 
   return (
+    <>
+      <Helmet>
+        <title>모임 글보기 | WANDOO</title>
+      </Helmet>
     <div className="findview-container">
       <header className="header">
         <Link to="/find" className="back-button">
@@ -185,5 +191,6 @@ export default function FindView() {
         </section>
       </main>
     </div>
+    </>
   );
 }

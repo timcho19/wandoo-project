@@ -194,11 +194,13 @@ export default function Talk() {
 
                 {/* 게시글 내용 */}
                 <div className="post-content">
+                  <pre className="description-pre">
                   <Link to={`/talkview/${post.id}`} className="post-text">
                     {expandedPosts[post.id]
                       ? post.description
                       : `${post.description.slice(0, 100)}`}
                   </Link>
+                  </pre>
                   {post.description.length > 100 && (
                     <div
                       className="more-btn"

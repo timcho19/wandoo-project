@@ -132,11 +132,12 @@ export default function CreateFind() {
         .from('meetings')
         .update([updateData])
         .eq('id', id)
+        .select();
 
       if (error) throw error;
 
       alert('글 수정이 정상적으로 되었습니다!');
-      navigate('/');
+      navigate('/findview/' + data[0].id);
     } catch (err) {
       console.error('글 수정 실패', err.message);
       alert('글 수정 중 오류가 발생했습니다.');

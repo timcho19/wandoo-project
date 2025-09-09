@@ -150,7 +150,8 @@ export default function TalkView() {
 
           {post.image_url && <img src={post.image_url} alt="게시글 이미지" className="post-image" /> }
           <div className="postview-content">
-            <p className="post-text">{post.description}</p>
+            <pre className="post-text description-pre">{post.description}</pre>
+           
           </div>
         </article>
       </main>

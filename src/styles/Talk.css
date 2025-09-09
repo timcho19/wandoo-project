@@ -15,6 +15,18 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 720px) {
+    .talk-container {
+        padding: 123px 16px 60px;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    .talk-container {
+        padding: 113px 16px 60px;
+
+}
 
 
 

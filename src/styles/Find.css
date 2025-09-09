@@ -71,6 +71,9 @@
         font-size: 22px;
         line-height: 32px;
     }
+    .find-container {
+        padding: 123px 16px 60px;
+    }
 }
 
 
@@ -84,6 +87,9 @@
     .find-container .members-title{
         font-size: 20px;
         line-height: 30px;
+    }
+    .find-container {
+        padding: 113px 12px 60px;
     }
 
 

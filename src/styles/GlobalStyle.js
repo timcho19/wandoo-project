@@ -856,6 +856,12 @@ const GlobalStyle = createGlobalStyle`
 
        
       }
+      .search-section {
+        margin-bottom: 50px;
+      }
+        .search-section {
+        margin-bottom: 40px;
+      }
 
     }
       @media (max-width: 480px) {

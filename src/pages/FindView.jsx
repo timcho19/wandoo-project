@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "../styles/FindView.css";
 import { supabase } from "../supabase";
 import { Helmet } from 'react-helmet';
-import { navigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 
 export default function FindView() {
@@ -11,7 +11,7 @@ export default function FindView() {
   const [meeting, setMeeting] = useState(null);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchMeeting = async () => {
       setLoading(true);
@@ -84,6 +84,7 @@ export default function FindView() {
       window.location.href = '/find'; // 모임 목록 페이지로 이동
     } 
   }
+  
   const joinHandler = () => {
      if(email){
       alert('참여 신청이 완료되었습니다!\n모임장이 승인하면 참여할 수 있어요 :)') ;

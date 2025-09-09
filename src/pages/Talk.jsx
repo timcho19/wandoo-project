@@ -12,7 +12,7 @@ export default function Talk() {
   const [posts, setPosts] = useState([]);
   const [expandedPosts, setExpandedPosts] = useState({});
   const [currentUser, setCurrentUser] = useState(null);
-  // ...기존 코드...
+
 
   // 1️⃣ 현재 로그인한 사용자 가져오기
   useEffect(() => {

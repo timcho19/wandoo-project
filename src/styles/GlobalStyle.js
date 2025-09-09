@@ -211,6 +211,41 @@ const GlobalStyle = createGlobalStyle`
         width: 36px;
         height: 38px;
     }
+    /* 검색 영역 */
+    .search-section {
+        background: white;
+        border-radius: 20px;
+        padding: 12px;
+        margin-bottom: 60px;
+    }
+
+    .filter-area {
+        display: flex;
+        gap: 24px;
+        padding: 0 16px;
+        margin-bottom: 16px;
+    }
+
+    .filter-select {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 34px;
+        color: #000;
+        background: transparent;
+        border: none;
+        appearance: none;
+        background-image: url('/image/icon/arrow-drop-down.svg');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 31px;
+        padding-right: 40px;
+        cursor: pointer;
+    }
+
+    .filter-select:focus {
+        outline: none;
+    }   
 
         /* serch bar end*/
         /*배너*/
@@ -241,15 +276,15 @@ const GlobalStyle = createGlobalStyle`
 
     .banner-subtitle {
         font-size: 24px;
-        font-weight: 700;
+        font-weight: 500;
         line-height: 34px;
         margin-bottom: 12px;
     }
 
     .banner-title {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 700;
-        line-height: 48px;
+        line-height: 34px;
     }
 
     .banner-icon {
@@ -411,9 +446,27 @@ const GlobalStyle = createGlobalStyle`
       .bottom-nav {
         max-width: 100vw;
       }
+       .banner-subtitle {
+        font-size: 22px;
+        line-height: 32px;
+      }
+
+      .banner-title {
+        font-size: 26px;
+       line-height: 32px;
+      }
     }
 
     @media (max-width: 480px) {
+      .banner-subtitle {
+        font-size: 20px;
+        line-height: 30px;
+      }
+
+      .banner-title {
+        font-size: 24px;
+        line-height: 30px;
+      }
     .bottom-nav-items {
       gap: 16px;
       padding: 0 18px 0 18px;
@@ -465,7 +518,14 @@ const GlobalStyle = createGlobalStyle`
         grid-template-columns: 1fr 1fr;
     }
 
+    .banner {
+        height: 148px;
+        padding: 40px 24px;
     }
+
+
+
+    }/*반응형구간 end*/
 
     /*하단 nav end */
 
@@ -752,7 +812,6 @@ const GlobalStyle = createGlobalStyle`
         color: white;
         font-size: 18px;
         font-weight: 700;
-        line-height: 25.2px;
         z-index: 1;
     }
 
@@ -781,16 +840,38 @@ const GlobalStyle = createGlobalStyle`
         color: #777777;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 720px) {
+        
+
+      .card-title {
+            font-size: 16px;
+        }
+
+      .card-schedule {
+            font-size: 14px;
+      }
+       .card-category {
+    
+        font-size: 16px;
+
+       
+      }
+
+    }
+      @media (max-width: 480px) {
         
 
         .card-title {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .card-schedule {
             font-size: 14px;
         }
+      .logo {
+        font-size: 28px;
+   
+       }   
     }
 
     /*카드리스트 썸네일 thumb end*/

@@ -6,41 +6,7 @@
     background: #f4f4f4;
 }
 
-/* 검색 영역 */
-.search-section {
-    background: white;
-    border-radius: 20px;
-    padding: 12px;
-    margin-bottom: 60px;
-}
 
-.filter-area {
-    display: flex;
-    gap: 24px;
-    padding: 0 16px;
-    margin-bottom: 16px;
-}
-
-.filter-select {
-    width: 100%;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 34px;
-    color: #000;
-    background: transparent;
-    border: none;
-    appearance: none;
-    background-image: url('/image/icon/arrow-drop-down.svg');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 31px;
-    padding-right: 40px;
-    cursor: pointer;
-}
-
-.filter-select:focus {
-    outline: none;
-}
 
 /* .search-bar {
     position: relative;
@@ -68,6 +34,12 @@
     height: 38px;
 } */
 
+.find-container .members-title{
+    font-size: 24px;
+    font-weight: 700;
+    color: #1B1B1B;
+    line-height: 34px;
+}
 
 
 /* 모임 목록 섹션 */
@@ -94,6 +66,13 @@
 }
 
 
+@media (max-width: 720px) {
+    .find-container .members-title{
+        font-size: 22px;
+        line-height: 32px;
+    }
+}
+
 
 
 
@@ -102,6 +81,11 @@
 /* 반응형 스타일 */
 @media (max-width: 480px) {
     
+    .find-container .members-title{
+        font-size: 20px;
+        line-height: 30px;
+    }
+
 
   
     .section-title {
@@ -125,9 +109,7 @@
         padding: 16px 12px 60px;
     }
 
-    .filter-select {
-        font-size: 20px;
-    }
+
 
 
     /* .card-image {

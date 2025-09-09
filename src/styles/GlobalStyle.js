@@ -259,11 +259,11 @@ const GlobalStyle = createGlobalStyle`
 
     .banner {
         position: relative;
-        height: 168px;
         border-radius: 20px;
-        padding: 46px 28px;
+        padding: 30px 24px;
         color: #1B1B1B;
         overflow: hidden;
+        box-sizing: border-box;
     }
 
     .banner.green {
@@ -443,6 +443,9 @@ const GlobalStyle = createGlobalStyle`
     }
 
     @media (max-width: 720px) {
+      .banner{
+      padding: 24px 20px;
+      }
       .bottom-nav {
         max-width: 100vw;
       }
@@ -454,6 +457,7 @@ const GlobalStyle = createGlobalStyle`
       .banner-title {
         font-size: 26px;
        line-height: 32px;
+       
       }
     }
 
@@ -482,8 +486,8 @@ const GlobalStyle = createGlobalStyle`
   
     /*배너*/
       .banner {
-      height: 140px;
-      padding: 32px 20px;
+      padding: 16px 16px;
+    
     }
 
     .banner-subtitle {
@@ -518,10 +522,7 @@ const GlobalStyle = createGlobalStyle`
         grid-template-columns: 1fr 1fr;
     }
 
-    .banner {
-        height: 148px;
-        padding: 40px 24px;
-    }
+   
 
 
 

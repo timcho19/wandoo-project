@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "../styles/FindView.css";
 import { supabase } from "../supabase";
 import { Helmet } from 'react-helmet';
+import { navigate } from 'react-router-dom';
 
 
 export default function FindView() {
@@ -82,6 +83,19 @@ export default function FindView() {
       alert('모임이 삭제되었습니다.');
       window.location.href = '/find'; // 모임 목록 페이지로 이동
     } 
+  }
+  const joinHandler = () => {
+     if(email){
+      alert('참여 신청이 완료되었습니다!\n모임장이 승인하면 참여할 수 있어요 :)') ;
+      
+     }else{
+      alert('로그인 후 참여 신청이 가능합니다 :)');
+      navigate('/login');
+     }
+     
+
+      
+     
   }
 
   return (
@@ -186,9 +200,7 @@ export default function FindView() {
                     <button className="host-btn-delete"  onClick={handlerDelete}>삭제</button>
                   </div>
                 ) : (
-                    <button className="join-btn" onClick={()=>{
-                     email ? alert('참여 신청이 완료되었습니다!\n모임장이 승인하면 참여할 수 있어요 :)') : alert('로그인 후 참여 신청이 가능합니다 :)')
-                    }}>참여하기</button>
+                    <button className="join-btn" onClick={joinHandler}>참여하기</button>
                 )}
         </section>
       </main>

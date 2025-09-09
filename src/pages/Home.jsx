@@ -38,7 +38,7 @@ export default function Home() {
     <div className="main-container">
       <Homeheader/>
       <div className="main-search">
-        <div className="main-search-title">[{email ? position : '완두'}]에서<br/>어떤 모임을 찾고 계신가요?</div>
+        <div className="main-search-title"><span>{email ? position : '완두'}</span> 에서<br/>어떤 모임을 찾고 계신가요?</div>
         <div className="search-bar">
           <input type="text" className="search-input" placeholder="검색어를 입력해주세요" />
           <img src="/image/icon/arrow.svg" alt="검색" className="search-icon" />

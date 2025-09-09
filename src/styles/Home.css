@@ -23,6 +23,10 @@
   font-family: 'Pretendard', sans-serif;
   line-height: 34px;
 }
+.main-search-title > span{
+  color: #40B440;
+  font-size: 26px;
+}
 
 
 
@@ -129,6 +133,24 @@
 }
 
 
+@media screen and (max-width: 720px) {
+  .main-search-title,.main-category-title,.main-group-title{
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+}
+@media screen and (max-width: 480px) {
+  .main-search-title,.main-category-title,.main-group-title{
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .category-card .label {
+  font-size: 16px;
+
+  }
+
+}
 
 
 

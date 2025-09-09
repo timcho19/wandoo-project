@@ -193,9 +193,7 @@
     font-size: 18px;
   }
 
-  .login-sns-list {
-    gap: 20px;
-  }
+ 
 }
 
 @media (max-width: 480px) {
@@ -233,9 +231,7 @@
     font-size: 14px;
   }
 
-  .login-sns-list {
-    gap: 8px;
-  }
+
 
   .login-btn,
   .signup-btn {

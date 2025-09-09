@@ -3,6 +3,7 @@
     margin: 0 auto;
     background-color: #f4f4f4;
     padding-bottom: 32px;
+    margin-top: 73px;
 }
 
 /* 메인 이미지 */
@@ -77,10 +78,10 @@
     flex-direction: column;
     gap: 30px;
 }
-.members-title{
+.findview-container .members-title{
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     color: #000;
 }
 
@@ -184,4 +185,26 @@
 
 .join-btn:hover {
     background-color: #379B37;
+}
+
+@media screen and (max-width: 480px) {
+   .tag {
+    font-size: 14px;
+    padding: 4px 10px;
+   }
+   .member-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    }
+
+    .member-avatar {
+        position: relative;
+        width: 36px;
+        height: 36px;
+    }
+
+
+
+    
 }

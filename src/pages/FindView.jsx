@@ -186,7 +186,9 @@ export default function FindView() {
                     <button className="host-btn-delete"  onClick={handlerDelete}>삭제</button>
                   </div>
                 ) : (
-                    <button className="join-btn">참여하기</button>
+                    <button className="join-btn" onClick={()=>{
+                     email ? alert('참여 신청이 완료되었습니다!\n모임장이 승인하면 참여할 수 있어요 :)') : alert('로그인 후 참여 신청이 가능합니다 :)')
+                    }}>참여하기</button>
                 )}
         </section>
       </main>

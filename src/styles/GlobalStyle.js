@@ -616,7 +616,7 @@ const GlobalStyle = createGlobalStyle`
     .login-container {
       max-width: 720px;
       margin: 0 auto;
-      padding: 24px 16px 60px 16px;
+      padding: 24px 16px 90px;
       box-sizing: border-box;
       background: #f4f4f4;
       min-height: 100vh;

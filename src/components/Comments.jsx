@@ -59,16 +59,18 @@ export default function Comments({ postId, currentUser }) {
             <div key={comment.id} className="comment">
               <div className="comment-header">
                 <div className="comment-user">
-                  <button type="button" className="profile-btn">
-                    <img
-                      src={comment.member?.profile_img || "/image/profile/person-11.jpg"}
-                      alt="프로필"
-                    />
-                  </button>
-                  <span className="username">{comment.member?.nickname || "익명"}</span>
-                  <span style={{ color: "#777", fontSize: "12px" }}>
-                    {comment.created_at ? `${new Date(comment.created_at).toLocaleDateString()} ${new Date(comment.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}  ` : ""}
-                  </span>
+                  <div className="comment-user-info">
+                    <button type="button" className="profile-btn">
+                      <img
+                        src={comment.member?.profile_img || "/image/profile/person-11.jpg"}
+                        alt="프로필"
+                      />
+                    </button>
+                    <span className="username">{comment.member?.nickname || "익명"}</span>
+                    <span style={{ color: "#777", fontSize: "12px" }}>
+                      {comment.created_at ? `${new Date(comment.created_at).toLocaleDateString()} ${new Date(comment.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}  ` : ""}
+                    </span>
+                  </div>
 
                   {/* 내 댓글이면 더보기 버튼 보여주기 */}
                   {currentUser?.id === comment.member?.id && (

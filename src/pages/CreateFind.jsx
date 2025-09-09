@@ -81,7 +81,11 @@ export default function CreateFind() {
     e.preventDefault();
 
     // 입력값 검증 (필수)
-    if (!formData.title || !formData.category || !formData.position || !formData.participants || !formData.week) {
+    if (!formData.title || !formData.category || !formData.position || !formData.participants ) {
+      alert('필수 항목을 모두 입력해주세요.');
+      return;
+    }
+    if( meetingType === '정기모임' && !formData.week) {
       alert('필수 항목을 모두 입력해주세요.');
       return;
     }

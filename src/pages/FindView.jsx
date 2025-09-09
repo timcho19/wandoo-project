@@ -168,7 +168,7 @@ export default function FindView() {
             </div>
           </section>
           <section className="members-section">
-            <h2 className="members-title">현재 참여 인원</h2>
+            <h2 className="members-title">현재 참여 인원 (3)</h2>
             <div className="member-list">
               <div className="member-item">
                 <div className="member-avatar">

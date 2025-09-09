@@ -75,7 +75,7 @@ export default function Talk() {
       [postId]: !prev[postId],
     }));
   };
-  console.log(posts);
+ 
 
   // 좋아요 클릭 시 posts 테이블 like 컬럼 +1
   // 좋아요 토글: 누르면 증가, 다시 누르면 감소

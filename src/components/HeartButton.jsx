@@ -34,7 +34,7 @@ export default function HeartButton({ postId, currentUser, likeCount, onLike }) 
         alt="좋아요"
         className="action-icon"
       />
-      <span>{likeCount}</span>
+      <span>{typeof likeCount === 'number' && likeCount >= 0 ? likeCount : 0}</span>
     </button>
   );
 }

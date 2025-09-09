@@ -67,7 +67,7 @@ export default function Comments({ postId, currentUser }) {
                   </button>
                   <span className="username">{comment.member?.nickname || "익명"}</span>
                   <span style={{ color: "#777", fontSize: "12px" }}>
-                    · {comment.created_at ? new Date(comment.created_at).toLocaleString() : ""}
+                    {comment.created_at ? `${new Date(comment.created_at).toLocaleDateString()} ${new Date(comment.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}  ` : ""}
                   </span>
 
                   {/* 내 댓글이면 더보기 버튼 보여주기 */}

@@ -81,7 +81,7 @@ export default function CreateFind() {
     e.preventDefault();
 
     // 입력값 검증 (필수)
-    if (!formData.title || !formData.category || !formData.position || !formData.participants) {
+    if (!formData.title || !formData.category || !formData.position || !formData.participants || !formData.week) {
       alert('필수 항목을 모두 입력해주세요.');
       return;
     }
@@ -104,12 +104,13 @@ export default function CreateFind() {
     try {
       const { data, error } = await supabase
         .from('meetings')
-        .insert([insertData]);
+        .insert([insertData])
+        .select();
 
       if (error) throw error;
 
       alert('모임이 성공적으로 개설되었습니다!');
-      navigate('/');
+      navigate('/findview/' + data[0].id);
     } catch (err) {
       console.error('모임 개설 실패:', err.message);
       alert('모임 개설 중 오류가 발생했습니다.');
@@ -184,7 +185,7 @@ export default function CreateFind() {
                     value={formData.week}
                     onChange={handleChange}
                   >
-                    <option value="" disabled>매주</option>
+                    <option value="" disabled>모임주기</option>
                     <option value="매주">매주</option>
                     <option value="첫째 주">첫째 주</option>
                     <option value="둘째 주">둘째 주</option>
@@ -301,6 +302,7 @@ export default function CreateFind() {
                 id="title"
                 value={formData.title}
                 onChange={handleChange}
+                maxLength="15"
               />
             </div>
 

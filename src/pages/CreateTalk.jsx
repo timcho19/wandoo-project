@@ -213,6 +213,7 @@ const handleSubmit = async (e) => {
     value={formData.title || ""}
     onChange={handleChange}
     required
+    maxLength="10"
   />
 </div>
 

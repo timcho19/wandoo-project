@@ -11,6 +11,8 @@ export default function FindView() {
   const [meeting, setMeeting] = useState(null);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState(null);
+  const [authorProfile, setAuthorProfile] = useState(null);
+  const [authorNickname, setAuthorNickname] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchMeeting = async () => {
@@ -18,13 +20,23 @@ export default function FindView() {
       const { data, error } = await supabase
         .from("meetings")
         .select("*")
-        .eq("id", id) // URL의 id값과 같은 데이터만
+        .eq("id", id)
         .single();
 
       if (error) {
         console.error("모임 불러오기 에러:", error);
       } else {
         setMeeting(data);
+        // 작성자 정보(member 테이블에서 조회)
+        if (data?.email) {
+          const { data: memberData } = await supabase
+            .from('member')
+            .select('nickname, profile_img')
+            .eq('email', data.email)
+            .single();
+          setAuthorProfile(memberData?.profile_img || "/image/profile/person-11.jpg");
+          setAuthorNickname(memberData?.nickname || "익명");
+        }
       }
       setLoading(false);
     };
@@ -42,6 +54,7 @@ export default function FindView() {
 
 
         setEmail(userRow.email)
+        
       }
 
 
@@ -172,10 +185,10 @@ export default function FindView() {
             <div className="member-list">
               <div className="member-item">
                 <div className="member-avatar">
-                  <img src="/image/profile/person-3.jpg" alt="프로필 이미지" className="member-picture" />
+                  <img src={authorProfile} alt="프로필 이미지" className="member-picture" />
                   <img src="/image/icon/crown.svg" alt="방장" className="host-badge" />
                 </div>
-                <span className="member-name">홍길동</span>
+                <span className="member-name">{authorNickname}</span>
                 <Link to="/" className="chat-btn">{meeting.email === email ? '문의관리' : ' 1:1 문의'}</Link>
               </div>
               <div className="member-item">

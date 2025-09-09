@@ -181,7 +181,7 @@ export default function Talk() {
                     <span className="username">{post.member?.nickname || "익명"}</span>
                   </div>
                   <span className="post-meta">
-                    {post.location} · {new Date(post.created_at).toLocaleString()}
+                    {post.location} · {new Date(post.created_at).toLocaleDateString()} {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
 

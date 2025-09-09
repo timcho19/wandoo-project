@@ -50,7 +50,7 @@ export default function Comments({ postId, currentUser }) {
       <h2 className="comments-title">댓글</h2>
 
       <div className="comments-list">
-        {comments.length === 0 ? (
+        {comments.length === 0 && currentUser  ? (
           <div className="no-comments" style={{ textAlign: 'center', color: '#888', padding: '1rem' }}>
             현재 입력된 댓글이 없습니다.
           </div>

@@ -130,7 +130,7 @@ export default function TalkView() {
               <div className="user-info">
                 <span className="username">{post.member?.nickname}</span>
                 <span className="post-meta">
-                  {post.location} · {new Date(post.created_at).toLocaleString()}
+                  {post.location} · {new Date(post.created_at).toLocaleDateString()} {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}                 
                 </span>
               </div>
             </div>
@@ -158,6 +158,7 @@ export default function TalkView() {
 
       {/* 댓글 */}
       {/* 댓글 목록은 항상 렌더링 */}
+      
       <Comments postId={post.id} currentUser={currentUser} />
 
       {/* 로그인 안내 메시지는 필요하면 따로 */}

@@ -22,6 +22,12 @@
   margin-bottom: 16px;
   font-family: 'Pretendard', sans-serif;
   line-height: 34px;
+  
+}
+.search-phrase{
+  display: flex;
+  align-items:first baseline;
+  gap: 12px;
 }
 .main-search-title > span{
   color: #40B440;
@@ -38,6 +44,7 @@
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 60px;
+ 
 }
 
 .main-category-title {
@@ -73,6 +80,7 @@
   padding: 0 24px 24px 0;
   background-color: #b2e0ae;
   transition: width 0.2s, min-width 0.2s;
+  cursor: pointer;
 }
 
 .category-card {

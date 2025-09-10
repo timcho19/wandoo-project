@@ -988,6 +988,9 @@ const GlobalStyle = createGlobalStyle`
         height: 24px;
     }
     /*완두톡 게시글 end */
+    .back-button{
+      cursor: pointer;
+    }
 `;
 
 export default GlobalStyle;

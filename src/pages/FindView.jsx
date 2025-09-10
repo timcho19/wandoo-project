@@ -119,9 +119,11 @@ export default function FindView() {
       </Helmet>
       <div className="findview-container">
         <header className="header">
-          <Link to="/find" className="back-button">
+          <button onClick={()=>{
+            navigate(-1);
+          }} className="back-button">
             <img src="/image/icon/arrow-left.svg" alt="뒤로가기" />
-          </Link>
+          </button>
           <h1 className="page-title">{meeting.title}</h1>
           <div className="header-actions">
             <button type="button" className="icon-btn">

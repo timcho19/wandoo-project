@@ -35,7 +35,7 @@ export default function GroupList({ limit, searchTerm = '', onResultCountChange}
         // Supabase에서 meetings 데이터 조회
         let query = supabase
           .from("meetings")
-          .select("id, title, type, participants, category, location, date, recurrence_type, recurrence_days, image_url")
+          .select("*")
           .order("created_at", { ascending: false });
 
         // limit이 없으면 모든 데이터 가져오기 (검색을 위해)
@@ -65,7 +65,7 @@ export default function GroupList({ limit, searchTerm = '', onResultCountChange}
 
     fetchMeetingsWithMembers();
   }, [limit]);
-
+  console.log(allMeetings);
   // 검색어가 변경될 때마다 필터링 (로딩 없음)
   useEffect(() => {
     if (allMeetings.length === 0) return;
@@ -73,19 +73,22 @@ export default function GroupList({ limit, searchTerm = '', onResultCountChange}
     let filteredData = allMeetings;
     
     // 검색어가 있는 경우 필터링
-    if (searchTerm && searchTerm.trim()) {
+    if (searchTerm && searchTerm.trim() !== '' && searchTerm.trim() !== '전체보기') {
       filteredData = allMeetings.filter(meeting => 
         meeting.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         meeting.location?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        meeting.category?.toLowerCase().includes(searchTerm.toLowerCase())
+        meeting.category?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        meeting.description?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     } else if (limit && !searchTerm) {
       // 검색어가 없고 limit이 있으면 제한
       filteredData = allMeetings.slice(0, limit);
+    }else if(searchTerm && searchTerm.trim() === '전체보기'){
+      filteredData = allMeetings;
     }
 
     setMeetings(filteredData);
-
+    
     // 검색 결과 개수를 부모 컴포넌트로 전달
     if (onResultCountChange) {
       onResultCountChange(filteredData.length);

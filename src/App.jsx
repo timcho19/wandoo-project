@@ -26,7 +26,15 @@ function App() {
        <Helmet>
         <title>WANDOO</title>
         <link rel="icon" href="/image/character/wandoo2.png" />
-
+        <meta name="robots" content="index, follow"/> 
+        <meta name="description" content="당신의 취향을 한곳에"/>
+        <meta name="keywords" content="소모임,커뮤니티,동네,친구,모임,취미"/>
+        <meta name="author" content="미니콩즈"/>
+        <meta property="og:url" content="https://wandoo-project.vercel.app/" />
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="Wandoo" /> 
+        <meta property="og:description" content="당신의 취향을 한곳에" /> 
+        <meta property="og:image" content="/image/logo/wandoologo.png" />
       </Helmet>
       <GlobalStyle />
       <BrowserRouter>

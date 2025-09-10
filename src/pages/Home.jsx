@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import Homeheader from '../components/Homeheader';
 import { Link } from "react-router-dom";
 import GroupList from '../components/GroupList';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabase';
 import { Helmet } from 'react-helmet';
 
@@ -89,7 +89,21 @@ export default function Home() {
     setActiveSearchTerm(all);
  
   }
+  const bannerRef = useRef(null);
 
+  useEffect(() => {
+    const banner = bannerRef.current;
+    if (!banner) return;
+
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      banner.style.backgroundPosition = `center ${scrollY * 0.5}px`;
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
   return (
     <>
       <Helmet>

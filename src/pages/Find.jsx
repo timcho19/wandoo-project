@@ -14,10 +14,11 @@ export default function Find(){
       useEffect(() => {
         const handleScroll = () => {
           if (bannerRef.current) {
-            const scrollY = window.scrollY;
+            // const scrollY = window.scrollY;
             // 배경 위치를 스크롤에 따라 조정
-        
-            bannerRef.current.style.backgroundPosition = `center ${scrollY+400}px`;
+            const posY = Math.max(0, Math.min(window.scrollY * 0.9, 1000));
+
+            bannerRef.current.style.backgroundPosition = `center ${posY+400}px`;
           }
         };
         window.addEventListener('scroll', handleScroll);

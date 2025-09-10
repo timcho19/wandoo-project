@@ -33,7 +33,7 @@ export default function GroupList({ limit }) {
           .from("meetings")
           .select("*")
           .order("created_at", { ascending: false })
-          .limit(limit || 4); 
+          
 
         if (meetingsError) throw meetingsError;
 

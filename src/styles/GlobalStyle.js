@@ -261,13 +261,13 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
         border-radius: 20px;
         padding: 30px 24px;
-        color: #1B1B1B;
+        color: #fff;
         overflow: hidden;
         box-sizing: border-box;
-    }
-
-    .banner.green {
-        background: #5BC35B;
+        background-image: url('image/banner/minicongs.jpg');
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
     }
 
     .banner.yellow {
@@ -279,12 +279,14 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 500;
         line-height: 34px;
         margin-bottom: 12px;
+        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
     .banner-title {
         font-size: 28px;
         font-weight: 700;
         line-height: 34px;
+        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
     .banner-icon {

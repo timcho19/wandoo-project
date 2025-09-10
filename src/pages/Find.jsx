@@ -5,9 +5,25 @@ import GroupList from '../components/GroupList';
 import InterestGroupList from '../components/InterestGroupList';
 import LocationGroupList from '../components/LocationGroupList';
 import { Helmet } from 'react-helmet';
+import { useEffect, useRef } from 'react';
 
 
 export default function Find(){
+      const bannerRef = useRef();
+    
+      useEffect(() => {
+        const handleScroll = () => {
+          if (bannerRef.current) {
+            const scrollY = window.scrollY;
+            // 배경 위치를 스크롤에 따라 조정
+        
+            bannerRef.current.style.backgroundPosition = `center ${scrollY+400}px`;
+          }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
   return(
     <>
         <Helmet>
@@ -54,11 +70,11 @@ export default function Find(){
         </section>
 
         <section className="banner-section">
-            <Link to="/talk" className="banner green">
+            <div ref={bannerRef} className="banner green">
                 <p className="banner-subtitle">자유롭게 남기는 우리 동네 이야기</p>
                 <h2 className="banner-title">우리 동네 완두톡</h2>
                 <img src="/image/icon/arrow.svg" alt="" className="banner-icon" />
-            </Link>
+            </div>
             <Link to="/" className="banner yellow">
                 <p className="banner-subtitle">우리 모임 자랑 좀 들어볼래 ?</p>
                 <h2 className="banner-title">모임 후기 이벤트</h2>

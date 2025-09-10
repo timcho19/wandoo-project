@@ -89,44 +89,21 @@ export default function Home() {
     setActiveSearchTerm(all);
 
   }
-  const bannerRef = useRef(null);
+  const bannerRef = useRef();
+
   useEffect(() => {
-    const banner = bannerRef.current;
-    if (!banner) return;
-
-    // iOS 여부 체크
-    const isIOS = /iP(ad|hone|od)/.test(navigator.userAgent);
-
-    function handleScroll() {
-      const scrollY = window.scrollY;
-      banner.style.backgroundPosition = `center ${scrollY * 0.5}px`;
-
-      // iOS인 경우 음수 스크롤 보정 (필요시)
-      if (isIOS && banner.scrollTop < 0) {
-        banner.scrollTop = 0;
-      }
-    }
-
-    // iOS라면 터치 이벤트 핸들러 추가 (필요 시)
-    if (isIOS) {
-      banner.addEventListener('touchstart', () => {
-        // 터치 시작 시 추가 처리 필요하면 작성
-      });
-      banner.addEventListener('touchmove', () => {
-        // 터치 이동 시 추가 처리 필요하면 작성
-      });
-    }
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (isIOS) {
-        banner.removeEventListener('touchstart', () => { });
-        banner.removeEventListener('touchmove', () => { });
+    const handleScroll = () => {
+      if (bannerRef.current) {
+        const scrollY = window.scrollY;
+        // 배경 위치를 스크롤에 따라 조정
+    
+        bannerRef.current.style.backgroundPosition = `center ${scrollY + 200}px`;
       }
     };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   return (
     <>
@@ -185,11 +162,14 @@ export default function Home() {
               </div>
             </div>
             <section className="banner-section">
-              <Link to="/talk" className="banner green">
+              <div
+               ref={bannerRef}
+               className="banner green"
+              >
                 <p className="banner-subtitle">자유롭게 남기는 우리 동네 이야기</p>
                 <h2 className="banner-title">우리 동네 완두톡</h2>
                 <img src="/image/icon/arrow.svg" alt="" className="banner-icon" />
-              </Link>
+              </div>
             </section>
           </>
         )}

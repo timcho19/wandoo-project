@@ -269,6 +269,8 @@ const GlobalStyle = createGlobalStyle`
         background-attachment: fixed;
         background-repeat: no-repeat;
         height: '500px',
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
     }
 
     .banner.yellow {

@@ -81,29 +81,53 @@ export default function Home() {
     setIsSearching(true);
     setActiveSearchTerm(category.textContent);
   }
-  const allGrouptLists = () => { 
+  const allGrouptLists = () => {
     const all = document.querySelector('.category-list .label').innerText;
     console.log(all)
     setSearchTerm(all);
     setIsSearching(true);
     setActiveSearchTerm(all);
- 
+
   }
   const bannerRef = useRef(null);
-
   useEffect(() => {
     const banner = bannerRef.current;
     if (!banner) return;
 
+    // iOS 여부 체크
+    const isIOS = /iP(ad|hone|od)/.test(navigator.userAgent);
+
     function handleScroll() {
       const scrollY = window.scrollY;
       banner.style.backgroundPosition = `center ${scrollY * 0.5}px`;
+
+      // iOS인 경우 음수 스크롤 보정 (필요시)
+      if (isIOS && banner.scrollTop < 0) {
+        banner.scrollTop = 0;
+      }
+    }
+
+    // iOS라면 터치 이벤트 핸들러 추가 (필요 시)
+    if (isIOS) {
+      banner.addEventListener('touchstart', () => {
+        // 터치 시작 시 추가 처리 필요하면 작성
+      });
+      banner.addEventListener('touchmove', () => {
+        // 터치 이동 시 추가 처리 필요하면 작성
+      });
     }
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (isIOS) {
+        banner.removeEventListener('touchstart', () => { });
+        banner.removeEventListener('touchmove', () => { });
+      }
+    };
   }, []);
-  
+
   return (
     <>
       <Helmet>
@@ -152,12 +176,12 @@ export default function Home() {
             <div className="main-category" >
               <div className="main-category-title">카테고리별 모임</div>
               <div className="category-list">
-                <button  className="category-card" onClick={allGrouptLists}><span className="label">전체보기</span></button>
-                <button  className="category-card sports" onClick={categorySearch}><span className="label">운동/스포츠</span></button>
-                <button  className="category-card outdoor" onClick={categorySearch}><span className="label">스터디</span></button>
-                <button  className="category-card culture" onClick={categorySearch}><span className="label">문화/예술</span></button>
-                <button  className="category-card social" onClick={categorySearch}><span className="label">친목</span></button>
-                <button  className="category-card other" onClick={categorySearch}><span className="label">취미</span></button>
+                <button className="category-card" onClick={allGrouptLists}><span className="label">전체보기</span></button>
+                <button className="category-card sports" onClick={categorySearch}><span className="label">운동/스포츠</span></button>
+                <button className="category-card outdoor" onClick={categorySearch}><span className="label">스터디</span></button>
+                <button className="category-card culture" onClick={categorySearch}><span className="label">문화/예술</span></button>
+                <button className="category-card social" onClick={categorySearch}><span className="label">친목</span></button>
+                <button className="category-card other" onClick={categorySearch}><span className="label">취미</span></button>
               </div>
             </div>
             <section className="banner-section">

@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     /* body start */
     /* body 에니메이션 */
     body {
+      height:100vh;
       background-image: linear-gradient(to bottom,
           #fffdf8 0%,
           /* 아침: 아주 연한 크림 베이지 */

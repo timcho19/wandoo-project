@@ -18,7 +18,6 @@ export default function Mypage() {
   const fetchUser = async () => {
     const { data, error } = await supabase.auth.getUser();
     
-    
     if (data?.user?.email) {
       // user 테이블에서 nickname 조회
       const { data: userRow, error: userError } = await supabase

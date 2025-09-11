@@ -63,7 +63,7 @@ export default function TalkView() {
   }, [id]);
 
   // 🔥 수정: 로딩 중일 때 적절한 JSX 반환
-  if (loading) return <div>로딩 중...</div>;
+  if (loading) return <div style={{height:'100vh'}}>로딩 중...</div>;
 
   // 🔥 수정: post가 없을 때 처리
   if (!post) {

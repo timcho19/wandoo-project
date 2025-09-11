@@ -130,6 +130,23 @@
   transition: box-shadow 0.25s ease;
 }
 
+.mylists-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px
+}
+.myprofile{
+  display:flex;
+  gap: 8px;
+  align-items: center;
+}
+.logout{
+  display:flex;
+  gap: 8px;
+  align-items: center;
+}
 /* 호버호과 */
 .mylists-card:hover,
 .myprofile:hover,

@@ -1,24 +1,24 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import Comments from "../components/Comments";
 import { Helmet } from 'react-helmet';
 import "../styles/TalkView.css";
 
-
-
 export default function TalkView() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const TogleOptions = () => setMenuOpen(prev => !prev);
 
   useEffect(() => {
     const fetchPostWithMember = async () => {
       try {
         setLoading(true);
 
-        // 게시글 단일 조회
         const { data: postData, error: postError } = await supabase
           .from("posts")
           .select("*")
@@ -27,7 +27,6 @@ export default function TalkView() {
 
         if (postError) throw postError;
 
-        // member 정보 조회
         const { data: memberData } = await supabase
           .from("member")
           .select("id, nickname, profile_img")
@@ -50,7 +49,6 @@ export default function TalkView() {
 
       if (!session?.user) return;
 
-      // 현재 로그인 유저의 member 테이블 id 조회
       const { data: memberData } = await supabase
         .from("member")
         .select("id, nickname, profile_img,email")
@@ -58,116 +56,184 @@ export default function TalkView() {
         .single();
 
       setCurrentUser(memberData || null);
-      
     };
-   
+
     fetchPostWithMember();
     fetchCurrentUser();
   }, [id]);
 
-  if (loading) return;
-  // if (!post) return <p>게시글이 존재하지 않습니다.</p>;
-  const TogleOptions = (e) => {
-    const menu = document.querySelector('.more-options-menu');
+  // 🔥 수정: 로딩 중일 때 적절한 JSX 반환
+  if (loading) return <div style={{height:'100vh'}}>로딩 중...</div>;
 
-    if (menu.style.display === 'none' ) 
-      menu.style.display = 'flex';
-    else
-      menu.style.display = 'none';
+  // 🔥 수정: post가 없을 때 처리
+  if (!post) {
+    return (
+      <div className="container">
+        <p>게시글을 찾을 수 없습니다.</p>
+        <Link to="/talk">목록으로 돌아가기</Link>
+      </div>
+    );
   }
 
-    const handlerDelete = async() => {
+  const handlerDelete = async () => {
     const confirmDelete = window.confirm('정말로 이 글을 삭제하시겠습니까?\n삭제 후에는 복구할 수 없습니다.');
     if (!confirmDelete) return;
-    
-    const {data, error } = await supabase
-        .from('posts')
-        .delete()
-        .eq('id', id)
-        .eq('email', currentUser.email);
-    
-      console.log('삭제 결과:', data); // 삭제된 row 정보
- 
+
+    const { data, error } = await supabase
+      .from('posts')
+      .delete()
+      .eq('id', id)
+      .eq('email', currentUser.email);
+
+    console.log('삭제 결과:', data);
+
     if (error) {
       console.error('글 삭제 실패:', error);
     } else {
       alert('글이 삭제되었습니다.');
-      window.location.href = '/talk'; // 모임 목록 페이지로 이동
-    } 
+      window.location.href = '/talk';
+    }
   }
+
+  // 🔥 수정: 권한 체크를 더 안전하게
+  const isOwner = post && currentUser &&
+    post.email?.trim().toLowerCase() === currentUser.email?.trim().toLowerCase();
 
   return (
     <>
-    <Helmet>
-      <title>완두톡 글보기 | WANDOO</title>
-    </Helmet>
+      <Helmet>
+        <title>완두톡 글보기 | WANDOO</title>
+      </Helmet>
 
-    <div className="container">
-      {/* 헤더 */}
-      <header className="header">
-        <Link to="/talk" className="back-button">
-          <img src="/image/icon/arrow-left.svg" alt="뒤로가기" />
-        </Link>
-        <h1 className="page-title">{post.title}</h1>
-        <div className="header-actions">
-          <button type="button" className="icon-btn">
-            <img src="/image/icon/sharing.svg" alt="공유" className="header-icon" />
-          </button>
-          <button type="button" className="icon-btn">
-            <img src="/image/icon/report.svg" alt="신고" className="header-icon" />
-          </button>
-        </div>
-      </header>
+      <div className="container">
+        {/* 헤더 */}
+        <header className="header">
+          <Link to="/talk" className="back-button">
+            <img src="/image/icon/arrow-left.svg" alt="뒤로가기" />
+          </Link>
+          <h1 className="page-title">{post.title}</h1>
+          <div className="header-actions">
+            <button type="button" className="icon-btn">
+              <img src="/image/icon/sharing.svg" alt="공유" className="header-icon" />
+            </button>
+            <button type="button" className="icon-btn">
+              <img src="/image/icon/report.svg" alt="신고" className="header-icon" />
+            </button>
+          </div>
+        </header>
 
-      {/* 게시글 본문 */}
-      <main>
-        <article className="post">
-          <div className="post-header">
-            <div className="post-user">
-              <button type="button" className="profile-btn">
-                <img src={post.member?.profile_img} alt="프로필" />
-              </button>
-              <div className="user-info">
-                <span className="username">{post.member?.nickname}</span>
-                <span className="post-meta">
-                  {post.location} · {new Date(post.created_at).toLocaleDateString()} {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}                 
-                </span>
+        {/* 게시글 본문 */}
+        <main>
+          <article className="post">
+            <div className="post-header">
+              <div className="post-user">
+                <button type="button" className="profile-btn">
+                  <img src={post.member?.profile_img} alt="프로필" />
+                </button>
+                <div className="user-info">
+                  <span className="username">{post.member?.nickname}</span>
+                  <span className="post-meta">
+                    {post.location} · {new Date(post.created_at).toLocaleDateString()} {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                </div>
               </div>
+
+              {/* 🔥 수정: 인라인 스타일로 CSS 문제 우회 */}
+              {isOwner && (
+                <div style={{ position: 'relative' }}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log('더보기 버튼 클릭됨');
+                      setMenuOpen(prev => !prev);
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: '4px'
+                    }}
+                  >
+                    <img src="/image/icon/more-vert.svg" alt="더보기" />
+                  </button>
+
+                  {menuOpen && (
+                    <div style={{
+                      position: 'absolute',
+                      right: 0,
+                      top: '100%',
+                      zIndex: 9999,
+                      backgroundColor: 'white',
+                      border: '1px solid #ddd',
+                      borderRadius: '4px',
+                      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                      minWidth: '80px',
+                      overflow: 'hidden'
+                    }}>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          console.log('수정 버튼 클릭됨!');
+                          setMenuOpen(false);
+                          navigate(`/modifytalk/${post.id}`);
+                        }}
+                        style={{
+                          display: 'block',
+                          width: '100%',
+                          padding: '10px 15px',
+                          border: 'none',
+                          background: 'white',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          borderBottom: '1px solid #eee'
+                        }}
+                      >
+                        수정
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          console.log('삭제 버튼 클릭됨!');
+                          setMenuOpen(false);
+                          handlerDelete();
+                        }}
+                        style={{
+                          display: 'block',
+                          width: '100%',
+                          padding: '10px 15px',
+                          border: 'none',
+                          background: 'white',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          color: '#ff4444'
+                        }}
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-            
-            {
-            post.email === currentUser?.email && (
-              <button type="button" className="icon-btn" onClick={TogleOptions}>
-              <img src="/image/icon/more-vert.svg" alt="더보기" className="more-options" />
-              <div className="more-options-menu" style={{ display: 'none' }}>
-                <button className="modify"> 수정 </button>
-                <button className="delete" onClick={handlerDelete}> 삭제 </button>
-              </div>
-            </button>)
-            }
-            
-          </div>
 
-          {post.image_url && <img src={post.image_url} alt="게시글 이미지" className="post-image" /> }
-          <div className="postview-content">
-            <pre className="post-text description-pre">{post.description}</pre>
-           
-          </div>
-        </article>
-      </main>
+            {post.image_url && <img src={post.image_url} alt="게시글 이미지" className="post-image" />}
+            <div className="postview-content">
+              <pre className="post-text description-pre">{post.description}</pre>
+            </div>
+          </article>
+        </main>
 
-      {/* 댓글 */}
-      {/* 댓글 목록은 항상 렌더링 */}
-      
-      <Comments postId={post.id} currentUser={currentUser} />
+        {/* 댓글 */}
+        <Comments postId={post.id} currentUser={currentUser} />
 
-      {/* 로그인 안내 메시지는 필요하면 따로 */}
-      {!currentUser && (
-        <p style={{ padding: "1rem", color: "#777", textAlign: "center" }}>
-          로그인해야 댓글을 작성할 수 있습니다.
-        </p>
-      )}
-    </div>
+        {!currentUser && (
+          <p style={{ padding: "1rem", color: "#777", textAlign: "center" }}>
+            로그인해야 댓글을 작성할 수 있습니다.
+          </p>
+        )}
+      </div>
     </>
   );
 }

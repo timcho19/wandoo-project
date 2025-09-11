@@ -33,6 +33,13 @@ export default function HeartButton({ postId, currentUser, likeCount, onLike }) 
         src={liked ? "/image/icon/heart-fill.svg" : "/image/icon/heart-1.svg"}
         alt="좋아요"
         className="action-icon"
+        style={{
+          width: '24px',
+          height: '22px',
+          cursor: 'pointer',
+          transition: 'all 0.2s ease',
+          transform: liked ? 'scale(1.1)' : 'scale(1)' // 좋아요 시 살짝 크게
+        }}
       />
       <span>{typeof likeCount === 'number' && likeCount >= 0 ? likeCount : 0}</span>
     </button>

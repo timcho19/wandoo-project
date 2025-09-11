@@ -19,6 +19,7 @@ import Notification from './pages/Notification';
 import Talk from './pages/Talk';
 import TalkView from './pages/TalkView';
 import LayoutWithNav from './layouts/LayoutWithNav';
+import ModifyTalk from './pages/ModifyTalk';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="/notification" element={<Notification />} />
           <Route path="/createfind" element={<CreateFind />} />
           <Route path="/modifyfind/:id" element={<ModifyFind />} />
+          <Route path="/modifytalk/:id" element={<ModifyTalk />} />
           <Route path="/createtalk" element={<CreateTalk />} />
           <Route path="/findview/:id" element={<FindView />} /> 
           <Route path="/talkview/:id" element={<TalkView />} />

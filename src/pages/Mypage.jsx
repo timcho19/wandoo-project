@@ -13,10 +13,39 @@ export default function Mypage() {
   const [position, setPosition] = useState('');
   const [profileImg, setProfileImg] = useState('');
   const [categories, setCategories] = useState([]);
+  const [isLogin, setIsLogin] = useState(null);
+
+// 로그인 상태 확인 
+useEffect(() => {
+  const checkLoginStatus = async () => {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (error) {
+      setIsLogin(false);
+    } else {
+      setIsLogin(true);
+    }
+  };
+
+
+  checkLoginStatus();
+}, []);
+
+// 로그인 상태에 따른 리다이렉트
+useEffect(() => {
+  if (isLogin === false) {
+    alert('로그인이 필요한 서비스입니다.');
+    navigate('/login');
+  }
+}, [isLogin, navigate]);
+
 
  useEffect(() => {
   const fetchUser = async () => {
     const { data, error } = await supabase.auth.getUser();
+
+  
+
     
     if (data?.user?.email) {
       // user 테이블에서 nickname 조회
@@ -45,9 +74,13 @@ export default function Mypage() {
     }
     
   };
-  fetchUser();
+
+ // 로그인된 상태에서만 사용자 정보 가져오기
+    if (isLogin === true) {
+      fetchUser();
+    }
   
-}, []);
+}, [isLogin]);
 
 
 
@@ -56,11 +89,42 @@ export default function Mypage() {
     navigate('/');
   };
 
+    if (isLogin === null) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '18px' 
+      }}>
+        로딩 중...
+      </div>
+    );
+  }
+
+  if (isLogin === false) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '18px' 
+      }}>
+        로그인 페이지로 이동 중...
+      </div>
+    );
+  }
+
+
+
   return (
     <>
       <Helmet>
         <title>마이페이지 | WANDOO</title>
       </Helmet>
+  
       <div className="mypage-container">
         <header className="header">
           <div className="logo">MY PAGE</div>
@@ -92,7 +156,8 @@ export default function Mypage() {
         <button className="myprofile"><svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="1b1b1b"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg> 프로필 설정</button>
         <button className="logout" onClick={handleLogout}><svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="1b1b1b"><path d="M200-120q-33 0-56.5-23.5T120-200v-160h80v160h560v-560H200v160h-80v-160q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm220-160-56-58 102-102H120v-80h346L364-622l56-58 200 200-200 200Z"/></svg>로그아웃</button>
         <Footer />
-      </div>
+      </div>  
+      
 
     </>
   );

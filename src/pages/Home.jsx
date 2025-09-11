@@ -168,7 +168,7 @@ export default function Home() {
               >
                 <p className="banner-subtitle">자유롭게 남기는 우리 동네 이야기</p>
                 <h2 className="banner-title">우리 동네 완두톡</h2>
-                <img src="/image/icon/arrow.svg" alt="" className="banner-icon" />
+                <Link to='/talk'><img src="/image/icon/arrow.svg" alt="" className="banner-icon" /></Link>
               </div>
             </section>
           </>

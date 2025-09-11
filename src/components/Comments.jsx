@@ -4,6 +4,7 @@ import { supabase } from "../supabase";
 export default function Comments({ postId, currentUser }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -50,14 +51,14 @@ export default function Comments({ postId, currentUser }) {
       <h2 className="comments-title">댓글</h2>
 
       <div className="comments-list">
-        {comments.length === 0 && currentUser  ? (
+        {comments.length === 0 && currentUser ? (
           <div className="no-comments" style={{ textAlign: 'center', color: '#888', padding: '1rem' }}>
             현재 입력된 댓글이 없습니다.
           </div>
         ) : (
           comments.map((comment) => (
             <div key={comment.id} className="comment">
-              <div className="comment-header">
+              <div className="comment-header" style={{ position: 'relative' }}>
                 <div className="comment-user">
                   <div className="comment-user-info">
                     <button type="button" className="profile-btn">
@@ -71,16 +72,74 @@ export default function Comments({ postId, currentUser }) {
                       {comment.created_at ? `${new Date(comment.created_at).toLocaleDateString()} ${new Date(comment.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}  ` : ""}
                     </span>
                   </div>
-
+                </div>
+                <div className="comment-btn">
                   {/* 내 댓글이면 더보기 버튼 보여주기 */}
                   {currentUser?.id === comment.member?.id && (
+
                     <button type="button" className="icon-btn">
                       <img
                         src="/image/icon/more-vert.svg"
                         alt="더보기"
                         className="more-options"
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          cursor: 'pointer',
+                          padding: '4px'
+                        }}
+                        onClick={() => {
+                          console.log('더보기 버튼 클릭됨');
+                          setMenuOpen(prev => !prev);
+                        }}
                       />
                     </button>
+                  )}
+                  {menuOpen && (
+                    <div className="settings-btn" style={{
+                      position: 'absolute',
+                      right: 0,
+                      top: '100%',
+                      zIndex: 9999,
+                      backgroundColor: 'white',
+                      border: '1px solid #ddd',
+                      borderRadius: '4px',
+                      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                      minWidth: '80px',
+                      overflow: 'hidden'
+                    }}
+                      onClick={() => {
+                        setMenuOpen(false);
+                      }}
+                    >
+                      <button
+                        style={{
+                          display: 'block',
+                          width: '100%',
+                          padding: '10px 15px',
+                          border: 'none',
+                          background: 'white',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          borderBottom: '1px solid #eee'
+                        }}
+                      >수정</button>
+                      <button
+                        style={{
+                          display: 'block',
+                          width: '100%',
+                          padding: '10px 15px',
+                          border: 'none',
+                          background: 'white',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          color: '#ff4444'
+                        }}
+                        onClick={() => {
+                          setMenuOpen(false);
+                        }}
+                      >삭제</button>
+                    </div>
                   )}
                 </div>
               </div>

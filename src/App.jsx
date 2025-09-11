@@ -35,7 +35,7 @@ function App() {
         <meta property="og:type" content="website" /> 
         <meta property="og:title" content="Wandoo" /> 
         <meta property="og:description" content="당신의 취향을 한곳에" /> 
-        <meta property="og:image" content="/image/logo/wandoologo.png" />
+        <meta property="og:image" content="/image/logo/og.jpg" />
       </Helmet>
       <GlobalStyle />
       <BrowserRouter>

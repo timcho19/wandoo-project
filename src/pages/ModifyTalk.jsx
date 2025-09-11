@@ -159,7 +159,7 @@ export default function ModifyTalk() {
       <div className="container">
         <header className="header">
           <div className="header-left">
-            <Link to="/talk" className="back-button">
+            <Link to={`/talkview/${id}`} className="back-button">
               <img src="/image/icon/arrow-left.svg" alt="" />
             </Link>
             <h1 className="header-title">완두톡</h1>

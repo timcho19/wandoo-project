@@ -166,7 +166,7 @@ export default function Talk() {
 
         <main>
           {posts.length === 0 ? (
-            <p>게시글이 없습니다.</p>
+            <p>게시물을 불러오는 중....</p>
           ) : (
             posts.map((post) => (
               <div key={post.id} className="post">

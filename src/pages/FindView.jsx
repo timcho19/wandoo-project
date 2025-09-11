@@ -120,7 +120,7 @@ export default function FindView() {
       <div className="findview-container">
         <header className="header">
           <button onClick={()=>{
-            navigate(-1);
+            navigate(`/find`);
           }} className="back-button">
             <img src="/image/icon/arrow-left.svg" alt="뒤로가기" />
           </button>

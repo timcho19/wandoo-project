@@ -112,6 +112,15 @@ const handleSubmit = async (e) => {
   }
 };
 
+  // 드래그 앤 드롭
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      handleFileChange({ target: { files } });
+    }
+  };
+
 
   // 5️⃣ 로그인 체크 중이면 아무것도 렌더링하지 않음
   if (loading) return null;
@@ -175,12 +184,17 @@ const handleSubmit = async (e) => {
           {/* 이미지 업로드 */}
           <div className="form-group">
             <label className="form-label" htmlFor='imageUpload'>이미지</label>
-            <div className="upload-area">
+            <div className="upload-area"
+            onDrop={handleDrop}
+            onDragOver={(e) => e.preventDefault()}
+            onClick={() => document.getElementById('imageUpload').click()}
+            >
               <input
                 type="file"
                 id="imageUpload"
                 accept="image/*"
                 name="image_url"
+                style={{display: 'none'}}
                 onChange={handleFileChange}
               />
               <img src="./image/icon/image_arrow_up.svg" alt="업로드" className="upload-icon" />

@@ -158,7 +158,7 @@ export default function CreateFind() {
       <div className="container">
         <header className="header">
           <div className="header-left">
-            <Link to="/find" className="back-button">
+            <Link to={`/findview/${id}`} className="back-button">
               <img src="/image/icon/arrow-left.svg" alt="" />
             </Link>
             <h1 className="header-title">모임 글 수정</h1>

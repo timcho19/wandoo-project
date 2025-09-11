@@ -994,6 +994,11 @@ const GlobalStyle = createGlobalStyle`
     .back-button{
       cursor: pointer;
     }
+  /* 필수 입력 */
+  .requierd-option{
+  margin-left:2px;
+  color:#DC3545;
+  }
 `;
 
 export default GlobalStyle;

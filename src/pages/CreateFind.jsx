@@ -166,7 +166,7 @@ export default function CreateFind() {
             {meetingType === '번개모임' && (
               <div className="instant-fields show">
                 <div className="form-group">
-                  <label className="form-label" htmlFor="date">날짜 및 시간</label>
+                  <label className="form-label" htmlFor="date">날짜 및 시간<span className="requierd-option">*</span></label>
                   <input
                     type="datetime-local"
                     className="form-input"
@@ -182,7 +182,7 @@ export default function CreateFind() {
             {meetingType === '정기모임' && (
               <div className="regular-fields show">
                 <div className="form-group">
-                  <label className="form-label" htmlFor="week">주 선택</label>
+                  <label className="form-label" htmlFor="week">주 선택<span className="requierd-option">*</span></label>
                   <select
                     className="form-select"
                     id="week"
@@ -199,7 +199,7 @@ export default function CreateFind() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" htmlFor="day">요일 선택</label>
+                  <label className="form-label" htmlFor="day">요일 선택<span className="requierd-option">*</span></label>
                   <select
                     className="form-select"
                     id="day"
@@ -221,7 +221,7 @@ export default function CreateFind() {
 
             {/* 공통 필드 */}
             <div className="form-group">
-              <label className="form-label" htmlFor="category">카테고리</label>
+              <label className="form-label" htmlFor="category">카테고리<span className="requierd-option">*</span></label>
               <select
                 className="form-select"
                 id="category"
@@ -238,7 +238,7 @@ export default function CreateFind() {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="position">위치</label>
+              <label className="form-label" htmlFor="position">위치<span className="requierd-option">*</span></label>
               <select
                 className="form-select"
                 id="position"
@@ -254,7 +254,7 @@ export default function CreateFind() {
             </div>
 
             <div className="form-group">
-              <label className="form-label">참여 인원</label>
+              <label className="form-label">참여 인원<span className="requierd-option">*</span></label>
               <input
                 type="number"
                 min="2"
@@ -269,7 +269,7 @@ export default function CreateFind() {
 
             {/* 이미지 업로드 */}
             <div className="form-group">
-              <label className="form-label" htmlFor="imageUpload">대표이미지</label>
+              <label className="form-label" htmlFor="imageUpload">대표이미지<span className="requierd-option">*</span></label>
               <div
                 className="upload-area"
                 onClick={() => document.getElementById('imageUpload').click()}
@@ -298,7 +298,7 @@ export default function CreateFind() {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="title">글 제목</label>
+              <label className="form-label" htmlFor="title">글 제목<span className="requierd-option">*</span></label>
               <input
                 type="text"
                 className="form-input"
@@ -311,7 +311,7 @@ export default function CreateFind() {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="comment">모임 설명</label>
+              <label className="form-label" htmlFor="comment">모임 설명<span className="requierd-option">*</span></label>
               <textarea
                 className="form-textarea"
                 placeholder="모임 설명을 해주세요"

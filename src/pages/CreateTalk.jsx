@@ -147,7 +147,7 @@ const handleSubmit = async (e) => {
 
           {/* 카테고리 */}
           <div className="form-group">
-            <label className="form-label" htmlFor='category'>카테고리</label>
+            <label className="form-label" htmlFor='category'>카테고리<span className="requierd-option">*</span></label>
             <select
               className="form-select"
               id='category'
@@ -165,7 +165,7 @@ const handleSubmit = async (e) => {
 
           {/* 위치 */}
           <div className="form-group">
-            <label className="form-label" htmlFor='location'>위치</label>
+            <label className="form-label" htmlFor='location'>위치<span className="requierd-option">*</span></label>
             <select
               className="form-select"
               id='location'
@@ -198,7 +198,8 @@ const handleSubmit = async (e) => {
                 onChange={handleFileChange}
               />
               <img src="./image/icon/image_arrow_up.svg" alt="업로드" className="upload-icon" />
-              <p className="upload-text">이미지 파일을 드래그 또는 클릭하여 업로드</p>
+              <p className="upload-text">이미지 파일을 드래그 또는 클릭하여 업로드<br/><span style={{color:'#a9a9a9',fontSize:'12px', lineHeight:'30px' }}>(이미지 업로드 없이 글쓰기 가능)</span></p>
+              
 
               {/* 미리보기 */}
               {previewUrl && (
@@ -217,7 +218,7 @@ const handleSubmit = async (e) => {
 
           {/* 제목 */}
 <div className="form-group">
-  <label className="form-label" htmlFor='title'>제목</label>
+  <label className="form-label" htmlFor='title'>제목<span className="requierd-option">*</span></label>
   <input
     type="text"
     className="form-input"
@@ -233,7 +234,7 @@ const handleSubmit = async (e) => {
 
           {/* 설명 */}
           <div className="form-group">
-            <label className="form-label" htmlFor='description'>설명</label>
+            <label className="form-label" htmlFor='description'>설명<span className="requierd-option">*</span></label>
             <textarea
               className="form-textarea"
               placeholder="내용을 입력해주세요"

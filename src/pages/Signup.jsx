@@ -151,7 +151,7 @@ export default function Signup() {
       <form className="login-form" onSubmit={handleSignup}>
 
         <div className="login-field">
-          <label className="login-label" htmlFor="signup-email">이메일</label>
+          <label className="login-label" htmlFor="signup-email">이메일<span className="requierd-option">*</span></label>
           <input
             className="login-input"
             id="signup-email"
@@ -166,7 +166,7 @@ export default function Signup() {
         {!isSocialSignup && (
           <>
             <div className="login-field">
-              <label className="login-label" htmlFor="signup-pw">비밀번호</label>
+              <label className="login-label" htmlFor="signup-pw">비밀번호<span className="requierd-option">*</span></label>
               <input
                 className="login-input"
                 id="signup-pw"
@@ -178,7 +178,7 @@ export default function Signup() {
             </div>
 
             <div className="login-field">
-              <label className="login-label" htmlFor="signup-pw2">비밀번호 확인</label>
+              <label className="login-label" htmlFor="signup-pw2">비밀번호 확인<span className="requierd-option">*</span></label>
               <input
                 className="login-input"
                 id="signup-pw2"
@@ -192,7 +192,7 @@ export default function Signup() {
         )}
 
         <div className="login-field">
-          <label className="login-label" htmlFor="signup-nickname">닉네임</label>
+          <label className="login-label" htmlFor="signup-nickname">닉네임<span className="requierd-option">*</span></label>
           <input
             className="login-input"
             id="signup-nickname"
@@ -204,7 +204,7 @@ export default function Signup() {
         </div>
 
         <div className="login-field">
-          <label className="login-label" htmlFor="signup-profile-img">프로필 이미지 업로드</label>
+          <label className="login-label" htmlFor="signup-profile-img">프로필 이미지 업로드<span className="requierd-option">*</span></label>
           <input
             className="login-input"
             id="signup-profile-img"
@@ -221,7 +221,7 @@ export default function Signup() {
         </div>
 
         <div className="login-field">
-          <label className="login-label">관심사</label>
+          <label className="login-label">관심사<span className="requierd-option">*</span></label>
           <div className="category-options">
             {['전체', '운동/스포츠', '문화/예술', '취미', '스터디', '친목'].map(cat => (
               <label key={cat} className="category-checkbox">
@@ -253,7 +253,7 @@ export default function Signup() {
         </div>
 
         <div className="login-field">
-          <label className="login-label" htmlFor="positions">위치</label>
+          <label className="login-label" htmlFor="positions">위치<span className="requierd-option">*</span></label>
           <select className="login-input" id="positions" value={position} onChange={e => setPosition(e.target.value)}>
             <option value="" disabled>지역 선택</option>
             <option value="종로구">종로구</option>

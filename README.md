@@ -239,8 +239,27 @@ wandoo-project/
 ├─ package-lock.json 
 └─ vite.config.ts    # Vite 설정
 ```
+## 4. 데이터흐름도 구성
 
-## 4. 페이지별 기능
+###  (Mermaid DFD)
+
+```mermaid
+flowchart TD
+    User[사용자]
+    Frontend[React/Vite 프론트엔드]
+    API[API 서비스 (services)]
+    Supabase[Supabase 백엔드]
+    DB[(Database)]
+    Storage[(Storage)]
+
+    User -->|요청| Frontend
+    Frontend -->|API 호출| API
+    API -->|데이터 요청/응답| Supabase
+    Supabase -->|CRUD| DB
+    Supabase -->|파일 업로드/다운로드| Storage
+    Frontend -->|이미지/파일 요청| Storage
+
+## 5. 페이지별 기능
 
 ### 메인 페이지 (Home)
 - 검색어 검색 기능
@@ -261,11 +280,11 @@ wandoo-project/
 - 로그인/회원가입(이메일기반/카카오로그인)
 - 마이페이지 관리
 
-## 5. 반응형 디자인
+## 6. 반응형 디자인
 - 모바일 (~ 719px)
 - 데스크톱 (720px ~)
 
-## 6. 실행 방법
+## 7. 실행 방법
 1. 저장소 클론 및 종속성 설치
 ```bash
 git clone https://github.com/timcho19/wandoo-project.git
@@ -289,12 +308,12 @@ npm run dev
 npm run build
 ```
 
-## 7. 디자인 가이드
+## 8. 디자인 가이드
 - 메인 컬러: #40B440
 - 폰트: Pretendard
 - 반응형 브레이크포인트: 720px
 
-## 8. 개선 사항
+## 9. 개선 사항
 - [ ] 실시간 채팅 기능 Supabase Realtime 구현
 - [ ] 이미지 최적화 및 프로그레시브 로딩
 - [ ] 성능 최적화 (Code Splitting, Lazy Loading)
@@ -302,7 +321,7 @@ npm run build
 - [ ] 다국어 지원 (i18n)
 - [ ] E2E 테스트 커버리지 향상
 
-## 9. 제작 후기
+## 10. 제작 후기
 이 프로젝트를 통해 React와 Supabase를 활용한 현대적인 웹 애플리케이션 개발 경험을 쌓았습니다. 특히 다음과 같은 부분에서 의미 있는 학습이 있었습니다:
 
 - Vite를 통한 빠른 개발 환경 구축

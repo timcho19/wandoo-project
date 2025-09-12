@@ -19,6 +19,7 @@ Wandoo는 관심사가 비슷한 사람들이 모여 소모임을 만들고 참�
 ## 🔗 프로젝트 링크
 - 📑 [기획서 (Figma)](https://www.figma.com/slides/JL1XPvmuO0NqHicAzzAlLq)
 - 🎨 [디자인 (Figma)](https://www.figma.com/design/ZuUdTJYIuCk5PKx4xYV88Y)
+- 🌍 [배포 링크](https://wandoo-project.vercel.app/)
 
 ## 1. 기술 스택
 
@@ -245,19 +246,19 @@ wandoo-project/
 
 ```mermaid
 flowchart TD
-    User[사용자]
-    Frontend[React/Vite 프론트엔드]
-    API[API 서비스 (services)]
-    Supabase[Supabase 백엔드]
-    DB[(Database)]
-    Storage[(Storage)]
+    User["User"]
+    Frontend["Frontend (React/Vite)"]
+    API["API Service (services)"]
+    Supabase["Supabase"]
+    DB["Database"]
+    Storage["Storage"]
 
-    User -->|요청| Frontend
-    Frontend -->|API 호출| API
-    API -->|데이터 요청/응답| Supabase
+    User -->|Request| Frontend
+    Frontend -->|API Call| API
+    API -->|Data| Supabase
     Supabase -->|CRUD| DB
-    Supabase -->|파일 업로드/다운로드| Storage
-    Frontend -->|이미지/파일 요청| Storage
+    Supabase -->|File| Storage
+    Frontend -->|File Request| Storage
 
 ## 5. 페이지별 기능
 

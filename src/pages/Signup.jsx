@@ -123,7 +123,7 @@ export default function Signup() {
         return;
       }
 
-      alert("회원가입 완료!");
+      alert("회원가입 완료! 이메일 인증을 받고 로그인이 가능합니다.");
       navigate("/login");
 
     } finally {

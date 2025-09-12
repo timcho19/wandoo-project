@@ -140,7 +140,7 @@ export default function ModifyTalk() {
       alert('오류가 발생했습니다: ' + error.message);
       setIsLoading(false); // 추가 필요
     } else {
-      alert('게시글이 수정되었습니다!');
+      alert('게시글이 수정되었습니다!!');
       navigate(`/talkview/${id}`);
     }
 

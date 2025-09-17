@@ -75,7 +75,9 @@ const handleSubmit = async (e) => {
   let imageUrl = formData.image_url;
 
   if (selectedFile) {
-    const filePath = `posts/${Date.now()}-${selectedFile.name}`;
+    const fileExtension = selectedFile.name.split('.').pop(); // 확장자 추출 (png)
+    const safeName = `image_${Date.now()}.${fileExtension}`;  // 안전한 파일명 생성
+    const filePath = `posts/${safeName}`;
     const { data, error } = await supabase.storage
       .from('posts')
       .upload(filePath, selectedFile);
